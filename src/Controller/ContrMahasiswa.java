@@ -39,10 +39,10 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         view = new VMahasiswa();
         view.setVisible(true);
         view.addListener(this);
-        showListTingkat(model.getDaftarMatkulTingkat1(), view.getListTingkat1());
-        showListTingkat(model.getDaftarMatkulTingkat2(), view.getListTingkat2());
-        showListTingkat(model.getDaftarMatkulTingkat3(), view.getListTingkat3());
-        showListTingkat(model.getDaftarMatkulTingkat4(), view.getListTingkat4());
+        showListTingkat(model.loadMataKuliah(1), view.getListTingkat1());
+        showListTingkat(model.loadMataKuliah(2), view.getListTingkat2());
+        showListTingkat(model.loadMataKuliah(3), view.getListTingkat3());
+        showListTingkat(model.loadMataKuliah(4), view.getListTingkat4());
         
        
         
