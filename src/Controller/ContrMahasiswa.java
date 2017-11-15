@@ -21,6 +21,8 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -34,16 +36,16 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     ArrayList<MataKuliah> daftarRegMatkul;
     DefaultListModel mdl = new DefaultListModel();
 
-    public ContrMahasiswa() {
+    public ContrMahasiswa(Mahasiswa mhs) {
         this.model = new Aplikasi();
         view = new VMahasiswa();
         view.setVisible(true);
 
         view.addListener(this);
-        showListTingkat(model.loadMataKuliah(1), view.getListTingkat1());
-        showListTingkat(model.loadMataKuliah(2), view.getListTingkat2());
-        showListTingkat(model.loadMataKuliah(3), view.getListTingkat3());
-        showListTingkat(model.loadMataKuliah(4), view.getListTingkat4());    
+        showListTingkat(model.loadMataKuliah(1), view.getTblTingkat1());
+       /// showListTingkat(model.loadMataKuliah(2), view.getListTingkat2());
+       // showListTingkat(model.loadMataKuliah(3), view.getListTingkat3());
+       // showListTingkat(model.loadMataKuliah(4), view.getListTingkat4());    
         
     }
 
@@ -51,7 +53,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source.equals(view.getBtnAddT1())) {
-            String temp = view.getListTingkat1().getSelectedValue().toString();
+           /* String temp = view.getListTingkat1().getSelectedValue().toString();
             JumlahSks +=Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
             mdl.addElement(view.getListTingkat1().getSelectedValue().toString());
             view.getListRegMatkulPilihan().setModel(mdl);
@@ -87,7 +89,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
             mdl.remove(view.getListRegMatkulPilihan().getSelectedIndex());
             view.getListRegMatkulPilihan().setModel(mdl);
             view.getListAccMatkulPilihan().setModel(mdl);
-            
+         */   
         }
 //        view.setTxtTotSKS(Integer.toString(JumlahSks));
         
@@ -113,13 +115,23 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void showListTingkat(ArrayList<MataKuliah> arrMK, JList list) {
-        list.removeAll();
-        String[] dataList = new String[arrMK.size()];
+    public void showListTingkat(ArrayList<MataKuliah> arrMK, JTable tabeltingkat) {
+        tabeltingkat.removeAll();
+//list.removeAll();
+       // String[] dataList = new String[arrMK.size()];
         for (int i = 0; i < arrMK.size(); i++) {
             MataKuliah matkul = arrMK.get(i);
-            dataList[i] = matkul.getKodeMk() + ":" + matkul.getNamaMk() + " (" + matkul.getSKS() + ")";
-            list.setListData(dataList);
+            DefaultTableModel model = new DefaultTableModel();
+            Object[] o = new Object[4];
+            o[0] = matkul.getDosen();
+            o[1] = matkul.getKodeMk();
+            o[2] = matkul.getNamaMk();
+            o[3] = matkul.getSKS();
+          //  o[4] = matkul.
+            model.addRow(o);
+            tabeltingkat.setModel(model);
+          //  dataList[i] = matkul.getKodeMk() + ":" + matkul.getNamaMk() + " (" + matkul.getSKS() + ")";
+          //  list.setListData(dataList);
         }
        
     }

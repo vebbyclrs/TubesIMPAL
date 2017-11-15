@@ -23,7 +23,7 @@ public class ContrLoginMahasiswa implements ActionListener, KeyListener{
     private VLoginMahasiswa loginFrame;
     private Aplikasi model;
 
-    public ContrLoginMahasiswa() {
+    public ContrLoginMahasiswa(Mahasiswa mhs) {
         model = new Aplikasi();
         loginFrame = new VLoginMahasiswa();
         loginFrame.setLocationRelativeTo(null);
