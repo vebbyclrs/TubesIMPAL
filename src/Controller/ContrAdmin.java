@@ -34,19 +34,35 @@ public class ContrAdmin implements ActionListener {
         Object src = e.getSource();
         
         if (src.equals(view.getBtnDsnAdd())) {
-            if (view.getTxtDsnNama().equals("") || view.getTxtDsnKode().equals("")||
-                    view.getTxtDsnBirthplace().equals("")||
-                    view.getDateDsnBirthday().getDate() == null ||
-                    view.getCboxMhsJK().getSelectedIndex() == 0) {
-                JOptionPane.showMessageDialog(view,"Field tidak boleh kosong","Terjadi kesalahan input",0);    
-            } else {
+//            if 
+//                    (view.getTxtDsnNama().equals("") || view.getTxtDsnKode().equals("")||
+//                    view.getTxtDsnBirthplace().equals("")||
+////                    view.getDateDsnBirthday().getDate() == null ||
+//                    view.getCboxMhsJK().getSelectedIndex() == 0) {
+//                JOptionPane.showMessageDialog(view,"Field tidak boleh kosong","Terjadi kesalahan input",0);    
+//            } else 
+//            {
+            try {
+                
                 Dosen d = new Dosen();
+//                System.out.println("1");
                 d.setNama(view.getTxtDsnNama());
-                d.setKode(Integer.parseInt(view.getTxtDsnKode()));
-                d.setTglLahir((Date) view.getDateDsnBirthday().getDate());
+//                System.out.println("2");
+                d.setKode(Integer.parseInt(view.getTxtDsnKode().getText()));
+//                System.out.println("3");
+                d.setTglLahir(view.getDateDsnBirthday().getDate());
+//                d.setTglLahir((Date) view.getDateDsnBirthday().getDate());
+//                System.out.println("4");
                 d.setTempatLahir(view.getTxtDsnBirthplace());
+//                System.out.println("5");
                 d.setIsMale(2 == view.getCboxDsnJK().getSelectedIndex()); //Kalo cowo, selected = 2
+//                System.out.println("6");
+                model.addDosen(d);
+            } catch (Exception ae) {
+                throw new IllegalArgumentException("Gabisa nyimpen");
             }
+//            }
+            
         }
     }
     
