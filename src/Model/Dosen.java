@@ -5,7 +5,10 @@
  */
 package Model;
 
-import java.util.Date;
+//import java.util.Date;
+
+import java.sql.Date;
+
 
 /**
  *
@@ -62,6 +65,10 @@ public class Dosen {
 
     public String getAlamat() {
         return alamat;
+    }
+
+    public void setTglLahir(Date tglLahir) {
+        this.tglLahir = tglLahir;
     }
 
     public void setAlamat(String alamat) {
