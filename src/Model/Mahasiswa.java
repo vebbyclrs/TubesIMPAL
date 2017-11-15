@@ -84,7 +84,11 @@ public class Mahasiswa {
         return this.jadwal;
     }
 
-    public final void setTanggalLahir(int tanggal, int bulan, int tahun) {
+    public void setTanggalLahir(Date tanggalLahir) {
+        this.tanggalLahir = tanggalLahir;
+    }
+    
+    public void setTanggalLahir(int tanggal, int bulan, int tahun) {
         this.tanggalLahir = new Date(tahun-1900,bulan-1,tanggal);
     }
     public Date getTanggalLahir () {

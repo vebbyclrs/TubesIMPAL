@@ -47,8 +47,9 @@ public class Aplikasi {
     public boolean addDosen(Dosen d){
         //on working-VEB
         db.connect();
-        boolean berhasil = db.
-//        db.disconnect();
+        boolean berhasil = db.saveDosen(d);
+        daftarDosen.add(d);
+        db.disconnect();
         return berhasil;
     }
             

@@ -145,9 +145,11 @@ public class VAdmin extends javax.swing.JFrame {
         this.txtDsnBirthplace = txtDsnBirthplace;
     }
 
-    public String getTxtDsnKode() {
-        return txtDsnKode.toString();
+    public JTextField getTxtDsnKode() {
+        return txtDsnKode;
     }
+
+    
 
     public void setTxtDsnKode(JTextField txtDsnKode) {
         this.txtDsnKode = txtDsnKode;

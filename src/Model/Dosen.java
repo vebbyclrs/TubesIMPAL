@@ -5,9 +5,9 @@
  */
 package Model;
 
-//import java.util.Date;
+import java.util.Date;
 
-import java.sql.Date;
+//import java.sql.Date;
 
 
 /**
@@ -29,10 +29,6 @@ public class Dosen {
         this.kode = kode;
         this.nama = nama;
         this.isMale = isMale;
-    }
-
-    public void setTglLahir(int tanggal, int bulan, int tahun) {
-        this.tglLahir = new Date(tahun-1900, bulan-1, tanggal);
     }
 
     public Date getTglLahir() {
@@ -67,8 +63,12 @@ public class Dosen {
         return alamat;
     }
 
-    public void setTglLahir(Date tglLahir) {
-        this.tglLahir = tglLahir;
+    public void setTglLahir(Date tanggalLahir) {
+        this.tglLahir = tanggalLahir;
+    }
+    
+    public void setTglLahir(int tanggal, int bulan, int tahun) {
+        this.tglLahir = new Date(tahun-1900,bulan-1,tanggal);
     }
 
     public void setAlamat(String alamat) {
