@@ -6,6 +6,7 @@
 package View;
 
 import com.toedter.calendar.JDateChooser;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -24,6 +25,13 @@ public class VAdmin extends javax.swing.JFrame {
     public VAdmin() {
         initComponents();
     }
+    
+    public void addListener (ActionListener e) {
+        btnAddMatkul.addActionListener(e);
+        btnDsnAdd.addActionListener(e);
+        btnMhsAdd.addActionListener(e);
+    }
+    
 
     public JButton getBtnAddMatkul() {
         return btnAddMatkul;
@@ -129,64 +137,64 @@ public class VAdmin extends javax.swing.JFrame {
         this.tblMatkul = tblMatkul;
     }
 
-    public JTextField getTxtDsnBirthplace() {
-        return txtDsnBirthplace;
+    public String getTxtDsnBirthplace() {
+        return txtDsnBirthplace.toString();
     }
 
     public void setTxtDsnBirthplace(JTextField txtDsnBirthplace) {
         this.txtDsnBirthplace = txtDsnBirthplace;
     }
 
-    public JTextField getTxtDsnKode() {
-        return txtDsnKode;
+    public String getTxtDsnKode() {
+        return txtDsnKode.toString();
     }
 
     public void setTxtDsnKode(JTextField txtDsnKode) {
         this.txtDsnKode = txtDsnKode;
     }
 
-    public JTextField getTxtDsnNama() {
-        return txtDsnNama;
+    public String getTxtDsnNama() {
+        return txtDsnNama.toString();
     }
 
     public void setTxtDsnNama(JTextField txtDsnNama) {
         this.txtDsnNama = txtDsnNama;
     }
 
-    public JTextField getTxtKodeMatkul() {
-        return txtKodeMatkul;
+    public String getTxtKodeMatkul() {
+        return txtKodeMatkul.toString();
     }
 
     public void setTxtKodeMatkul(JTextField txtKodeMatkul) {
         this.txtKodeMatkul = txtKodeMatkul;
     }
 
-    public JTextField getTxtMhsBirthplace() {
-        return txtMhsBirthplace;
+    public String getTxtMhsBirthplace() {
+        return txtMhsBirthplace.toString();
     }
 
     public void setTxtMhsBirthplace(JTextField txtMhsBirthplace) {
         this.txtMhsBirthplace = txtMhsBirthplace;
     }
 
-    public JTextField getTxtMhsNIM() {
-        return txtMhsNIM;
+    public String getTxtMhsNIM() {
+        return txtMhsNIM.toString();
     }
 
     public void setTxtMhsNIM(JTextField txtMhsNIM) {
         this.txtMhsNIM = txtMhsNIM;
     }
 
-    public JTextField getTxtMhsNama() {
-        return txtMhsNama;
+    public String getTxtMhsNama() {
+        return txtMhsNama.toString();
     }
 
     public void setTxtMhsNama(JTextField txtMhsNama) {
         this.txtMhsNama = txtMhsNama;
     }
 
-    public JTextField getTxtNamaMatkul() {
-        return txtNamaMatkul;
+    public String getTxtNamaMatkul() {
+        return txtNamaMatkul.toString();
     }
 
     public void setTxtNamaMatkul(JTextField txtNamaMatkul) {

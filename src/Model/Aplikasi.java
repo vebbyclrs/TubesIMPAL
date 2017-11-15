@@ -44,6 +44,15 @@ public class Aplikasi {
         return daftarMahasiswa;
     }
     
+    public boolean addDosen(Dosen d){
+        //on working-VEB
+        db.connect();
+        boolean berhasil = db.
+//        db.disconnect();
+        return berhasil;
+    }
+            
+    
     public Mahasiswa getMahasiswaByEmail(String email) {
         Mahasiswa ret;
         db.connect();

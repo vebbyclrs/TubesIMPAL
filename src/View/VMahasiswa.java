@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
 
@@ -35,11 +36,11 @@ public class VMahasiswa extends javax.swing.JFrame {
     }
 
     public JButton getBtnAddT2() {
-        return btnAddT2;
+        return btnAddT1;
     }
 
     public void setBtnAddT2(JButton btnAddT2) {
-        this.btnAddT2 = btnAddT2;
+        this.btnAddT1 = btnAddT2;
     }
 
     public JButton getBtnAddT3() {
@@ -138,37 +139,38 @@ public class VMahasiswa extends javax.swing.JFrame {
         this.listRegMatkulPilihan = listRegMatkulPilihan;
     }
 
-    public JList<String> getListTingkat1() {
-        return listTingkat1;
+    public JTable getTblTingkat1() {
+        return tblTingkat1;
     }
 
-    public void setListTingkat1(JList<String> listTingkat1) {
-        this.listTingkat1 = listTingkat1;
+    public void setTblTingkat1(JTable tblTingkat1) {
+        this.tblTingkat1 = tblTingkat1;
     }
 
-    public JList<String> getListTingkat2() {
-        return listTingkat2;
+    public JTable getTblTingkat2() {
+        return tblTingkat2;
     }
 
-    public void setListTingkat2(JList<String> listTingkat2) {
-        this.listTingkat2 = listTingkat2;
+    public void setTblTingkat2(JTable tblTingkat2) {
+        this.tblTingkat2 = tblTingkat2;
     }
 
-    public JList<String> getListTingkat3() {
-        return listTingkat3;
+    public JTable getTblTingkat3() {
+        return tblTingkat3;
     }
 
-    public void setListTingkat3(JList<String> listTingkat3) {
-        this.listTingkat3 = listTingkat3;
+    public void setTblTingkat3(JTable tblTingkat3) {
+        this.tblTingkat3 = tblTingkat3;
     }
 
-    public JList<String> getListTingkat4() {
-        return listTingkat4;
+    public JTable getTblTingkat4() {
+        return tblTingkat4;
     }
 
-    public void setListTingkat4(JList<String> listTingkat4) {
-        this.listTingkat4 = listTingkat4;
+    public void setTblTingkat4(JTable tblTingkat4) {
+        this.tblTingkat4 = tblTingkat4;
     }
+
 
     public JTextField getTxtCKDoswal() {
         return txtCKDoswal;
@@ -273,20 +275,20 @@ public class VMahasiswa extends javax.swing.JFrame {
         RegMatkul = new javax.swing.JPanel();
         tabTingkat1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        listTingkat1 = new javax.swing.JList<>();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        tblTingkat1 = new javax.swing.JTable();
         btnAddT1 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        listTingkat2 = new javax.swing.JList<>();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        tblTingkat2 = new javax.swing.JTable();
         btnAddT2 = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        listTingkat3 = new javax.swing.JList<>();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        tblTingkat3 = new javax.swing.JTable();
         btnAddT3 = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        listTingkat4 = new javax.swing.JList<>();
+        jPanel3 = new javax.swing.JPanel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        tblTingkat4 = new javax.swing.JTable();
         btnAddT4 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         listRegMatkulPilihan = new javax.swing.JList<>();
@@ -333,7 +335,24 @@ public class VMahasiswa extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jScrollPane2.setViewportView(listTingkat1);
+        tblTingkat1.setForeground(new java.awt.Color(255, 255, 255));
+        tblTingkat1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Shift", "Ruangan", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane8.setViewportView(tblTingkat1);
 
         btnAddT1.setText("Add");
 
@@ -341,93 +360,148 @@ public class VMahasiswa extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+            .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAddT1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAddT1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAddT1)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         tabTingkat1.addTab("Tingkat 1", jPanel1);
 
-        jScrollPane4.setViewportView(listTingkat2);
+        tblTingkat2.setForeground(new java.awt.Color(255, 255, 255));
+        tblTingkat2.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Shift", "Ruangan", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane10.setViewportView(tblTingkat2);
 
         btnAddT2.setText("Add");
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAddT2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnAddT2)
+                .addContainerGap())
+        );
+
+        tabTingkat1.addTab("Tingkat 2", jPanel5);
+
+        tblTingkat3.setForeground(new java.awt.Color(255, 255, 255));
+        tblTingkat3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Shift", "Ruangan", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane9.setViewportView(tblTingkat3);
+
+        btnAddT3.setText("Add");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+            .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAddT2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAddT3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAddT2)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addComponent(btnAddT3)
+                .addContainerGap())
         );
 
-        tabTingkat1.addTab("Tingkat 2", jPanel2);
+        tabTingkat1.addTab("Tingkat 3", jPanel2);
 
-        jScrollPane5.setViewportView(listTingkat3);
+        tblTingkat4.setForeground(new java.awt.Color(255, 255, 255));
+        tblTingkat4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
 
-        btnAddT3.setText("Add");
+            },
+            new String [] {
+                "Shift", "Ruangan", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane11.setViewportView(tblTingkat4);
+
+        btnAddT4.setText("Add");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+            .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAddT3, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnAddT4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnAddT3)
-                .addGap(0, 12, Short.MAX_VALUE))
-        );
-
-        tabTingkat1.addTab("Tingkat 3", jPanel3);
-
-        jScrollPane6.setViewportView(listTingkat4);
-
-        btnAddT4.setText("Add");
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnAddT4, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnAddT4)
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
-        tabTingkat1.addTab("Tingkat 4", jPanel4);
+        tabTingkat1.addTab("Tingkat 4", jPanel3);
 
         jScrollPane3.setViewportView(listRegMatkulPilihan);
 
@@ -450,13 +524,13 @@ public class VMahasiswa extends javax.swing.JFrame {
         RegMatkulLayout.setVerticalGroup(
             RegMatkulLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(RegMatkulLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(tabTingkat1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addGap(2, 2, 2)
+                .addComponent(tabTingkat1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnRemove)
-                .addGap(28, 28, 28))
+                .addContainerGap())
         );
 
         jTabbedPane2.addTab("Registrasi Matakuliah", RegMatkul);
@@ -483,7 +557,7 @@ public class VMahasiswa extends javax.swing.JFrame {
                     .addComponent(jLabel14))
                 .addGap(18, 18, 18)
                 .addGroup(RequestACCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
                     .addGroup(RequestACCLayout.createSequentialGroup()
                         .addGroup(RequestACCLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtTotSKS, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -504,7 +578,7 @@ public class VMahasiswa extends javax.swing.JFrame {
                     .addComponent(txtTotSKS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(33, 33, 33)
                 .addComponent(btnRequestACC)
-                .addContainerGap(193, Short.MAX_VALUE))
+                .addContainerGap(280, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Request ACC", RequestACC);
@@ -583,7 +657,7 @@ public class VMahasiswa extends javax.swing.JFrame {
                                 .addComponent(btnCetakKSM)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addComponent(txtCKStatusReg))))
-                .addContainerGap(58, Short.MAX_VALUE))
+                .addContainerGap(255, Short.MAX_VALUE))
         );
         CetakKSMLayout.setVerticalGroup(
             CetakKSMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -608,7 +682,7 @@ public class VMahasiswa extends javax.swing.JFrame {
                     .addComponent(txtCKStatusReg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(btnCetakKSM)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addContainerGap(267, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Cetak KSM", CetakKSM);
@@ -702,7 +776,7 @@ public class VMahasiswa extends javax.swing.JFrame {
                     .addComponent(btnTglLahir)
                     .addComponent(btnNoHp)
                     .addComponent(btnEmail))
-                .addContainerGap(71, Short.MAX_VALUE))
+                .addContainerGap(268, Short.MAX_VALUE))
         );
         ProfilLayout.setVerticalGroup(
             ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -739,7 +813,7 @@ public class VMahasiswa extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEmail))
-                .addContainerGap(217, Short.MAX_VALUE))
+                .addContainerGap(304, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Profil", Profil);
@@ -819,6 +893,12 @@ public class VMahasiswa extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -862,23 +942,23 @@ public class VMahasiswa extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JList<String> listAccMatkulPilihan;
     private javax.swing.JList<String> listRegMatkulPilihan;
-    private javax.swing.JList<String> listTingkat1;
-    private javax.swing.JList<String> listTingkat2;
-    private javax.swing.JList<String> listTingkat3;
-    private javax.swing.JList<String> listTingkat4;
     private javax.swing.JTabbedPane tabTingkat1;
+    private javax.swing.JTable tblTingkat1;
+    private javax.swing.JTable tblTingkat2;
+    private javax.swing.JTable tblTingkat3;
+    private javax.swing.JTable tblTingkat4;
     private javax.swing.JTextField txtCKDoswal;
     private javax.swing.JTextField txtCKNama;
     private javax.swing.JTextField txtCKNim;
@@ -894,7 +974,7 @@ public class VMahasiswa extends javax.swing.JFrame {
 
     public void addListener(ActionListener e) {
         btnAddT1.addActionListener(e);
-        btnAddT2.addActionListener(e);
+        btnAddT1.addActionListener(e);
         btnAddT3.addActionListener(e);
         btnAddT4.addActionListener(e);
         btnRemove.addActionListener(e);
@@ -904,14 +984,5 @@ public class VMahasiswa extends javax.swing.JFrame {
         btnRequestACC.addActionListener(e);
         btnTglLahir.addActionListener(e);
         btnTptLahir.addActionListener(e);
-    }
-    
-    public void addListSelection(ListSelectionListener ls){
-        listTingkat1.addListSelectionListener(ls);
-        listTingkat2.addListSelectionListener(ls);
-        listTingkat3.addListSelectionListener(ls);
-        listTingkat4.addListSelectionListener(ls);
-        
-        
     }
 }

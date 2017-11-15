@@ -38,13 +38,12 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         this.model = new Aplikasi();
         view = new VMahasiswa();
         view.setVisible(true);
+
         view.addListener(this);
         showListTingkat(model.loadMataKuliah(1), view.getListTingkat1());
         showListTingkat(model.loadMataKuliah(2), view.getListTingkat2());
         showListTingkat(model.loadMataKuliah(3), view.getListTingkat3());
-        showListTingkat(model.loadMataKuliah(4), view.getListTingkat4());
-        
-       
+        showListTingkat(model.loadMataKuliah(4), view.getListTingkat4());    
         
     }
 
@@ -90,7 +89,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
             view.getListAccMatkulPilihan().setModel(mdl);
             
         }
-        view.setTxtTotSKS(Integer.toString(JumlahSks));
+//        view.setTxtTotSKS(Integer.toString(JumlahSks));
         
     }
 

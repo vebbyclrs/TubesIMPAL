@@ -108,6 +108,15 @@ public class DatabaseConnection {
         }
         return berhasil;
     }
+    public boolean saveDosen (Dosen d) {
+        //ON WORKING-VEB
+        boolean berhasil = false;
+        try {
+            String query = "insert into DOSEN ()";
+        } catch (Exception e) {
+        }
+        return berhasil;
+    }
 }
    
     
