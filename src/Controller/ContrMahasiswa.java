@@ -42,10 +42,11 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         view.setVisible(true);
 
         view.addListener(this);
-        showListTingkat(model.loadMataKuliah(1), view.getTblTingkat1());
-       /// showListTingkat(model.loadMataKuliah(2), view.getListTingkat2());
-       // showListTingkat(model.loadMataKuliah(3), view.getListTingkat3());
-       // showListTingkat(model.loadMataKuliah(4), view.getListTingkat4());    
+        view.getTblTingkat1().removeAll();
+        showListTingkat(model.loadMataKuliah(1),view.getTblTingkat1());
+        showListTingkat(model.loadMataKuliah(2), view.getTblTingkat2());
+        showListTingkat(model.loadMataKuliah(3), view.getTblTingkat3());
+        showListTingkat(model.loadMataKuliah(4), view.getTblTingkat4());    
         
     }
 
@@ -53,15 +54,16 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source.equals(view.getBtnAddT1())) {
-           /* String temp = view.getListTingkat1().getSelectedValue().toString();
-            JumlahSks +=Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
-            mdl.addElement(view.getListTingkat1().getSelectedValue().toString());
-            view.getListRegMatkulPilihan().setModel(mdl);
-            view.getListAccMatkulPilihan().setModel(mdl);
-            System.out.println(view.getListTingkat1().getSelectedIndex());
+            //String temp = view.getTblTingkat1().getSelectedRowCount();
+            System.out.println(view.getTblTingkat2().getValueAt(view.getTblTingkat1().getSelectedRow(), 0));
+          //  JumlahSks +=Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
+        //    mdl.addElement(view.getListTingkat1().getSelectedValue().toString());
+            //view.getListRegMatkulPilihan().setModel(mdl);
+           // view.getListAccMatkulPilihan().setModel(mdl);
+         //   System.out.println(view.getListTingkat1().getSelectedIndex());
           //  showListRegistrasi(daftarRegMatkul, view.getListRegMatkulPilihan());
         } else if (source.equals(view.getBtnAddT2())) {
-            String temp = view.getListTingkat2().getSelectedValue().toString();
+       /*     String temp = view.getListTingkat2().getSelectedValue().toString();
             this.JumlahSks += Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
             mdl.addElement(view.getListTingkat2().getSelectedValue().toString());
             view.getListRegMatkulPilihan().setModel(mdl);
@@ -115,26 +117,35 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void showListTingkat(ArrayList<MataKuliah> arrMK, JTable tabeltingkat) {
-        tabeltingkat.removeAll();
-//list.removeAll();
-       // String[] dataList = new String[arrMK.size()];
-        for (int i = 0; i < arrMK.size(); i++) {
-            MataKuliah matkul = arrMK.get(i);
-            DefaultTableModel model = new DefaultTableModel();
-            Object[] o = new Object[4];
-            o[0] = matkul.getDosen();
-            o[1] = matkul.getKodeMk();
-            o[2] = matkul.getNamaMk();
-            o[3] = matkul.getSKS();
-          //  o[4] = matkul.
-            model.addRow(o);
-            tabeltingkat.setModel(model);
+    public void showListTingkat(ArrayList<MataKuliah> arrMK,JTable tabeltingkat) {
+       //tabeltingkat.removeAll();
+//list.removeAll()       
+       String[] columnNames = {"Shift",
+                        "Ruangan",
+                        "Kode Mata Kuliah",
+                        "Nama Mata Kuliah",
+                        "Kelas"}; 
+       Object[][] data = new Object [arrMK.size()][5];
+       int i = 0;
+        for (MataKuliah matkul : arrMK) {
+            String[] arrData = {matkul.getNamaMk(),
+                Integer.toString(matkul.getKodeMk()),
+               // matkul.getDosen().getNama(),
+                Integer.toString(matkul.getSKS()),
+                matkul.getNamaMk()};
+                data[i] = arrData;
+            }
+        DefaultTableModel tabel = new DefaultTableModel(data, columnNames);
+        tabeltingkat.setModel(tabel);
+
+            
+           // tabeltingkat.setModel(model);
           //  dataList[i] = matkul.getKodeMk() + ":" + matkul.getNamaMk() + " (" + matkul.getSKS() + ")";
           //  list.setListData(dataList);
+
         }
        
-    }
+    
     
     public void showMahasiswa(){
          //bingung
