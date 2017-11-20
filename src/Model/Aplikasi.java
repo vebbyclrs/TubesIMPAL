@@ -67,6 +67,25 @@ public class Aplikasi {
         db.disconnect();
         return null;
     }
+      public ArrayList<MataKuliah> loadMataKuliah(int tingkat) {
+        daftarMatkul = new ArrayList<MataKuliah>();
+        db.connect();
+        
+        String query = "select ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS,Tingkat from mata_kuliah where tingkat ="+tingkat+";";
+        ResultSet rs = db.getData(query);
+        try {
+            while (rs.next()) {
+                MataKuliah matkul = new MataKuliah(rs.getInt("ID_MATKUL"),rs.getString("NAMA_MATKUL"),
+                        rs.getInt("SKS"));
+                daftarMatkul.add(matkul);
+
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException("terjadi kesalahan   load MataKuliah");
+        }
+        db.disconnect();
+        return daftarMatkul;
+    }
 //    public Dosen getDosenByEmail(String email) {
 //        Dosen ret;
 //        
