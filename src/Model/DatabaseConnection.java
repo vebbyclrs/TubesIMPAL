@@ -112,6 +112,7 @@ public class DatabaseConnection {
         //ON WORKING-VEB
         boolean berhasil = false;
         try {
+            System.out.println(d.getAlamat());
             String query = "insert into DOSEN (ID_DOSEN,NAMA,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,ISMALE,NO_HP) values ('"
                     +d.getKode()+ "','"
                     +d.getNama()+"','"

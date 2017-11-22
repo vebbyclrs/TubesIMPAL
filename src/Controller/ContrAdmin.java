@@ -43,20 +43,22 @@ public class ContrAdmin implements ActionListener {
 //            } else 
 //            {
             try {
-                
+
                 Dosen d = new Dosen();
+                System.out.println(view.getDateDsnBirthday().getDate());
 //                System.out.println("1");
-                d.setNama(view.getTxtDsnNama());
+              // d.setNama(view.getTxtDsnNama());
 //                System.out.println("2");
-                d.setKode(Integer.parseInt(view.getTxtDsnKode().getText()));
+                //d.setKode(Integer.parseInt(view.getTxtDsnKode().getText()));
 //                System.out.println("3");
                 d.setTglLahir(view.getDateDsnBirthday().getDate());
 //                d.setTglLahir((Date) view.getDateDsnBirthday().getDate());
 //                System.out.println("4");
-                d.setTempatLahir(view.getTxtDsnBirthplace());
+               // d.setTempatLahir(view.getTxtDsnBirthplace());
 //                System.out.println("5");
-                d.setIsMale(2 == view.getCboxDsnJK().getSelectedIndex()); //Kalo cowo, selected = 2
+               // d.setIsMale(2 == view.getCboxDsnJK().getSelectedIndex()); //Kalo cowo, selected = 2
 //                System.out.println("6");
+                //System.out.println(d.getNama());
                 model.addDosen(d);
             } catch (Exception ae) {
                 throw new IllegalArgumentException("Gabisa nyimpen");

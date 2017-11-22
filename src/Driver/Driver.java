@@ -16,6 +16,8 @@ import java.util.Date;
  */
 public class Driver {
     public static void main(String[] args) {
-        new Controller.ContrAdmin();
+        //new Controller.ContrAdmin();
+        Mahasiswa mhs = new Mahasiswa("Vebby Clarissa", false, 16, 8, 1997, "Bukittinggi");
+        new Controller.ContrMahasiswa(mhs);
     }
 }
