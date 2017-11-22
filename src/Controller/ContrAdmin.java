@@ -24,7 +24,7 @@ public class ContrAdmin implements ActionListener {
         this.model = new Aplikasi();
         
         view.setVisible(true);
-        view.addListener(this);
+        view.setActionListener(this);
         
         
     }
@@ -45,22 +45,17 @@ public class ContrAdmin implements ActionListener {
             try {
 
                 Dosen d = new Dosen();
-                System.out.println(view.getDateDsnBirthday().getDate());
-//                System.out.println("1");
-              // d.setNama(view.getTxtDsnNama());
-//                System.out.println("2");
-                //d.setKode(Integer.parseInt(view.getTxtDsnKode().getText()));
-//                System.out.println("3");
+                d.setNama(view.getTfDsnNama());
+                System.out.println("nama"+d.getNama());
+                d.setKode(Integer.parseInt(view.getTfDsnKode().toString()));
+                
                 d.setTglLahir(view.getDateDsnBirthday().getDate());
-//                d.setTglLahir((Date) view.getDateDsnBirthday().getDate());
-//                System.out.println("4");
-               // d.setTempatLahir(view.getTxtDsnBirthplace());
-//                System.out.println("5");
-               // d.setIsMale(2 == view.getCboxDsnJK().getSelectedIndex()); //Kalo cowo, selected = 2
-//                System.out.println("6");
-                //System.out.println(d.getNama());
+                System.out.println(view.getDateDsnBirthday().getDate());
+                d.setTempatLahir(view.getTfDsnBirthplace().toString());
+                d.setIsMale(view.getCboxDsnJK().getSelectedIndex());
                 model.addDosen(d);
             } catch (Exception ae) {
+                ae.printStackTrace();
                 throw new IllegalArgumentException("Gabisa nyimpen");
             }
 //            }
