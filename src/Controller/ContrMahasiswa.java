@@ -19,6 +19,7 @@ import java.awt.TextArea;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.JTable;
@@ -36,7 +37,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     ArrayList<MataKuliah> daftarRegMatkul;
     DefaultListModel mdl = new DefaultListModel();
 
-    public ContrMahasiswa(Mahasiswa mhs) {
+    public ContrMahasiswa() {
         this.model = new Aplikasi();
         view = new VMahasiswa();
         view.setVisible(true);
@@ -119,7 +120,9 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
 
     public void showListTingkat(ArrayList<MataKuliah> arrMK,JTable tabeltingkat) {
        //tabeltingkat.removeAll();
-//list.removeAll()       
+//list.removeAll() 
+        try {
+            
        String[] columnNames = {"Shift",
                         "Ruangan",
                         "Kode Mata Kuliah",
@@ -143,6 +146,9 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
           //  dataList[i] = matkul.getKodeMk() + ":" + matkul.getNamaMk() + " (" + matkul.getSKS() + ")";
           //  list.setListData(dataList);
 
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog( null,"Belum terdapat mata kuliah pada DB","Null database", 1);
+        }
         }
        
     

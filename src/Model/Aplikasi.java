@@ -19,11 +19,13 @@ public class Aplikasi {
     ArrayList<Dosen> daftarDosen;
     ArrayList<MataKuliah> daftarMatkul;
     ArrayList<Jadwal> daftarJadwal;
+    ArrayList<Admin> daftarAdmin;
     DatabaseConnection db;
     
     
     public Aplikasi() {
         db = new DatabaseConnection();
+        daftarAdmin = loadAdmin();
         //load semua array
     }
     public ArrayList<Mahasiswa> loadMahasiswa() {
@@ -43,6 +45,24 @@ public class Aplikasi {
         db.disconnect();
         return daftarMahasiswa;
     }
+    public  ArrayList<Admin> loadAdmin() {
+        db.connect();
+        daftarAdmin = new ArrayList<>();
+        ResultSet rs = db.getData("select ID,NAMA,USERNAME,PASSWORD from ADMIN");
+        try {
+            while (rs.next()){
+                Admin adm = new Admin(rs.getString("ID"),
+                        rs.getString("NAMA"),
+                        rs.getString("USERNAME"),
+                        rs.getString("PASSWORD"));
+                daftarAdmin.add(adm);
+            }
+        } catch (Exception e) {
+        }
+        
+        db.disconnect();
+        return daftarAdmin;
+    }
     
     public boolean addDosen(Dosen d){
         //on working-VEB
@@ -53,6 +73,17 @@ public class Aplikasi {
         return berhasil;
     }
             
+    public Admin getAdminByUsername(String username) {
+        db.connect();
+        for (Admin adm : daftarAdmin) {
+            if (username.equals(adm.getUsername())) {
+                return adm;
+            }
+        }
+        db.disconnect();
+        return null;
+        
+    }
     
     public Mahasiswa getMahasiswaByEmail(String email) {
         Mahasiswa ret;
@@ -90,5 +121,7 @@ public class Aplikasi {
 //        Dosen ret;
 //        
 //    }
+
+    
     
 }

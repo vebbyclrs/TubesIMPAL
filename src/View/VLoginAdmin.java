@@ -5,7 +5,11 @@
  */
 package View;
 
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 /**
@@ -20,7 +24,20 @@ public class VLoginAdmin extends javax.swing.JFrame {
     public VLoginAdmin() {
         initComponents();
     }
+    
+    public void setActionListener(ActionListener ae) {
+        btnLoginDosen.addActionListener(ae);
+        btnLoginMhs.addActionListener(ae);
+        System.out.println("nambah action listener");
+        btnMasuk.addActionListener(ae);
+    }
 
+    public void setKeyListener(KeyListener kl){
+        txtPassword.addKeyListener(kl);
+    }
+    public void showMessage (String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
     public JButton getBtnLoginDosen() {
         return btnLoginDosen;
     }
