@@ -33,7 +33,7 @@ public class ContrAdmin implements ActionListener {
         
     }
 
-    private void addDosenToTableDosen(ArrayList<Dosen> data, JTable table) {
+    private void addDosenToTableDosen(ArrayList<Dosen> data, JTable table) /**Done*/{ 
         DefaultTableModel t = (DefaultTableModel) table.getModel();
 
         t.setRowCount(0);
@@ -76,11 +76,29 @@ public class ContrAdmin implements ActionListener {
                 }
             } catch (Exception ae) {
                 ae.printStackTrace();
-                throw new IllegalArgumentException("Gabisa nyimpen");
+//                throw new IllegalArgumentException("Gabisa nyimpen");
             }
 //            }
             
         }
+        else if (src.equals(view.getBtnAddMatkul())) {
+            try {
+                if ( view.getCboxSKS().getSelectedIndex()!=0) {
+                    MataKuliah matkul = new MataKuliah(
+                        Integer.parseInt(view.getTfKodeMatkul()),
+                        view.getTfNamaMatkul(),
+                        view.getCboxSKS().getSelectedIndex(),
+                        (Dosen)view.getCboxKodeDosen().getSelectedItem());
+                    //addMatkul
+                } else {
+                    view.showMessage("SKS belum dipilih");
+                }
+                
+            } catch (Exception ae) {
+            }
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+        
     }
     
     

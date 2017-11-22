@@ -109,6 +109,25 @@ public class DatabaseConnection {
         }
         return berhasil;
     }
+    
+    public boolean saveMatkul(MataKuliah matkul) {
+        boolean berhasil = false;
+        try {
+            String query = "insert into MATA_KULIAH (ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS)"
+                    + "values ('"+matkul.getKodeMk()+"',"
+                    + "'"+matkul.getDosen().getKode()+"',"
+                    + "'"+matkul.getNamaMk()+"',"
+                    + "'"+matkul.getSKS()+"');";
+            manipulate(query);
+            if (! berhasil) {
+                throw new IllegalArgumentException("Terjadi kesalahan saat save matkul");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("Terjadi kesalahan saat save matkul2");
+        }
+        return berhasil;
+    }
     public boolean saveDosen (Dosen d) {
         //ON WORKING-VEB
         boolean berhasil = false;

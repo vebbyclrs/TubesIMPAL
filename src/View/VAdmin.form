@@ -286,14 +286,8 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfKodeMatkul">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Input Kode Mata Kuliah"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfNamaMatkul">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Input Nama Mata Kuliah"/>
-              </Properties>
             </Component>
             <Component class="javax.swing.JComboBox" name="cboxSKS">
               <Properties>
