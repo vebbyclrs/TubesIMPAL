@@ -40,13 +40,27 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         this.model = new Aplikasi();
         view = new VMahasiswa();
         view.setVisible(true);
-
         view.addListener(this);
+        
         view.getTblTingkat1().removeAll();
         showListTingkat(model.loadMataKuliah(1),view.getTblTingkat1());
         showListTingkat(model.loadMataKuliah(2), view.getTblTingkat2());
         showListTingkat(model.loadMataKuliah(3), view.getTblTingkat3());
         showListTingkat(model.loadMataKuliah(4), view.getTblTingkat4());    
+        
+        /*Tab Cetak KSM*/
+        view.setTxtCKNama(mhs.getNama());
+        view.setTxtCKNim(Long.toString(mhs.getNim()));
+       // view.setTxtCKDoswal(mhs.getDosenWali().getNama());
+        //view.setTxtCKStatusReg();
+        
+        /*Tab Profil*/
+        view.setTxtName(mhs.getNama());
+        view.setTxtNIM(Long.toString(mhs.getNim()));
+        view.setTxtTptLahir(mhs.getTempatLahir());
+        view.setTxtTglLahir(mhs.getTanggalLahir().toString());
+        view.setTxtNoHp(Long.toString(mhs.getNoHp()));
+        view.setTxtEmail(mhs.getEmail());
         
     }
 
@@ -54,44 +68,45 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source.equals(view.getBtnAddT1())) {
-            //String temp = view.getTblTingkat1().getSelectedRowCount();
-            System.out.println(view.getTblTingkat2().getValueAt(view.getTblTingkat1().getSelectedRow(), 0));
+            String temp = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString();
+            //System.out.println(view.getTblTingkat2().getValueAt(view.getTblTingkat1().getSelectedRow(), 2));
           //  JumlahSks +=Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
-        //    mdl.addElement(view.getListTingkat1().getSelectedValue().toString());
-            //view.getListRegMatkulPilihan().setModel(mdl);
-           // view.getListAccMatkulPilihan().setModel(mdl);
+             mdl.addElement(view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString());
+            view.getListRegMatkulPilihan().setModel(mdl);
+            view.getListAccMatkulPilihan().setModel(mdl);
          //   System.out.println(view.getListTingkat1().getSelectedIndex());
           //  showListRegistrasi(daftarRegMatkul, view.getListRegMatkulPilihan());
         } else if (source.equals(view.getBtnAddT2())) {
-       /*     String temp = view.getListTingkat2().getSelectedValue().toString();
-            this.JumlahSks += Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
-            mdl.addElement(view.getListTingkat2().getSelectedValue().toString());
-            view.getListRegMatkulPilihan().setModel(mdl);
-            view.getListAccMatkulPilihan().setModel(mdl);
-            System.out.println(view.getListTingkat1().getSelectedIndex());
+            System.out.println("2");
+           // String temp = view.getListTingkat2().getSelectedValue().toString();
+            //this.JumlahSks += Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
+            //mdl.addElement(view.getListTingkat2().getSelectedValue().toString());
+           // view.getListRegMatkulPilihan().setModel(mdl);
+           // view.getListAccMatkulPilihan().setModel(mdl);
+           // System.out.println(view.getListTingkat1().getSelectedIndex());
           //  showListRegistrasi(daftarRegMatkul, view.getListRegMatkulPilihan());
         } else if (source.equals(view.getBtnAddT3())){          
-            String temp = view.getListTingkat3().getSelectedValue().toString();
-            this.JumlahSks += Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
-            mdl.addElement(view.getListTingkat3().getSelectedValue().toString());
-            view.getListRegMatkulPilihan().setModel(mdl);
-            view.getListAccMatkulPilihan().setModel(mdl);
+        //    String temp = view.getListTingkat3().getSelectedValue().toString();
+         //   this.JumlahSks += Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
+          //  mdl.addElement(view.getListTingkat3().getSelectedValue().toString());
+           // view.getListRegMatkulPilihan().setModel(mdl);
+           // view.getListAccMatkulPilihan().setModel(mdl);
            // showListRegistrasi(daftarRegMatkul, view.getListRegMatkulPilihan());
         } else if(source.equals(view.getBtnAddT4())){
-            String temp = view.getListTingkat4().getSelectedValue().toString();
-            this.JumlahSks += Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
-            DefaultListModel mdl = new DefaultListModel();
-            mdl.addElement(view.getListTingkat4().getSelectedValue().toString());
-            view.getListRegMatkulPilihan().setModel(mdl);
-            view.getListAccMatkulPilihan().setModel(mdl);
+           // String temp = view.getListTingkat4().getSelectedValue().toString();
+           // this.JumlahSks += Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
+           // DefaultListModel mdl = new DefaultListModel();
+           // mdl.addElement(view.getListTingkat4().getSelectedValue().toString());
+           // view.getListRegMatkulPilihan().setModel(mdl);
+            //view.getListAccMatkulPilihan().setModel(mdl);
             //showListRegistrasi(daftarRegMatkul, view.getListRegMatkulPilihan());
         } else if(source.equals(view.getBtnRemove())){
             String temp = view.getListRegMatkulPilihan().getSelectedValue().toString();
-            this.JumlahSks -= Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
+           // this.JumlahSks -= Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
             mdl.remove(view.getListRegMatkulPilihan().getSelectedIndex());
             view.getListRegMatkulPilihan().setModel(mdl);
             view.getListAccMatkulPilihan().setModel(mdl);
-         */   
+         
         }
 //        view.setTxtTotSKS(Integer.toString(JumlahSks));
         
