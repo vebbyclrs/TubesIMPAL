@@ -316,10 +316,6 @@ public class VAdmin extends javax.swing.JFrame {
 
         jLabel4.setText("Dosen");
 
-        tfKodeMatkul.setText("Input Kode Mata Kuliah");
-
-        tfNamaMatkul.setText("Input Nama Mata Kuliah");
-
         cboxSKS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "sks", "1", "2", "3", "4" }));
 
         btnAddMatkul.setText("Tambah");

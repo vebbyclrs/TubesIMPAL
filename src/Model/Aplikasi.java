@@ -97,6 +97,20 @@ public class Aplikasi {
         db.disconnect();
         return berhasil;
     }
+    
+    public boolean addMatkul(MataKuliah matkul) {
+        boolean berhasil = false;
+        try {
+            db.connect();
+            berhasil = db.saveMatkul(matkul);
+            daftarMatkul.add(matkul);
+            db.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return berhasil;
+        
+    }
             
     public Admin getAdminByUsername(String username) {
         db.connect();
