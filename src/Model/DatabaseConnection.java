@@ -114,8 +114,14 @@ public class DatabaseConnection {
         boolean berhasil = false;
         try {
             System.out.println(d.getTglLahir());
-            java.sql.Date dateDosen = new java.sql.Date(d.getTglLahir().getDate());
-            System.out.println(dateDosen);
+//            java.time.LocalDate dateDsn = new LocalDate;
+            java.sql.Date dateDosen = new java.sql.Date(
+                    d.getTglLahir().getYear(),
+                    d.getTglLahir().getMonth(),
+                    d.getTglLahir().getDay());
+//            java.sql.Date dateDosen2 = (Date)d.getTglLahir(); //Cannot be cast
+            System.out.println("dateDosen: "+dateDosen);
+//            System.out.println("dateDosen2: "+dateDosen2);
             String query = "insert into DOSEN (ID_DOSEN,NAMA,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,ISMALE,NO_HP) values ('"
                     +d.getKode()+ "','"
                     +d.getNama()+"','"

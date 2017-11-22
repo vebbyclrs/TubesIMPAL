@@ -10,7 +10,10 @@ import Model.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author VebbyClrs
@@ -26,9 +29,20 @@ public class ContrAdmin implements ActionListener {
         view.setVisible(true);
         view.setActionListener(this);
         
+        addDosenToTableDosen(model.loadDosen(), view.getTblDosen());
         
     }
 
+    private void addDosenToTableDosen(ArrayList<Dosen> data, JTable table) {
+        DefaultTableModel t = (DefaultTableModel) table.getModel();
+
+        t.setRowCount(0);
+        for (Dosen d : data) {
+            String[] s = {""+d.getKode(),d.getNama()};
+            t.addRow(s);
+        }
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
@@ -46,14 +60,20 @@ public class ContrAdmin implements ActionListener {
 
                 Dosen d = new Dosen();
                 d.setNama(view.getTfDsnNama());
-                System.out.println("nama"+d.getNama());
-                d.setKode(Integer.parseInt(view.getTfDsnKode().toString()));
+                System.out.println("nama "+d.getNama());
+                d.setKode(Integer.parseInt(view.getTfDsnKode()));
                 
                 d.setTglLahir(view.getDateDsnBirthday().getDate());
-                System.out.println(view.getDateDsnBirthday().getDate());
-                d.setTempatLahir(view.getTfDsnBirthplace().toString());
+                System.out.println("1 "+view.getDateDsnBirthday().getDate());
+                d.setTempatLahir(view.getTfDsnBirthplace());
                 d.setIsMale(view.getCboxDsnJK().getSelectedIndex());
-                model.addDosen(d);
+                if (model.addDosen(d)) {
+                    view.showMessage("Berhasil ditambahkan");
+                    addDosenToTableDosen(model.loadDosen(), view.getTblDosen());
+                    view.reset();
+                } else {
+                    JOptionPane.showMessageDialog(view, "gagal ditambahkan");
+                }
             } catch (Exception ae) {
                 ae.printStackTrace();
                 throw new IllegalArgumentException("Gabisa nyimpen");

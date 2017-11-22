@@ -10,8 +10,10 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import org.jdesktop.swingx.JXDatePicker;
 
 /**
  *
@@ -32,8 +34,25 @@ public class VAdmin extends javax.swing.JFrame {
         btnMhsAdd.addActionListener(e);
     }
 
+    public void reset() {
+        setTfDsnBirthplace("");
+        setTfDsnKode("");
+        setTfDsnNama("");
+        setTfKodeMatkul("");
+        setTfMhsBirthplace("");
+        setTfMhsNIM("");
+        setTfMhsNama("");
+        setTfNamaMatkul("");
+    }
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
     public JButton getBtnAddMatkul() {
         return btnAddMatkul;
+    }
+
+    public JTable getTblDosen() {
+        return tblDosen;
     }
 
     public JButton getBtnDsnAdd() {
@@ -67,7 +86,7 @@ public class VAdmin extends javax.swing.JFrame {
     public JDateChooser getDateDsnBirthday() {
         return dateDsnBirthday;
     }
-
+    
     public JDateChooser getDateMhsBirthday() {
         return dateMhsBirthday;
     }
@@ -112,6 +131,39 @@ public class VAdmin extends javax.swing.JFrame {
         return tfNamaMatkul.getText();
     }
 
+    public void setTfDsnBirthplace(String tfDsnBirthplace) {
+        this.tfDsnBirthplace.setText(tfDsnBirthplace);
+    }
+
+    public void setTfDsnKode(String tfDsnKode) {
+        this.tfDsnKode.setText(tfDsnKode);
+    }
+
+    public void setTfDsnNama(String tfDsnNama) {
+        this.tfDsnNama.setText(tfDsnNama);
+    }
+
+    public void setTfKodeMatkul(String tfKodeMatkul) {
+        this.tfKodeMatkul.setText(tfKodeMatkul);
+    }
+
+    public void setTfMhsBirthplace(String tfMhsBirthplace) {
+        this.tfMhsBirthplace.setText(tfMhsBirthplace);
+    }
+
+    public void setTfMhsNIM(String tfMhsNIM) {
+        this.tfMhsNIM.setText(tfMhsNIM);
+    }
+
+    public void setTfMhsNama(String tfMhsNama) {
+        this.tfMhsNama.setText(tfMhsNama);
+    }
+
+    public void setTfNamaMatkul(String tfNamaMatkul) {
+        this.tfNamaMatkul.setText(tfNamaMatkul);
+    }
+
+    
 
     
     
