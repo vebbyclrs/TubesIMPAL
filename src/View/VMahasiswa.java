@@ -36,7 +36,7 @@ public class VMahasiswa extends javax.swing.JFrame {
     }
 
     public JButton getBtnAddT2() {
-        return btnAddT1;
+        return btnAddT2;
     }
 
     public void setBtnAddT2(JButton btnAddT2) {
@@ -172,92 +172,92 @@ public class VMahasiswa extends javax.swing.JFrame {
     }
 
 
-    public JTextField getTxtCKDoswal() {
-        return txtCKDoswal;
+    public String getTxtCKDoswal() {
+        return txtCKDoswal.getText();
     }
 
-    public void setTxtCKDoswal(JTextField txtCKDoswal) {
-        this.txtCKDoswal = txtCKDoswal;
+    public void setTxtCKDoswal(String txtCKDoswal) {
+        this.txtCKDoswal.setText(txtCKDoswal);
     }
 
-    public JTextField getTxtCKNama() {
-        return txtCKNama;
+    public String getTxtCKNama() {
+        return txtCKNama.getText();
     }
 
-    public void setTxtCKNama(JTextField txtCKNama) {
-        this.txtCKNama = txtCKNama;
+    public void setTxtCKNama(String txtCKNama) {
+        this.txtCKNama.setText(txtCKNama);
     }
 
-    public JTextField getTxtCKNim() {
-        return txtCKNim;
+    public String getTxtCKNim() {
+        return txtCKNim.getText();
     }
 
-    public void setTxtCKNim(JTextField txtCKNim) {
-        this.txtCKNim = txtCKNim;
+    public void setTxtCKNim(String txtCKNim) {
+        this.txtCKNim.setText(txtCKNim);
     }
 
-    public JTextField getTxtCKStatusReg() {
-        return txtCKStatusReg;
+    public String getTxtCKStatusReg() {
+        return txtCKStatusReg.getText();
     }
 
-    public void setTxtCKStatusReg(JTextField txtCKStatusReg) {
-        this.txtCKStatusReg = txtCKStatusReg;
+    public void setTxtCKStatusReg(String txtCKStatusReg) {
+        this.txtCKStatusReg.setText(txtCKStatusReg);
     }
 
-    public JTextField getTxtEmail() {
-        return txtEmail;
+    public String getTxtEmail() {
+        return txtEmail.getText();
     }
 
-    public void setTxtEmail(JTextField txtEmail) {
-        this.txtEmail = txtEmail;
+    public void setTxtEmail(String txtEmail) {
+        this.txtEmail.setText(txtEmail);
     }
 
-    public JTextField getTxtNIM() {
-        return txtNIM;
+    public String getTxtNIM() {
+        return txtNIM.getText();
     }
 
-    public void setTxtNIM(JTextField txtNIM) {
-        this.txtNIM = txtNIM;
+    public void setTxtNIM(String txtNIM) {
+        this.txtNIM.setText(txtNIM);
     }
 
-    public JTextField getTxtName() {
-        return txtName;
+    public String getTxtName() {
+        return txtName.getText();
     }
 
-    public void setTxtName(JTextField txtName) {
-        this.txtName = txtName;
+    public void setTxtName(String txtName) {
+        this.txtName.setText(txtName);
     }
 
-    public JTextField getTxtNoHp() {
-        return txtNoHp;
+    public String getTxtNoHp() {
+        return txtNoHp.getText();
     }
 
-    public void setTxtNoHp(JTextField txtNoHp) {
-        this.txtNoHp = txtNoHp;
+    public void setTxtNoHp(String txtNoHp) {
+        this.txtNoHp.setText(txtNoHp);
     }
 
-    public JTextField getTxtTglLahir() {
-        return txtTglLahir;
+    public String getTxtTglLahir() {
+        return txtTglLahir.getText();
     }
 
-    public void setTxtTglLahir(JTextField txtTglLahir) {
-        this.txtTglLahir = txtTglLahir;
+    public void setTxtTglLahir(String txtTglLahir) {
+        this.txtTglLahir.setText(txtTglLahir);
     }
 
-    public JTextField getTxtTotSKS() {
-        return txtTotSKS;
+    public String getTxtTotSKS() {
+        return txtTotSKS.getText();
     }
 
     public void setTxtTotSKS(String txtTotSKS) {
         this.txtTotSKS.setText(txtTotSKS);
     }
 
-    public JTextField getTxtTptLahir() {
-        return txtTptLahir;
+    public String getTxtTptLahir() {
+        return txtTptLahir.getText();
     }
 
-    public void setTxtTptLahir(JTextField txtTptLahir) {
-        this.txtTptLahir = txtTptLahir;
+    public void setTxtTptLahir(String txtTptLahir) {
+        this.txtTptLahir.setText(txtTptLahir);
     }
 
     /**
@@ -974,7 +974,7 @@ public class VMahasiswa extends javax.swing.JFrame {
 
     public void addListener(ActionListener e) {
         btnAddT1.addActionListener(e);
-        btnAddT1.addActionListener(e);
+        btnAddT2.addActionListener(e);
         btnAddT3.addActionListener(e);
         btnAddT4.addActionListener(e);
         btnRemove.addActionListener(e);
