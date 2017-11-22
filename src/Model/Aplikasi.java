@@ -26,6 +26,8 @@ public class Aplikasi {
     public Aplikasi() {
         db = new DatabaseConnection();
         daftarAdmin = loadAdmin();
+        daftarDosen = loadDosen();
+        
         //load semua array
     }
     public ArrayList<Mahasiswa> loadMahasiswa() {
@@ -62,6 +64,29 @@ public class Aplikasi {
         
         db.disconnect();
         return daftarAdmin;
+    }
+    
+    public  ArrayList<Dosen> loadDosen() {
+        db.connect();
+        daftarDosen = new ArrayList<>();
+        ResultSet rs = db.getData("select ID_DOSEN,NAMA,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,ISMALE,NO_HP from DOSEN");
+        try {
+            while (rs.next()){
+//                java.util.Date date = new java.util.Date();
+                Dosen d = new Dosen(rs.getInt("ID_DOSEN"),
+                        rs.getString("NAMA"),
+                        rs.getTimestamp("TANGGAL_LAHIR"),
+                        rs.getString("TEMPAT_LAHIR"),
+                        rs.getString("ALAMAT"),
+                        rs.getInt("ISMALE"),
+                        rs.getLong("NO_HP"));
+                daftarDosen.add(d);
+            }
+        } catch (Exception e) {
+        }
+        db.disconnect();
+        return daftarDosen;
+//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     public boolean addDosen(Dosen d){
@@ -121,6 +146,8 @@ public class Aplikasi {
 //        Dosen ret;
 //        
 //    }
+
+    
 
     
     

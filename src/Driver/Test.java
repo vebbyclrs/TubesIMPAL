@@ -27,8 +27,8 @@ public class Test implements ActionListener {
         view.setVisible(true);
         Dosen d = new Dosen();
         d.setNama("Vebby Clarissa");
-        d.setKode(1222);
-        d.setIsMale(false);
+        d.setKode(45555);
+        d.setIsMale(1);
         Date dv = new Date(1997, 7, 15);
 //        m.addListener(view, this);
         String query = "insert into DOSEN (ID_DOSEN,NAMA,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,ISMALE,NO_HP) values ('"

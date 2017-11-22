@@ -71,10 +71,10 @@
                                   <Component id="btnDsnAdd" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="cboxDsnJK" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="txtDsnNama" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtDsnKode" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfDsnNama" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="tfDsnKode" alignment="0" max="32767" attributes="0"/>
                                       <Component id="dateDsnBirthday" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="txtDsnBirthplace" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                                      <Component id="tfDsnBirthplace" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -92,12 +92,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDsnNama" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfDsnNama" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDsnKode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfDsnKode" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -107,7 +107,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel14" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDsnBirthplace" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfDsnBirthplace" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -151,8 +151,8 @@
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="3">
                     <StringItem index="0" value="Jenis Kelamin"/>
-                    <StringItem index="1" value="Perempuan"/>
-                    <StringItem index="2" value="Laki-laki"/>
+                    <StringItem index="1" value="Laki-laki"/>
+                    <StringItem index="2" value="Perempuan"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -177,7 +177,7 @@
                 <Property name="text" type="java.lang.String" value="Tempat lahir"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtDsnBirthplace">
+            <Component class="javax.swing.JTextField" name="tfDsnBirthplace">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>
@@ -194,9 +194,9 @@
                 <Property name="text" type="java.lang.String" value="Kode"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtDsnNama">
+            <Component class="javax.swing.JTextField" name="tfDsnNama">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtDsnKode">
+            <Component class="javax.swing.JTextField" name="tfDsnKode">
             </Component>
           </SubComponents>
         </Container>
@@ -223,8 +223,8 @@
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtKodeMatkul" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtNamaMatkul" alignment="0" pref="432" max="32767" attributes="0"/>
+                          <Component id="tfKodeMatkul" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfNamaMatkul" alignment="0" pref="432" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="btnAddMatkul" min="-2" max="-2" attributes="0"/>
@@ -244,12 +244,12 @@
                       <Component id="jScrollPane3" min="-2" pref="228" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtKodeMatkul" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfKodeMatkul" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtNamaMatkul" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfNamaMatkul" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -285,12 +285,12 @@
                 <Property name="text" type="java.lang.String" value="Dosen"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtKodeMatkul">
+            <Component class="javax.swing.JTextField" name="tfKodeMatkul">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Input Kode Mata Kuliah"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtNamaMatkul">
+            <Component class="javax.swing.JTextField" name="tfNamaMatkul">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Input Nama Mata Kuliah"/>
               </Properties>
@@ -386,10 +386,10 @@
                           <Component id="btnMhsAdd" min="-2" max="-2" attributes="0"/>
                           <Component id="cboxMhsJK" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="txtMhsNama" max="32767" attributes="0"/>
-                              <Component id="txtMhsNIM" pref="192" max="32767" attributes="0"/>
+                              <Component id="tfMhsNama" max="32767" attributes="0"/>
+                              <Component id="tfMhsNIM" pref="192" max="32767" attributes="0"/>
                               <Component id="dateMhsBirthday" max="32767" attributes="0"/>
-                              <Component id="txtMhsBirthplace" max="32767" attributes="0"/>
+                              <Component id="tfMhsBirthplace" max="32767" attributes="0"/>
                           </Group>
                           <Component id="cboxMhsKodeDoswal" min="-2" pref="101" max="-2" attributes="0"/>
                       </Group>
@@ -406,12 +406,12 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMhsNama" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfMhsNama" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMhsNIM" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfMhsNIM" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -421,7 +421,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtMhsBirthplace" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfMhsBirthplace" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -477,9 +477,9 @@
                 <Property name="text" type="java.lang.String" value="NIM"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMhsNama">
+            <Component class="javax.swing.JTextField" name="tfMhsNama">
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMhsNIM">
+            <Component class="javax.swing.JTextField" name="tfMhsNIM">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
               </Properties>
@@ -496,7 +496,7 @@
                 <Property name="text" type="java.lang.String" value="Tempat lahir"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txtMhsBirthplace">
+            <Component class="javax.swing.JTextField" name="tfMhsBirthplace">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
               <Properties>

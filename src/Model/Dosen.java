@@ -20,15 +20,20 @@ public class Dosen {
     private Date tglLahir;
     private String tempatLahir;
     private String alamat;
-    private boolean isMale;
+    private int isMale;
     private long noHp;
 
-    public Dosen() {
-    }
-    public Dosen(int kode, String nama, boolean isMale) {
+    public Dosen(int kode, String nama, Date tglLahir, String tempatLahir, String alamat, int isMale, long noHp) {
         this.kode = kode;
         this.nama = nama;
+        this.tglLahir = tglLahir;
+        this.tempatLahir = tempatLahir;
+        this.alamat = alamat;
         this.isMale = isMale;
+        this.noHp = noHp;
+    }
+
+    public Dosen() {
     }
 
     public Date getTglLahir() {
@@ -75,13 +80,14 @@ public class Dosen {
         this.alamat = alamat;
     }
 
-    public boolean isIsMale() {
+    public int getIsMale() {
         return isMale;
     }
 
-    public void setIsMale(boolean isMale) {
+    public void setIsMale(int isMale) {
         this.isMale = isMale;
     }
+
 
     public long getNoHp() {
         return noHp;
