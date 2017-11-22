@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.sql.Date;
 
 /**
  *
@@ -112,14 +113,16 @@ public class DatabaseConnection {
         //ON WORKING-VEB
         boolean berhasil = false;
         try {
-            System.out.println(d.getAlamat());
+            System.out.println(d.getTglLahir());
+            java.sql.Date dateDosen = new java.sql.Date(d.getTglLahir().getDate());
+            System.out.println(dateDosen);
             String query = "insert into DOSEN (ID_DOSEN,NAMA,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,ISMALE,NO_HP) values ('"
                     +d.getKode()+ "','"
                     +d.getNama()+"','"
-                    +d.getTglLahir()+"','"
+                    +dateDosen+"','"
                     +d.getTempatLahir()+"','"
                     +d.getAlamat()+"','"
-                    +d.isIsMale()+"','"
+                    +d.getIsMale()+"','"
                     +d.getNoHp()+"');";
             berhasil = manipulate(query);
             if (! berhasil) {

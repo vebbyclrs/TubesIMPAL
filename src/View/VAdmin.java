@@ -26,183 +26,95 @@ public class VAdmin extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void addListener (ActionListener e) {
+    public void setActionListener (ActionListener e) {
         btnAddMatkul.addActionListener(e);
         btnDsnAdd.addActionListener(e);
         btnMhsAdd.addActionListener(e);
     }
-    
 
     public JButton getBtnAddMatkul() {
         return btnAddMatkul;
-    }
-
-    public void setBtnAddMatkul(JButton btnAddMatkul) {
-        this.btnAddMatkul = btnAddMatkul;
     }
 
     public JButton getBtnDsnAdd() {
         return btnDsnAdd;
     }
 
-    public void setBtnDsnAdd(JButton btnDsnAdd) {
-        this.btnDsnAdd = btnDsnAdd;
-    }
-
     public JButton getBtnMhsAdd() {
         return btnMhsAdd;
-    }
-
-    public void setBtnMhsAdd(JButton btnMhsAdd) {
-        this.btnMhsAdd = btnMhsAdd;
     }
 
     public JComboBox<String> getCboxDsnJK() {
         return cboxDsnJK;
     }
 
-    public void setCboxDsnJK(JComboBox<String> cboxDsnJK) {
-        this.cboxDsnJK = cboxDsnJK;
-    }
-
     public JComboBox<String> getCboxKodeDosen() {
         return cboxKodeDosen;
-    }
-
-    public void setCboxKodeDosen(JComboBox<String> cboxKodeDosen) {
-        this.cboxKodeDosen = cboxKodeDosen;
     }
 
     public JComboBox<String> getCboxMhsJK() {
         return cboxMhsJK;
     }
 
-    public void setCboxMhsJK(JComboBox<String> cboxMhsJK) {
-        this.cboxMhsJK = cboxMhsJK;
-    }
-
     public JComboBox<String> getCboxMhsKodeDoswal() {
         return cboxMhsKodeDoswal;
-    }
-
-    public void setCboxMhsKodeDoswal(JComboBox<String> cboxMhsKodeDoswal) {
-        this.cboxMhsKodeDoswal = cboxMhsKodeDoswal;
     }
 
     public JComboBox<String> getCboxSKS() {
         return cboxSKS;
     }
 
-    public void setCboxSKS(JComboBox<String> cboxSKS) {
-        this.cboxSKS = cboxSKS;
-    }
-
     public JDateChooser getDateDsnBirthday() {
         return dateDsnBirthday;
-    }
-
-    public void setDateDsnBirthday(JDateChooser dateDsnBirthday) {
-        this.dateDsnBirthday = dateDsnBirthday;
     }
 
     public JDateChooser getDateMhsBirthday() {
         return dateMhsBirthday;
     }
 
-    public void setDateMhsBirthday(JDateChooser dateMhsBirthday) {
-        this.dateMhsBirthday = dateMhsBirthday;
-    }
-
-    public JTable getTblDosen() {
-        return tblDosen;
-    }
-
-    public void setTblDosen(JTable tblDosen) {
-        this.tblDosen = tblDosen;
-    }
-
     public JTable getTblMahasiswa() {
         return tblMahasiswa;
-    }
-
-    public void setTblMahasiswa(JTable tblMahasiswa) {
-        this.tblMahasiswa = tblMahasiswa;
     }
 
     public JTable getTblMatkul() {
         return tblMatkul;
     }
 
-    public void setTblMatkul(JTable tblMatkul) {
-        this.tblMatkul = tblMatkul;
+    public String getTfDsnBirthplace() {
+        return tfDsnBirthplace.getText();
     }
 
-    public String getTxtDsnBirthplace() {
-        return txtDsnBirthplace.toString();
+    public String getTfDsnKode() {
+        return tfDsnKode.getText();
     }
 
-    public void setTxtDsnBirthplace(JTextField txtDsnBirthplace) {
-        this.txtDsnBirthplace = txtDsnBirthplace;
+    public String getTfDsnNama() {
+        return tfDsnNama.getText();
     }
 
-    public JTextField getTxtDsnKode() {
-        return txtDsnKode;
+    public String getTfKodeMatkul() {
+        return tfKodeMatkul.getText();
     }
+
+    public String getTfMhsBirthplace() {
+        return tfMhsBirthplace.getText();
+    }
+
+    public String getTfMhsNIM() {
+        return tfMhsNIM.getText();
+    }
+
+    public String getTfMhsNama() {
+        return tfMhsNama.getText();
+    }
+
+    public String getTfNamaMatkul() {
+        return tfNamaMatkul.getText();
+    }
+
 
     
-
-    public void setTxtDsnKode(JTextField txtDsnKode) {
-        this.txtDsnKode = txtDsnKode;
-    }
-
-    public String getTxtDsnNama() {
-        return txtDsnNama.toString();
-    }
-
-    public void setTxtDsnNama(JTextField txtDsnNama) {
-        this.txtDsnNama = txtDsnNama;
-    }
-
-    public String getTxtKodeMatkul() {
-        return txtKodeMatkul.toString();
-    }
-
-    public void setTxtKodeMatkul(JTextField txtKodeMatkul) {
-        this.txtKodeMatkul = txtKodeMatkul;
-    }
-
-    public String getTxtMhsBirthplace() {
-        return txtMhsBirthplace.toString();
-    }
-
-    public void setTxtMhsBirthplace(JTextField txtMhsBirthplace) {
-        this.txtMhsBirthplace = txtMhsBirthplace;
-    }
-
-    public String getTxtMhsNIM() {
-        return txtMhsNIM.toString();
-    }
-
-    public void setTxtMhsNIM(JTextField txtMhsNIM) {
-        this.txtMhsNIM = txtMhsNIM;
-    }
-
-    public String getTxtMhsNama() {
-        return txtMhsNama.toString();
-    }
-
-    public void setTxtMhsNama(JTextField txtMhsNama) {
-        this.txtMhsNama = txtMhsNama;
-    }
-
-    public String getTxtNamaMatkul() {
-        return txtNamaMatkul.toString();
-    }
-
-    public void setTxtNamaMatkul(JTextField txtNamaMatkul) {
-        this.txtNamaMatkul = txtNamaMatkul;
-    }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -222,18 +134,18 @@ public class VAdmin extends javax.swing.JFrame {
         btnDsnAdd = new javax.swing.JButton();
         dateDsnBirthday = new com.toedter.calendar.JDateChooser();
         jLabel14 = new javax.swing.JLabel();
-        txtDsnBirthplace = new javax.swing.JTextField();
+        tfDsnBirthplace = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtDsnNama = new javax.swing.JTextField();
-        txtDsnKode = new javax.swing.JTextField();
+        tfDsnNama = new javax.swing.JTextField();
+        tfDsnKode = new javax.swing.JTextField();
         Dosen1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtKodeMatkul = new javax.swing.JTextField();
-        txtNamaMatkul = new javax.swing.JTextField();
+        tfKodeMatkul = new javax.swing.JTextField();
+        tfNamaMatkul = new javax.swing.JTextField();
         cboxSKS = new javax.swing.JComboBox<>();
         btnAddMatkul = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -246,12 +158,12 @@ public class VAdmin extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtMhsNama = new javax.swing.JTextField();
-        txtMhsNIM = new javax.swing.JTextField();
+        tfMhsNama = new javax.swing.JTextField();
+        tfMhsNIM = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         dateMhsBirthday = new com.toedter.calendar.JDateChooser();
         jLabel9 = new javax.swing.JLabel();
-        txtMhsBirthplace = new javax.swing.JTextField();
+        tfMhsBirthplace = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         cboxMhsKodeDoswal = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
@@ -272,7 +184,7 @@ public class VAdmin extends javax.swing.JFrame {
 
         jLabel12.setText("Jenis Kelamin");
 
-        cboxDsnJK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jenis Kelamin", "Perempuan", "Laki-laki" }));
+        cboxDsnJK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jenis Kelamin", "Laki-laki", "Perempuan" }));
 
         jLabel13.setText("Tanggal Lahir");
 
@@ -307,10 +219,10 @@ public class VAdmin extends javax.swing.JFrame {
                             .addComponent(btnDsnAdd)
                             .addComponent(cboxDsnJK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtDsnNama)
-                                .addComponent(txtDsnKode)
+                                .addComponent(tfDsnNama)
+                                .addComponent(tfDsnKode)
                                 .addComponent(dateDsnBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtDsnBirthplace, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(tfDsnBirthplace, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         DosenLayout.setVerticalGroup(
@@ -322,11 +234,11 @@ public class VAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(txtDsnNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfDsnNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(txtDsnKode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfDsnKode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel13)
@@ -334,7 +246,7 @@ public class VAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
-                    .addComponent(txtDsnBirthplace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfDsnBirthplace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
@@ -352,9 +264,9 @@ public class VAdmin extends javax.swing.JFrame {
 
         jLabel4.setText("Dosen");
 
-        txtKodeMatkul.setText("Input Kode Mata Kuliah");
+        tfKodeMatkul.setText("Input Kode Mata Kuliah");
 
-        txtNamaMatkul.setText("Input Nama Mata Kuliah");
+        tfNamaMatkul.setText("Input Nama Mata Kuliah");
 
         cboxSKS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "sks", "1", "2", "3", "4" }));
 
@@ -386,8 +298,8 @@ public class VAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel1))
                 .addGap(39, 39, 39)
                 .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtKodeMatkul)
-                    .addComponent(txtNamaMatkul, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
+                    .addComponent(tfKodeMatkul)
+                    .addComponent(tfNamaMatkul, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
                     .addGroup(Dosen1Layout.createSequentialGroup()
                         .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnAddMatkul)
@@ -402,11 +314,11 @@ public class VAdmin extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtKodeMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfKodeMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNamaMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfNamaMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -440,7 +352,7 @@ public class VAdmin extends javax.swing.JFrame {
 
         jLabel7.setText("NIM");
 
-        txtMhsNIM.setEditable(false);
+        tfMhsNIM.setEditable(false);
 
         jLabel8.setText("Tanggal Lahir");
 
@@ -476,10 +388,10 @@ public class VAdmin extends javax.swing.JFrame {
                     .addComponent(btnMhsAdd)
                     .addComponent(cboxMhsJK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(MahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtMhsNama)
-                        .addComponent(txtMhsNIM, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                        .addComponent(tfMhsNama)
+                        .addComponent(tfMhsNIM, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                         .addComponent(dateMhsBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(txtMhsBirthplace))
+                        .addComponent(tfMhsBirthplace))
                     .addComponent(cboxMhsKodeDoswal, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -492,11 +404,11 @@ public class VAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(txtMhsNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfMhsNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txtMhsNIM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfMhsNIM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel8)
@@ -504,7 +416,7 @@ public class VAdmin extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
-                    .addComponent(txtMhsBirthplace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfMhsBirthplace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
@@ -611,13 +523,13 @@ public class VAdmin extends javax.swing.JFrame {
     private javax.swing.JTable tblDosen;
     private javax.swing.JTable tblMahasiswa;
     private javax.swing.JTable tblMatkul;
-    private javax.swing.JTextField txtDsnBirthplace;
-    private javax.swing.JTextField txtDsnKode;
-    private javax.swing.JTextField txtDsnNama;
-    private javax.swing.JTextField txtKodeMatkul;
-    private javax.swing.JTextField txtMhsBirthplace;
-    private javax.swing.JTextField txtMhsNIM;
-    private javax.swing.JTextField txtMhsNama;
-    private javax.swing.JTextField txtNamaMatkul;
+    private javax.swing.JTextField tfDsnBirthplace;
+    private javax.swing.JTextField tfDsnKode;
+    private javax.swing.JTextField tfDsnNama;
+    private javax.swing.JTextField tfKodeMatkul;
+    private javax.swing.JTextField tfMhsBirthplace;
+    private javax.swing.JTextField tfMhsNIM;
+    private javax.swing.JTextField tfMhsNama;
+    private javax.swing.JTextField tfNamaMatkul;
     // End of variables declaration//GEN-END:variables
 }

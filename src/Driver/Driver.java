@@ -8,7 +8,7 @@ package Driver;
 import Controller.ContrLoginAdmin;
 import Model.Aplikasi;
 import Model.DatabaseConnection;
-import Model.Mahasiswa;
+import Controller.ContrAdmin;
 import java.util.Date;
 
 /**
@@ -17,6 +17,7 @@ import java.util.Date;
  */
 public class Driver {
     public static void main(String[] args) {
-       new ContrLoginAdmin();
+//       new ContrLoginAdmin();
+        new ContrAdmin();
     }
 }
