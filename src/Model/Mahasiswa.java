@@ -5,7 +5,7 @@
  */
 package Model;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.ArrayList;
 
 
@@ -31,14 +31,21 @@ public class Mahasiswa {
     private String email;
     private String password;
 
-    public Mahasiswa(String nama, boolean isMale, int tglLahir, int bulanLahir, int tahunLahir, String tempatLahir) {
-        this.nim = ++totalMahasiswa;
+    public Mahasiswa() {
+    }
+
+    public Mahasiswa(long nim, String nama, boolean isMale, Date tanggalLahir, String tempatLahir, String alamat, long noHp, int angkatan, Dosen dosenWali, String email, String password) {
+        this.nim = nim;
         this.nama = nama;
         this.isMale = isMale;
-        setTanggalLahir(tglLahir, bulanLahir, tahunLahir);
+        this.tanggalLahir = tanggalLahir;
         this.tempatLahir = tempatLahir;
-        this.totalSKS = 0;
-        jadwal = new ArrayList<>();
+        this.alamat = alamat;
+        this.noHp = noHp;
+        this.angkatan = angkatan;
+        this.dosenWali = dosenWali;
+        this.email = email;
+        this.password = password;
     }
 
     public Mahasiswa(long nim, String nama, boolean isMale, 
@@ -60,6 +67,26 @@ public class Mahasiswa {
         this.email = email;
         this.password = password;
     }
+
+    
+    
+    public static int getTotalMahasiswa() {
+        return totalMahasiswa;
+    }
+
+    public static void setTotalMahasiswa(int totalMahasiswa) {
+        Mahasiswa.totalMahasiswa = totalMahasiswa;
+    }
+
+    public ArrayList<Jadwal> getJadwal() {
+        return jadwal;
+    }
+    
+    public void setJadwal(ArrayList<Jadwal> jadwal) {
+        this.jadwal = jadwal;
+    }
+    
+    
     
     public String getEmail() {
         return email;
@@ -73,27 +100,26 @@ public class Mahasiswa {
         return password;
     }
 
+    public boolean isIsMale() {
+        return isMale;
+    }
+
+    public Date getTanggalLahir() {
+        return tanggalLahir;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
     public void setNim(long nim) {
         this.nim = nim;
     }
-    
-    public ArrayList<Jadwal> getAllJadwal () {
-        return this.jadwal;
-    }
 
     public void setTanggalLahir(Date tanggalLahir) {
         this.tanggalLahir = tanggalLahir;
     }
     
-    public void setTanggalLahir(int tanggal, int bulan, int tahun) {
-        this.tanggalLahir = new Date(tahun-1900,bulan-1,tanggal);
-    }
-    public Date getTanggalLahir () {
-        return tanggalLahir;
-    }
+    
 
     public int getTotalSKS() {
         return totalSKS;
