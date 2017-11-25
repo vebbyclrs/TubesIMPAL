@@ -10,7 +10,9 @@ import Model.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.time.Instant;
 import java.util.ArrayList;
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
@@ -30,15 +32,65 @@ public class ContrAdmin implements ActionListener {
         view.setActionListener(this);
         
         addDosenToTableDosen(model.loadDosen(), view.getTblDosen());
+        addDosenToCBox(model.loadDosen(), view.getCboxMhsKodeDoswal());
+        addDosenToCBox(model.loadDosen(), view.getCboxMhsKodeDoswal());
         
     }
-
+//
+//    private Mahasiswa getMhsWhenBtnAddMhsPressed() {
+//        Mahasiswa m = new Mahasiswa
+//        view.getTfMhsNIM();
+//        
+//        return m;
+//    }
+    
     private void addDosenToTableDosen(ArrayList<Dosen> data, JTable table) /**Done*/{ 
         DefaultTableModel t = (DefaultTableModel) table.getModel();
 
         t.setRowCount(0);
         for (Dosen d : data) {
-            String[] s = {""+d.getKode(),d.getNama()};
+            String JK;
+            if (d.getIsMale() == 1) {
+                JK = "Laki-Laki";
+            } else if (d.getIsMale() == 2) {
+                JK = "Perempuan";
+            } else {
+                JK = "";
+            }
+            
+            String[] s = {""+d.getKode()
+                    ,d.getNama()
+//                    ,(d.getTglLahir().getYear()+1900)+"-"+d.getTglLahir().getMonth()+"-"+d.getTglLahir().getDay()
+//                    ,d.getTglLahir()+""
+                    ,d.getTempatLahir()+", "+d.getTglLahir().toLocaleString()
+                    ,JK
+                    ,d.getAlamat()
+                    ,d.getNoHp()+""};
+            t.addRow(s);
+        }
+    }
+    
+    private void addMahasiswaToTableMhs(ArrayList<Mahasiswa> data, JTable table) {
+        /**
+         *Belom kelar 
+         *
+         */
+        
+        DefaultTableModel t = (DefaultTableModel) table.getModel();
+
+        t.setRowCount(0);
+        for (Mahasiswa d : data) {
+            String JK;
+            if (d.IsMale()) {
+                JK = "Laki-Laki";
+            } else {
+                JK = "Perempuan";
+            }
+            String NIM = Long.toString(d.getNim());
+            String[] s = {""+d.getNama()
+                    ,NIM
+                    ,JK
+                    ,d.getTempatLahir()+", "+d.getTanggalLahir().toLocaleString()};
             t.addRow(s);
         }
     }
@@ -48,25 +100,16 @@ public class ContrAdmin implements ActionListener {
         Object src = e.getSource();
         
         if (src.equals(view.getBtnDsnAdd())) {
-//            if 
-//                    (view.getTxtDsnNama().equals("") || view.getTxtDsnKode().equals("")||
-//                    view.getTxtDsnBirthplace().equals("")||
-////                    view.getDateDsnBirthday().getDate() == null ||
-//                    view.getCboxMhsJK().getSelectedIndex() == 0) {
-//                JOptionPane.showMessageDialog(view,"Field tidak boleh kosong","Terjadi kesalahan input",0);    
-//            } else 
-//            {
             try {
-
                 Dosen d = new Dosen();
                 d.setNama(view.getTfDsnNama());
-                System.out.println("nama "+d.getNama());
                 d.setKode(Integer.parseInt(view.getTfDsnKode()));
-                
                 d.setTglLahir(view.getDateDsnBirthday().getDate());
-                System.out.println("1 "+view.getDateDsnBirthday().getDate());
                 d.setTempatLahir(view.getTfDsnBirthplace());
                 d.setIsMale(view.getCboxDsnJK().getSelectedIndex());
+                d.setAlamat(view.getTfAlamat());
+                d.setNoHp(Long.parseLong(view.getTfNoHp()));
+                
                 if (model.addDosen(d)) {
                     view.showMessage("Berhasil ditambahkan");
                     addDosenToTableDosen(model.loadDosen(), view.getTblDosen());
@@ -76,10 +119,7 @@ public class ContrAdmin implements ActionListener {
                 }
             } catch (Exception ae) {
                 ae.printStackTrace();
-//                throw new IllegalArgumentException("Gabisa nyimpen");
             }
-//            }
-            
         }
         else if (src.equals(view.getBtnAddMatkul())) {
             try {
@@ -98,9 +138,53 @@ public class ContrAdmin implements ActionListener {
             }
 //            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
+        else if (src.equals(view.getBtnMhsAdd())) {
+            try {
+//                if (view.getCboxMhsKodeDoswal().getSelectedIndex()  == 0) {
+//                    JOptionPane.showConfirmDialog(view, "Silahkan isi dosen wali terlebih dahulu", "Field tidak lengkap", 1);
+//                } else {
+                    Mahasiswa mhs = new Mahasiswa();
+                    System.out.println("1");
+                    mhs.setNama(view.getTfMhsNama());
+                    System.out.println("2");
+                    mhs.setAlamat(view.getTfMhsAlamat());
+                    System.out.println("3");
+                    mhs.setTanggalLahir(view.getDateMhsBirthday().getDate());
+                    System.out.println("4");
+                    System.out.println("tanggal "+view.getDateMhsBirthday().getDate());
+                    System.out.println("5");
+                    mhs.setTempatLahir(view.getTfMhsBirthplace());
+                    System.out.println("6");
+                    mhs.setAlamat(view.getTfMhsAlamat());
+                    System.out.println("7");
+
+                    Dosen dosen = model.getDosenByKode(Integer.parseInt(view.getCboxMhsKodeDoswal().getSelectedItem().toString()));
+                    System.out.println(dosen.getKode());
+                    mhs.setDosenWali(dosen);
+                    
+                    
+                     
+                    if (model.addMahasiswa(mhs)) {
+                        view.showMessage("Mahasiswa berhasil ditambahkan! ");
+                        addMahasiswaToTableMhs(model.loadMahasiswa(), view.getTblMahasiswa());
+                        view.reset();
+                    } else {
+                        JOptionPane.showMessageDialog(view, "Gagal menambahkan mahasiswa", "Kesalahan saat menambahkan", 0);
+                    }
+//                }
+            } catch (Exception ae) {
+                ae.printStackTrace();
+            }
+        }
         
     }
     
+    public void addDosenToCBox(ArrayList<Dosen> data, JComboBox cb)/*DONE*/{
+        cb.removeAllItems();
+        for (Dosen dosen : data) {
+            cb.addItem(dosen.getKode());
+        }
+    }
     
     
     

@@ -84,10 +84,11 @@ public class DatabaseConnection {
     public boolean saveMahasiswa (Mahasiswa m) {
         boolean berhasil = false;
         try {
-            String query = "insert into Mahasiswa ( NIM,ID_DOSEN,NAMA,IS_MALE,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,NO_HP,ANGKATAN,STATUS_PEMBAYARAN,TOTAL_SKS from mahasiswa)"
-                    + "values ('"+ m.getNim()+"','"
-                    + m.getDosenWali().getKode() + "','"
-                    + m.getNama()+"','"
+            String query = "insert into Mahasiswa ( ID_DOSEN,NAMA,IS_MALE,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,NO_HP,ANGKATAN,STATUS_PEMBAYARAN,TOTAL_SKS from mahasiswa)"
+                    + "values ("
+//                    + "'"+ m.getNim()+"'"
+                    + "'"+ m.getDosenWali().getKode() + "'"
+                    + ",'"+ m.getNama()+"','"
                     + m.IsMale()+"','"
                     + m.getTanggalLahir()+"','"
                     + m.getTempatLahir()+"','"
@@ -96,6 +97,7 @@ public class DatabaseConnection {
                     + m.getAngkatan() +"','"
                     + m.isStatusPembayaran()+"','"
                     + m.getTotalSKS()+"');";
+            System.out.println(query);
             sta.execute(query,Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = sta.getGeneratedKeys();
             if (rs.next()) {
@@ -128,8 +130,7 @@ public class DatabaseConnection {
         }
         return berhasil;
     }
-    public boolean saveDosen (Dosen d) {
-        //ON WORKING-VEB
+    public boolean saveDosen (Dosen d)/*DONE*/ {
         boolean berhasil = false;
         try {
             System.out.println(d.getTglLahir());
