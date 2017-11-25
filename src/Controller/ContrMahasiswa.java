@@ -50,18 +50,18 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         showListTingkat(model.loadMataKuliah(4), view.getTblTingkat4());    
         
         /*Tab Cetak KSM*/
-        view.setTxtCKNama(mhs.getNama());
-        view.setTxtCKNim(Long.toString(mhs.getNim()));
+//        view.setTxtCKNama(mhs.getNama());
+//        view.setTxtCKNim(Long.toString(mhs.getNim()));
        // view.setTxtCKDoswal(mhs.getDosenWali().getNama());
         //view.setTxtCKStatusReg();
         
         /*Tab Profil*/
-        view.setTxtName(mhs.getNama());
-        view.setTxtNIM(Long.toString(mhs.getNim()));
-        view.setTxtTptLahir(mhs.getTempatLahir());
-        view.setTxtTglLahir(mhs.getTanggalLahir().toString());
-        view.setTxtNoHp(Long.toString(mhs.getNoHp()));
-        view.setTxtEmail(mhs.getEmail());
+//        view.setTxtName(mhs.getNama());
+//        view.setTxtNIM(Long.toString(mhs.getNim()));
+//        view.setTxtTptLahir(mhs.getTempatLahir());
+//        view.setTxtTglLahir(mhs.getTanggalLahir().toString());
+//        view.setTxtNoHp(Long.toString(mhs.getNoHp()));
+//        view.setTxtEmail(mhs.getEmail());
         
     }
 

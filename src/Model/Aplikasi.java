@@ -34,12 +34,32 @@ public class Aplikasi {
         daftarMahasiswa = new ArrayList<Mahasiswa>();
         db.connect();
         
-        String query = "select NIM,ID_DOSEN,NAMA,IS_MALE,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,NO_HP,ANGKATAN,STATUS_PEMBAYARAN,TOTAL_SKS from mahasiswa";
+        String query = "select NIM,ID_DOSEN,NAMA,"
+                + "IS_MALE,TANGGAL_LAHIR,TEMPAT_LAHIR,"
+                + "ALAMAT,NO_HP,ANGKATAN,"
+                + "STATUS_PEMBAYARAN,TOTAL_SKS "
+                + "from mahasiswa";
         ResultSet rs = db.getData(query);
         try {
             while (rs.next()) {
-                //getgetgetget
-                
+                boolean jk = false;
+                if (rs.getString("IS_MALE").equals("1")) {
+                    jk = true;
+                }
+//                (long nim, String nama, boolean isMale, 
+//            Date tanggalLahir, String tempatLahir, String alamat, 
+//            long noHp, int angkatan, boolean statusPembayaran,
+//            int totalSKS,  int dosenWali, String email, 
+//            String password) {
+                Mahasiswa m = new Mahasiswa(rs.getLong("NIM"), rs.getString("NAMA"), rs.getBoolean("IS_MALE"),
+                        rs.getDate("TANGGAL_LAHIR"), rs.getString("TEMPAT_LAHIR"), rs.getString("alamat"),
+                        rs.getLong("NO_HP"), rs.getInt("ANGKATAN"), rs.getBoolean("STATUS_PEMBAYARAN"),
+                        rs.getInt("TOTAL_sKS"), rs.getInt("ID_DOSEN"), rs.getString("EMAIL"), rs.getString("password"));
+                /**
+                 * 
+                 * EMAIL SAMA PASSWORD BUAT MAHASISWA BLM ADA DI TABEL DATABASE
+                 *                
+                */
             }
         } catch (Exception e) {
             throw new IllegalArgumentException("terjadi kesalahan saat load penyedia");
@@ -89,6 +109,18 @@ public class Aplikasi {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public Dosen getDosenByKode(int kodeDosen) {
+        Dosen d = null;
+        for (Dosen dosen : daftarDosen) {
+            if (dosen.getKode() == kodeDosen) {
+                d = dosen;
+                break;
+            }
+        }
+        return d;
+        
+    }
+    
     public boolean addDosen(Dosen d){
         //on working-VEB
         db.connect();
@@ -111,7 +143,21 @@ public class Aplikasi {
         return berhasil;
         
     }
-            
+    public boolean addMahasiswa (Mahasiswa m) {
+          boolean berhasil = false;
+          try {
+            db.connect();
+            berhasil = db.saveMahasiswa(m);
+            daftarMahasiswa.add(m);
+            db.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+          
+          
+          
+          return berhasil;
+      }    
     public Admin getAdminByUsername(String username) {
         db.connect();
         for (Admin adm : daftarAdmin) {
@@ -156,6 +202,8 @@ public class Aplikasi {
         db.disconnect();
         return daftarMatkul;
     }
+      
+      
 //    public Dosen getDosenByEmail(String email) {
 //        Dosen ret;
 //        

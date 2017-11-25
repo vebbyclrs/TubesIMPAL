@@ -22,6 +22,8 @@ public class Dosen {
     private String alamat;
     private int isMale;
     private long noHp;
+//    private String email;
+//    private String password;
 
     public Dosen(int kode, String nama, Date tglLahir, String tempatLahir, String alamat, int isMale, long noHp) {
         this.kode = kode;
