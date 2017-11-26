@@ -29,6 +29,7 @@ public class ContrLoginAdmin implements ActionListener,KeyListener  {
         view = new VLoginAdmin();
         apk = new Aplikasi();
         view.setVisible(true);
+        view.setLocationRelativeTo(null);
         view.setActionListener(this);
         view.setKeyListener(this);
         
