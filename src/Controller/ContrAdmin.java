@@ -23,7 +23,6 @@ import javax.swing.table.DefaultTableModel;
 public class ContrAdmin implements ActionListener {
     private VAdmin view;
     private Aplikasi model;
-    public static long nextNIM;
     private Cek cek = new Cek();
     
     
@@ -33,12 +32,13 @@ public class ContrAdmin implements ActionListener {
 //        nextNIM = model.loadMahasiswa().get(model.loadMahasiswa().size()).getNim()+1;
         view.setVisible(true);
         view.setActionListener(this);
-        view.setTfMhsNIM(nextNIM+"");
+        view.setTfMhsNIM(model.nextNIM+"");
         
         addDosenToTableDosen(model.loadDosen(), view.getTblDosen());
         addDosenToCBox(model.loadDosen(), view.getCboxMatkulKodeDosen());
         addDosenToCBox(model.loadDosen(), view.getCboxMhsKodeDoswal());
         addMahasiswaToTableMhs(model.loadMahasiswa(), view.getTblMahasiswa());
+        addMatkulToTableMatkul(model.loadMatkul(), view.getTblMatkul());
         
     }
     private void addDosenToTableDosen(ArrayList<Dosen> data, JTable table) /**Done*/{ 
@@ -94,7 +94,9 @@ public class ContrAdmin implements ActionListener {
             String[] s = {""+m.getKodeMk()
                     , m.getNamaMk()
                     , m.getSKS()+""
-                    , m.getDosen().getKode()+""};
+                    , m.getDosen().getKode()+""
+                    ,m.getTingkat()+""
+            };
             t.addRow(s);
         }
     }
@@ -104,7 +106,7 @@ public class ContrAdmin implements ActionListener {
         
         if (src.equals(view.getBtnDsnAdd())) {
             try {
-                if (cek.vAdmin_Dosen()) {
+                if (cek.vAdmin_Dosen(view)) {
                    Dosen d = new Dosen();
                     d.setNama(view.getTfDsnNama());
                     d.setKode(Integer.parseInt(view.getTfDsnKode()));
@@ -129,12 +131,13 @@ public class ContrAdmin implements ActionListener {
 
                 
             } catch (Exception ae) {
+                JOptionPane.showMessageDialog(view, ae.getLocalizedMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 ae.printStackTrace();
             }
         }
         else if (src.equals(view.getBtnAddMatkul())) {
             try {
-                if ( cek.vAdmin_MataKuliah()) {
+                if ( cek.vAdmin_MataKuliah(view)) {
                     Dosen d = model.getDosenByKode(Integer.parseInt(view.getCboxMatkulKodeDosen().getSelectedItem()+"")); //Diragukan
                     System.out.println(d.getNama());
                     MataKuliah matkul  = new MataKuliah(
@@ -146,26 +149,28 @@ public class ContrAdmin implements ActionListener {
                     
                     if (model.addMatkul(matkul)) {
                         view.showMessage("Berhasil ditambahkan");
-                        addMatkulToTableMatkul(model.loadMataKuliah(), view.getTblMatkul());
-                        throw new IllegalArgumentException("Belum!");
+                        addMatkulToTableMatkul(model.loadMatkul(), view.getTblMatkul());
+//                        throw new IllegalArgumentException("Belum!");
 
                     } else {
                         view.showMessage("Gagal menyimpan mata kuliah");
                     }
-                    
                 } else {
                     view.showMessageFieldKosong();
                 }
                 
-            } catch (Exception ae) {
+            }catch (Exception ae) {
+                JOptionPane.showMessageDialog(view, ae.getLocalizedMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 ae.printStackTrace();
             }
+//            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            
 //            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
         else if (src.equals(view.getBtnMhsAdd())) {
             try {
-                if ((view.getCboxMhsKodeDoswal().getSelectedIndex()  == 0) || (view.getCboxMhsJK().getSelectedIndex() == 0)) {
-                    JOptionPane.showMessageDialog(view, "Silahkan lengkapi field", "Field tidak lengkap", 2);
+                if (cek.vAdmin_Mahasiswa(view)) {
+                    view.showMessageFieldKosong();
                 } else {
 
                     Mahasiswa mhs = new Mahasiswa();
@@ -178,24 +183,21 @@ public class ContrAdmin implements ActionListener {
                     mhs.setTempatLahir(view.getTfMhsBirthplace());
                     mhs.setAlamat(view.getTfMhsAlamat());
                     
-
                     Dosen dosen = model.getDosenByKode(Integer.parseInt(view.getCboxMhsKodeDoswal().getSelectedItem().toString()));
                     System.out.println(dosen.getKode());
                     mhs.setDosenWali(dosen);
                     
-                    
-                     
                     if (model.addMahasiswa(mhs)) {
                         view.showMessage("Mahasiswa berhasil ditambahkan! ");
                         addMahasiswaToTableMhs(model.loadMahasiswa(), view.getTblMahasiswa());
-                        nextNIM++;
-                        view.setTfMhsNIM(nextNIM+"");
+                        view.setTfMhsNIM(model.nextNIM+"");
                         view.reset();
                     } else {
                         JOptionPane.showMessageDialog(view, "Gagal menambahkan mahasiswa", "Kesalahan saat menambahkan", 0);
                     }
                 }
             } catch (Exception ae) {
+                JOptionPane.showMessageDialog(view, ae.getLocalizedMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 ae.printStackTrace();
             }
         }
@@ -204,7 +206,7 @@ public class ContrAdmin implements ActionListener {
     
     public void addDosenToCBox(ArrayList<Dosen> data, JComboBox cb)/*DONE*/{
         cb.removeAllItems();
-        cb.addItem("--Pilih dosen wali--");
+        cb.addItem("--Pilih dosen--");
         for (Dosen dosen : data) {
             cb.addItem(dosen.getKode());
         }
