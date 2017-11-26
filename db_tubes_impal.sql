@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     26-Nov-17 1:58:42 PM                         */
+/* Created on:     26-Nov-17 5:54:26 PM                         */
 /*==============================================================*/
 
 
@@ -62,7 +62,7 @@ create table JADWAL
 /*==============================================================*/
 create table MAHASISWA
 (
-   NIM                  bigint not null,
+   NIM                  bigint not null auto_increment,
    ID_DOSEN             int,
    NAMA                 varchar(30),
    IS_MALE              bool,
@@ -87,6 +87,7 @@ create table MATA_KULIAH
    ID_DOSEN             int,
    NAMA_MATKUL          varbinary(60),
    SKS                  int,
+   TINGKAT              int,
    primary key (ID_MATKUL)
 );
 
