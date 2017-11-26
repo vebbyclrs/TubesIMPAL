@@ -22,8 +22,8 @@ public class Dosen {
     private String alamat;
     private int isMale;
     private long noHp;
-//    private String email;
-//    private String password;
+    private String username;
+    private String password;
 
     public Dosen(int kode, String nama, Date tglLahir, String tempatLahir, String alamat, int isMale, long noHp) {
         this.kode = kode;
@@ -98,4 +98,21 @@ public class Dosen {
     public void setNoHp(long noHp) {
         this.noHp = noHp;
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
 }

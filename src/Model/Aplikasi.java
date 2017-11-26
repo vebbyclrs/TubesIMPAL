@@ -34,7 +34,7 @@ public class Aplikasi {
         
         //load semua array
     }
-    public ArrayList<Mahasiswa> loadMahasiswa() {
+    public ArrayList<Mahasiswa> loadMahasiswa() /*DONE*/ {
         daftarMahasiswa = new ArrayList<Mahasiswa>();
         db.connect();
         
@@ -57,7 +57,7 @@ public class Aplikasi {
         db.disconnect();
         return daftarMahasiswa;
     }
-    public  ArrayList<Admin> loadAdmin() {
+    public  ArrayList<Admin> loadAdmin() /*DONE*/ {
         db.connect();
         daftarAdmin = new ArrayList<>();
         ResultSet rs = db.getData("select ID,NAMA,USERNAME,PASSWORD from ADMIN");
@@ -76,7 +76,7 @@ public class Aplikasi {
         return daftarAdmin;
     }
     
-    public  ArrayList<Dosen> loadDosen() {
+    public  ArrayList<Dosen> loadDosen() /*DONE*/ {
         db.connect();
         daftarDosen = new ArrayList<>();
         ResultSet rs = db.getData("select ID_DOSEN,NAMA,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,ISMALE,NO_HP from DOSEN");
@@ -99,7 +99,7 @@ public class Aplikasi {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
-    public ArrayList<MataKuliah> loadMatkul() {
+    public ArrayList<MataKuliah> loadMatkul() /*DONE*/ {
         db.connect();
         daftarMatkul = new ArrayList<MataKuliah>(); 
         
@@ -122,7 +122,7 @@ public class Aplikasi {
         db.disconnect();
         return daftarMatkul;
     }
-    public Dosen getDosenByKode(int kodeDosen) {
+    public Dosen getDosenByKode(int kodeDosen)/*DONE*/ {
         Dosen d = null;
         for (Dosen dosen : daftarDosen) {
             if (dosen.getKode() == kodeDosen) {
@@ -134,7 +134,7 @@ public class Aplikasi {
         
     }
     
-    public boolean addDosen(Dosen d){
+    public boolean addDosen(Dosen d) /*DONE*/{
         //on working-VEB
         db.connect();
         boolean berhasil = db.saveDosen(d);
@@ -143,7 +143,7 @@ public class Aplikasi {
         return berhasil;
     }
     
-    public boolean addMatkul(MataKuliah matkul) {
+    public boolean addMatkul(MataKuliah matkul) /*DONE*/{
         boolean berhasil = false;
         try {
             db.connect();
@@ -157,7 +157,7 @@ public class Aplikasi {
         return berhasil;
         
     }
-    public boolean addMahasiswa (Mahasiswa m) {
+    public boolean addMahasiswa (Mahasiswa m)/*DONE*/ {
           boolean berhasil = false;
 //          try {
             db.connect();
@@ -169,32 +169,19 @@ public class Aplikasi {
 //        }
           return berhasil;
       }    
-    public Admin getAdminByUsername(String username) {
-        db.connect();
+    public Admin getAdminByUsername(String username)/*DONE*/ {
+//        db.connect();
         for (Admin adm : daftarAdmin) {
             if (username.equals(adm.getUsername())) {
                 return adm;
             }
         }
-        db.disconnect();
+//        db.disconnect();
         return null;
         
     }
     
-    public Mahasiswa getMahasiswaByEmail(String email) {
-        Mahasiswa ret;
-        db.connect();
-        if (! daftarMahasiswa.isEmpty()) {
-            for (Mahasiswa mahasiswa : daftarMahasiswa) {
-                if (email.equals(mahasiswa.getEmail())) {
-                    return mahasiswa;
-                }
-            }            
-        }
-        db.disconnect();
-        return null;
-    }
-    public ArrayList<MataKuliah> loadMataKuliah(int tingkat) {
+    public ArrayList<MataKuliah> loadMataKuliah(int tingkat) /*DONE*/ {
         daftarMatkul = new ArrayList<MataKuliah>();
         db.connect();
         
@@ -204,8 +191,6 @@ public class Aplikasi {
         db.disconnect();
         return daftarMatkul;
     }
-    
-    
     
     private  ArrayList<MataKuliah> getMatkulFromRS(ResultSet rs){
         try {   
@@ -225,13 +210,22 @@ public class Aplikasi {
             throw new IllegalArgumentException("terjadi kesalahan   load MataKuliah");
         }
     }
-    
-    
-    
-      
-      
-//    public Dosen getDosenByEmail(String email) {
-//        Dosen ret;
-//        
-//    }
+    public Mahasiswa getMahasiswaByUsername (String username) {
+        Mahasiswa d = null;
+        for (Mahasiswa ma : daftarMahasiswa) {
+            if (ma.getUsername().equals(username)) {
+                d= ma;
+            }
+        }
+        return d;
+    }
+    public Dosen getDosenByUsername(String username) {
+        Dosen d = null;
+        for (Dosen dosen : daftarDosen) {
+            if (dosen.getUsername().equals(username)) {
+                d= dosen;
+            }
+        }
+        return d;
+    }
 }

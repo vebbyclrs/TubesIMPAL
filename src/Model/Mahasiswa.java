@@ -28,13 +28,13 @@ public class Mahasiswa {
     private int statusPembayaran;
     private Dosen dosenWali;
     private ArrayList<Jadwal> jadwal;
-    private String email;
+    private String username;
     private String password;
 
     public Mahasiswa() {
     }
 
-    public Mahasiswa(long nim, String nama, int isMale, Date tanggalLahir, String tempatLahir, String alamat, long noHp, int angkatan, Dosen dosenWali, String email, String password) {
+    public Mahasiswa(long nim, String nama, int isMale, Date tanggalLahir, String tempatLahir, String alamat, long noHp, int angkatan, Dosen dosenWali, String username, String password) {
         this.nim = nim;
         this.nama = nama;
         this.isMale = isMale;
@@ -44,14 +44,14 @@ public class Mahasiswa {
         this.noHp = noHp;
         this.angkatan = angkatan;
         this.dosenWali = dosenWali;
-        this.email = email;
+        this.username = username;
         this.password = password;
     }
 
     public Mahasiswa(long nim, String nama, int isMale, 
             Date tanggalLahir, String tempatLahir, String alamat, 
             long noHp, int angkatan, int statusPembayaran,
-            int totalSKS,  int dosenWali, String email, 
+            int totalSKS,  int dosenWali, String username, 
             String password) {
         this.totalSKS = totalSKS;
         this.nim = nim;
@@ -64,8 +64,16 @@ public class Mahasiswa {
         this.angkatan = angkatan;
         this.statusPembayaran = statusPembayaran;
 //        this.dosenWali.setKode(dosenWali);
-        this.email = email;
+        this.username = username;
         this.password = password;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     
@@ -88,12 +96,12 @@ public class Mahasiswa {
     
     
     
-    public String getEmail() {
-        return email;
+    public String username() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void username(String username) {
+        this.username = username;
     }
 
     public String getPassword() {

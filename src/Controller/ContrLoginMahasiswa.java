@@ -20,37 +20,38 @@ import javax.swing.JOptionPane;
  */
 public class ContrLoginMahasiswa implements ActionListener, KeyListener{
 
-    private VLoginMahasiswa loginFrame;
+    private VLoginMahasiswa view;
     private Aplikasi model;
 
     public ContrLoginMahasiswa() {
         model = new Aplikasi();
-        loginFrame = new VLoginMahasiswa();
-        loginFrame.setLocationRelativeTo(null);
-        loginFrame.setVisible(true);
+        view = new VLoginMahasiswa();
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
+        
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(loginFrame.getBtnMasuk())) {
+        if (e.getSource().equals(view.getBtnMasuk())) {
             btnMasukPerformed(e);
         }
     }
     
     public void btnMasukPerformed(ActionEvent e) {
-        String username = loginFrame.getTxtUserName().getText();
-        String password = loginFrame.getTxtUserName().getText();
+        String username = view.getTxtUserName().getText();
+        String password = view.getTxtPassword().getText();
         
         try {
-            Mahasiswa m = model.getMahasiswaByEmail(username);
+            Mahasiswa m = model.getMahasiswaByUsername(username);
             if (m == null) {
-                loginFrame.showMessage("Email salah");
+                view.showMessage("Email salah");
             } else {
                 if (!m.getPassword().equals(password)) {
-                    loginFrame.showMessage("Password salah");
+                    view.showMessage("Password salah");
                 } else {
-                    loginFrame.setVisible(false);
-                    
+                    view.setVisible(false);
+                    new ContrMahasiswa();
                 }
             }
         } catch (Exception ae) {
@@ -64,7 +65,7 @@ public class ContrLoginMahasiswa implements ActionListener, KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getSource().equals(loginFrame.getBtnMasuk())) {
+        if (e.getSource().equals(view.getBtnMasuk())) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 btnMasukPerformed(null);
             }

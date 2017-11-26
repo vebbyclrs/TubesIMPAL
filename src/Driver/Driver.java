@@ -17,7 +17,7 @@ import java.util.Date;
  */
 public class Driver {
     public static void main(String[] args) {
-//       new ContrLoginAdmin();
-        new ContrAdmin();
+       new ContrLoginAdmin();
+//        new ContrAdmin();
     }
 }
