@@ -27,6 +27,7 @@ public class Aplikasi {
         db = new DatabaseConnection();
         daftarAdmin = loadAdmin();
         daftarDosen = loadDosen();
+        daftarMahasiswa = loadMahasiswa();
         
         //load semua array
     }
@@ -34,35 +35,20 @@ public class Aplikasi {
         daftarMahasiswa = new ArrayList<Mahasiswa>();
         db.connect();
         
-        String query = "select NIM,ID_DOSEN,NAMA,"
-                + "IS_MALE,TANGGAL_LAHIR,TEMPAT_LAHIR,"
-                + "ALAMAT,NO_HP,ANGKATAN,"
-                + "STATUS_PEMBAYARAN,TOTAL_SKS "
-                + "from mahasiswa";
+        String query = "select * from mahasiswa";
         ResultSet rs = db.getData(query);
         try {
             while (rs.next()) {
-                boolean jk = false;
-                if (rs.getString("IS_MALE").equals("1")) {
-                    jk = true;
-                }
-//                (long nim, String nama, boolean isMale, 
-//            Date tanggalLahir, String tempatLahir, String alamat, 
-//            long noHp, int angkatan, boolean statusPembayaran,
-//            int totalSKS,  int dosenWali, String email, 
-//            String password) {
-                Mahasiswa m = new Mahasiswa(rs.getLong("NIM"), rs.getString("NAMA"), rs.getBoolean("IS_MALE"),
-                        rs.getDate("TANGGAL_LAHIR"), rs.getString("TEMPAT_LAHIR"), rs.getString("alamat"),
-                        rs.getLong("NO_HP"), rs.getInt("ANGKATAN"), rs.getBoolean("STATUS_PEMBAYARAN"),
-                        rs.getInt("TOTAL_sKS"), rs.getInt("ID_DOSEN"), rs.getString("EMAIL"), rs.getString("password"));
-                /**
-                 * 
-                 * EMAIL SAMA PASSWORD BUAT MAHASISWA BLM ADA DI TABEL DATABASE
-                 *                
-                */
+                Mahasiswa m = new Mahasiswa(rs.getLong("NIM"), rs.getString("NAMA"), rs.getInt("IS_MALE"),
+                        rs.getTimestamp("TANGGAL_LAHIR"), rs.getString("TEMPAT_LAHIR"), rs.getString("alamat"),
+                        rs.getLong("NO_HP"), rs.getInt("ANGKATAN"), rs.getInt("STATUS_PEMBAYARAN"),
+                        rs.getInt("TOTAL_sKS"), rs.getInt("ID_DOSEN"), rs.getString("EMAIL"),
+                        rs.getString("password"));
+                daftarMahasiswa.add(m);
             }
         } catch (Exception e) {
-            throw new IllegalArgumentException("terjadi kesalahan saat load penyedia");
+            e.printStackTrace();
+            throw new IllegalArgumentException("terjadi kesalahan saat load mahasiswa");
         }
         db.disconnect();
         return daftarMahasiswa;
@@ -145,17 +131,14 @@ public class Aplikasi {
     }
     public boolean addMahasiswa (Mahasiswa m) {
           boolean berhasil = false;
-          try {
+//          try {
             db.connect();
             berhasil = db.saveMahasiswa(m);
             daftarMahasiswa.add(m);
             db.disconnect();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-          
-          
-          
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
           return berhasil;
       }    
     public Admin getAdminByUsername(String username) {

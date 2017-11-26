@@ -31,6 +31,7 @@ public class ContrLoginAdmin implements ActionListener,KeyListener  {
         view.setVisible(true);
         view.setActionListener(this);
         view.setKeyListener(this);
+        
     }
     
     public  void btnLoginActionPerformed(ActionEvent ae) {

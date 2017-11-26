@@ -82,15 +82,24 @@ public class DatabaseConnection {
         return rs;
     }
     public boolean saveMahasiswa (Mahasiswa m) {
+        System.out.println(m.getTanggalLahir());
+//            java.time.LocalDate dateDsn = new LocalDate;
+            java.sql.Date dateMhs = new java.sql.Date(
+                    m.getTanggalLahir().getYear(),
+                    m.getTanggalLahir().getMonth(),
+                    m.getTanggalLahir().getDay());
+//            java.sql.Date dateDosen2 = (Date)d.getTglLahir(); //Cannot be cast
+            System.out.println("dateDosen: "+dateMhs);
         boolean berhasil = false;
         try {
-            String query = "insert into Mahasiswa ( ID_DOSEN,NAMA,IS_MALE,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,NO_HP,ANGKATAN,STATUS_PEMBAYARAN,TOTAL_SKS from mahasiswa)"
+            String query = "insert into Mahasiswa ( ID_DOSEN,NAMA,IS_MALE,TANGGAL_LAHIR,"
+                    + "TEMPAT_LAHIR,ALAMAT,NO_HP,ANGKATAN,STATUS_PEMBAYARAN,TOTAL_SKS)"
                     + "values ("
 //                    + "'"+ m.getNim()+"'"
                     + "'"+ m.getDosenWali().getKode() + "'"
                     + ",'"+ m.getNama()+"','"
                     + m.IsMale()+"','"
-                    + m.getTanggalLahir()+"','"
+                    + dateMhs+"','"
                     + m.getTempatLahir()+"','"
                     + m.getAlamat()+"','"
                     + m.getNoHp()+"','"
@@ -98,21 +107,24 @@ public class DatabaseConnection {
                     + m.isStatusPembayaran()+"','"
                     + m.getTotalSKS()+"');";
             System.out.println(query);
+//            manipulate(query);
             sta.execute(query,Statement.RETURN_GENERATED_KEYS);
             ResultSet rs = sta.getGeneratedKeys();
             if (rs.next()) {
                 int generatedId = rs.getInt(1);
-                m.setNim(1301100000+generatedId);
+                m.setNim(generatedId);
                 berhasil = true;
                 
             }
         } catch (Exception e) {
-            throw new IllegalArgumentException("Terjadi kesalahan saat save mahasiswa");
+            e.printStackTrace();
+//            throw new IllegalArgumentException("Terjadi kesalahan saat save mahasiswa");
         }
         return berhasil;
     }
     
     public boolean saveMatkul(MataKuliah matkul) {
+        
         boolean berhasil = false;
         try {
             String query = "insert into MATA_KULIAH (ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS)"
