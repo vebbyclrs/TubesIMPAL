@@ -21,6 +21,7 @@ public class Aplikasi {
     ArrayList<Jadwal> daftarJadwal;
     ArrayList<Admin> daftarAdmin;
     DatabaseConnection db;
+    public static long nextNIM;
     
     
     public Aplikasi() {
@@ -28,6 +29,8 @@ public class Aplikasi {
         daftarAdmin = loadAdmin();
         daftarDosen = loadDosen();
         daftarMahasiswa = loadMahasiswa();
+        daftarMatkul = loadMatkul();
+        System.out.println(daftarMahasiswa.get(daftarMahasiswa.size()-1));
         
         //load semua array
     }
@@ -46,6 +49,7 @@ public class Aplikasi {
                         rs.getString("password"));
                 daftarMahasiswa.add(m);
             }
+            nextNIM = (daftarMahasiswa.get(daftarMahasiswa.size()-1).getNim())+1;
         } catch (Exception e) {
             e.printStackTrace();
             throw new IllegalArgumentException("terjadi kesalahan saat load mahasiswa");
@@ -95,6 +99,29 @@ public class Aplikasi {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public ArrayList<MataKuliah> loadMatkul() {
+        db.connect();
+        daftarMatkul = new ArrayList<MataKuliah>(); 
+        
+        String query = "select * from mata_kuliah;";
+        ResultSet rs = db.getData(query);
+        try {
+            while (rs.next()) {                
+                MataKuliah matkul = new MataKuliah(
+                        rs.getInt("ID_MATKUL"), 
+                        rs.getString("NAMA_MATKUL"),
+                        rs.getInt("SKS"), 
+                        rs.getInt("TINGKAT"));
+                matkul.setDosen(getDosenByKode(rs.getInt("ID_DOSEN")));
+                daftarMatkul.add(matkul);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        daftarMatkul = getMatkulFromRS(rs);
+        db.disconnect();
+        return daftarMatkul;
+    }
     public Dosen getDosenByKode(int kodeDosen) {
         Dosen d = null;
         for (Dosen dosen : daftarDosen) {
@@ -121,6 +148,7 @@ public class Aplikasi {
         try {
             db.connect();
             berhasil = db.saveMatkul(matkul);
+            System.out.println("addMatkul "+berhasil);
             daftarMatkul.add(matkul);
             db.disconnect();
         } catch (Exception e) {
@@ -177,16 +205,7 @@ public class Aplikasi {
         return daftarMatkul;
     }
     
-    public ArrayList<MataKuliah> loadMataKuliah() {
-        daftarMatkul = new ArrayList<MataKuliah>();
-        db.connect();
-        
-        String query = "select * from mata_kuliah;";
-        ResultSet rs = db.getData(query);
-        daftarMatkul = getMatkulFromRS(rs);
-        db.disconnect();
-        return daftarMatkul;
-    }
+    
     
     private  ArrayList<MataKuliah> getMatkulFromRS(ResultSet rs){
         try {   

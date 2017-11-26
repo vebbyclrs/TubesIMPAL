@@ -109,7 +109,7 @@ public class VAdmin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, message);
     }
     public void showMessageFieldKosong() {
-        JOptionPane.showMessageDialog(null, "Silahkan lengkapi semua field untuk melanjutkan");
+        JOptionPane.showMessageDialog(this, "Silahkan lengkapi semua field untuk melanjutkan", "Field tidak lengkap", 2);
     }
     public JButton getBtnAddMatkul() {
         return btnAddMatkul;
