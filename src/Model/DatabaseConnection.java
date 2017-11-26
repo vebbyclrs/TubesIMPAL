@@ -127,11 +127,13 @@ public class DatabaseConnection {
         
         boolean berhasil = false;
         try {
-            String query = "insert into MATA_KULIAH (ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS)"
+            String query = "insert into MATA_KULIAH (ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS,TINGKAT)"
                     + "values ('"+matkul.getKodeMk()+"',"
                     + "'"+matkul.getDosen().getKode()+"',"
                     + "'"+matkul.getNamaMk()+"',"
-                    + "'"+matkul.getSKS()+"');";
+                    + "'"+matkul.getSKS()+"',"
+                    + "'"+matkul.getTingkat()+"');";
+            System.out.println(query);
             manipulate(query);
             if (! berhasil) {
                 throw new IllegalArgumentException("Terjadi kesalahan saat save matkul");

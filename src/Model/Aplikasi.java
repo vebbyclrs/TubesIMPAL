@@ -166,25 +166,49 @@ public class Aplikasi {
         db.disconnect();
         return null;
     }
-      public ArrayList<MataKuliah> loadMataKuliah(int tingkat) {
+    public ArrayList<MataKuliah> loadMataKuliah(int tingkat) {
         daftarMatkul = new ArrayList<MataKuliah>();
         db.connect();
         
-        String query = "select ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS,Tingkat from mata_kuliah where tingkat ="+tingkat+";";
+        String query = "select ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS,Tingkat from mata_kuliah where tingkat ='"+tingkat+"';";
         ResultSet rs = db.getData(query);
-        try {
-            while (rs.next()) {
-                MataKuliah matkul = new MataKuliah(rs.getInt("ID_MATKUL"),rs.getString("NAMA_MATKUL"),
-                        rs.getInt("SKS"));
-                daftarMatkul.add(matkul);
-
-            }
-        } catch (Exception e) {
-            throw new IllegalArgumentException("terjadi kesalahan   load MataKuliah");
-        }
+        daftarMatkul = getMatkulFromRS(rs);
         db.disconnect();
         return daftarMatkul;
     }
+    
+    public ArrayList<MataKuliah> loadMataKuliah() {
+        daftarMatkul = new ArrayList<MataKuliah>();
+        db.connect();
+        
+        String query = "select * from mata_kuliah;";
+        ResultSet rs = db.getData(query);
+        daftarMatkul = getMatkulFromRS(rs);
+        db.disconnect();
+        return daftarMatkul;
+    }
+    
+    private  ArrayList<MataKuliah> getMatkulFromRS(ResultSet rs){
+        try {   
+            while (rs.next()) {
+                    MataKuliah matkul = new MataKuliah(
+                            rs.getInt("ID_MATKUL"), 
+                            rs.getString("NAMA_MATKUL"),
+                            rs.getInt("SKS"), 
+                            rs.getInt("TINGKAT")
+                    );
+                    Dosen dosen = getDosenByKode(rs.getInt("ID_DOSEN"));
+                    matkul.setDosen(dosen);
+                    daftarMatkul.add(matkul);
+            }
+            return daftarMatkul;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("terjadi kesalahan   load MataKuliah");
+        }
+    }
+    
+    
+    
       
       
 //    public Dosen getDosenByEmail(String email) {

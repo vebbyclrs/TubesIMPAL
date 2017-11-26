@@ -24,18 +24,19 @@ public class ContrAdmin implements ActionListener {
     private VAdmin view;
     private Aplikasi model;
     public static long nextNIM;
+    private Cek cek = new Cek();
     
     
     public ContrAdmin() {
         this.view = new VAdmin();
         this.model = new Aplikasi();
-        nextNIM = model.loadMahasiswa().get(model.loadMahasiswa().size()-1).getNim()+1;
+//        nextNIM = model.loadMahasiswa().get(model.loadMahasiswa().size()).getNim()+1;
         view.setVisible(true);
         view.setActionListener(this);
         view.setTfMhsNIM(nextNIM+"");
         
         addDosenToTableDosen(model.loadDosen(), view.getTblDosen());
-        addDosenToCBox(model.loadDosen(), view.getCboxKodeDosen());
+        addDosenToCBox(model.loadDosen(), view.getCboxMatkulKodeDosen());
         addDosenToCBox(model.loadDosen(), view.getCboxMhsKodeDoswal());
         addMahasiswaToTableMhs(model.loadMahasiswa(), view.getTblMahasiswa());
         
@@ -85,56 +86,87 @@ public class ContrAdmin implements ActionListener {
         }
     }
     
+    private void addMatkulToTableMatkul(ArrayList<MataKuliah> data, JTable table) {
+        DefaultTableModel t = (DefaultTableModel) table.getModel();
+
+        t.setRowCount(0);
+        for (MataKuliah m : data) {
+            String[] s = {""+m.getKodeMk()
+                    , m.getNamaMk()
+                    , m.getSKS()+""
+                    , m.getDosen().getKode()+""};
+            t.addRow(s);
+        }
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
         
         if (src.equals(view.getBtnDsnAdd())) {
             try {
-                Dosen d = new Dosen();
-                d.setNama(view.getTfDsnNama());
-                d.setKode(Integer.parseInt(view.getTfDsnKode()));
-                d.setTglLahir(view.getDateDsnBirthday().getDate());
-                d.setTempatLahir(view.getTfDsnBirthplace());
-                d.setIsMale(view.getCboxDsnJK().getSelectedIndex());
-                d.setAlamat(view.getTfAlamat());
-                d.setNoHp(Long.parseLong(view.getTfNoHp()));
-                
-                if (model.addDosen(d)) {
-                    view.showMessage("Berhasil ditambahkan");
-                    addDosenToTableDosen(model.loadDosen(), view.getTblDosen());
-                    addDosenToCBox(model.loadDosen(), view.getCboxKodeDosen());
-                    addDosenToCBox(model.loadDosen(), view.getCboxMhsKodeDoswal());
-                    view.reset();
+                if (cek.vAdmin_Dosen()) {
+                   Dosen d = new Dosen();
+                    d.setNama(view.getTfDsnNama());
+                    d.setKode(Integer.parseInt(view.getTfDsnKode()));
+                    d.setTglLahir(view.getDateDsnBirthday().getDate());
+                    d.setTempatLahir(view.getTfDsnBirthplace());
+                    d.setIsMale(view.getCboxDsnJK().getSelectedIndex());
+                    d.setAlamat(view.getTfDsnAlamat());
+                    d.setNoHp(Long.parseLong(view.getTfDsnNoHp()));
+
+                    if (model.addDosen(d)) {
+                        view.showMessage("Berhasil ditambahkan");
+                        addDosenToTableDosen(model.loadDosen(), view.getTblDosen());
+                        addDosenToCBox(model.loadDosen(), view.getCboxMatkulKodeDosen());
+                        addDosenToCBox(model.loadDosen(), view.getCboxMhsKodeDoswal());
+                        view.reset();
+                    } else {
+                        JOptionPane.showMessageDialog(view, "gagal ditambahkan");
+                    } 
                 } else {
-                    JOptionPane.showMessageDialog(view, "gagal ditambahkan");
+                    view.showMessageFieldKosong();
                 }
+
+                
             } catch (Exception ae) {
                 ae.printStackTrace();
             }
         }
         else if (src.equals(view.getBtnAddMatkul())) {
             try {
-                if ( view.getCboxSKS().getSelectedIndex()!=0) {
-                    MataKuliah matkul = new MataKuliah(
-                        Integer.parseInt(view.getTfKodeMatkul()),
-                        view.getTfNamaMatkul(),
-                        view.getCboxSKS().getSelectedIndex(),
-                        (Dosen)view.getCboxKodeDosen().getSelectedItem());
-                    //addMatkul
+                if ( cek.vAdmin_MataKuliah()) {
+                    Dosen d = model.getDosenByKode(Integer.parseInt(view.getCboxMatkulKodeDosen().getSelectedItem()+"")); //Diragukan
+                    System.out.println(d.getNama());
+                    MataKuliah matkul  = new MataKuliah(
+                            Integer.parseInt(view.getTfMatkulKode()), 
+                            view.getTfMatkulNama(), 
+                            view.getCboxMatkulSKS().getSelectedIndex(),
+                            view.getCboxMatkulTingkat().getSelectedIndex());
+                    matkul.setDosen(d);
+                    
+                    if (model.addMatkul(matkul)) {
+                        view.showMessage("Berhasil ditambahkan");
+                        addMatkulToTableMatkul(model.loadMataKuliah(), view.getTblMatkul());
+                        throw new IllegalArgumentException("Belum!");
+
+                    } else {
+                        view.showMessage("Gagal menyimpan mata kuliah");
+                    }
+                    
                 } else {
-                    view.showMessage("SKS belum dipilih");
+                    view.showMessageFieldKosong();
                 }
                 
             } catch (Exception ae) {
+                ae.printStackTrace();
             }
 //            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
         else if (src.equals(view.getBtnMhsAdd())) {
             try {
-//                if (view.getCboxMhsKodeDoswal().getSelectedIndex()  == 0) {
-//                    JOptionPane.showConfirmDialog(view, "Silahkan isi dosen wali terlebih dahulu", "Field tidak lengkap", 1);
-//                } else {
+                if ((view.getCboxMhsKodeDoswal().getSelectedIndex()  == 0) || (view.getCboxMhsJK().getSelectedIndex() == 0)) {
+                    JOptionPane.showMessageDialog(view, "Silahkan lengkapi field", "Field tidak lengkap", 2);
+                } else {
 
                     Mahasiswa mhs = new Mahasiswa();
                     mhs.setNim(0);
@@ -162,7 +194,7 @@ public class ContrAdmin implements ActionListener {
                     } else {
                         JOptionPane.showMessageDialog(view, "Gagal menambahkan mahasiswa", "Kesalahan saat menambahkan", 0);
                     }
-//                }
+                }
             } catch (Exception ae) {
                 ae.printStackTrace();
             }

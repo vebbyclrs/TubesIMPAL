@@ -50,6 +50,22 @@ public class VAdmin extends javax.swing.JFrame {
         this.dateMhsBirthday.resetKeyboardActions();
     }
 
+    public String getTfMatkulKode() {
+        return tfMatkulKode.getText();
+    }
+
+    public String getTfMatkulNama() {
+        return tfMatkulNama.getText();
+    }
+
+    public JComboBox<String> getCboxMatkulKodeDosen() {
+        return cboxMatkulKodeDosen;
+    }
+
+    public JComboBox<String> getCboxMatkulSKS() {
+        return cboxMatkulSKS;
+    }
+
     
     
     public void reset() {
@@ -58,11 +74,11 @@ public class VAdmin extends javax.swing.JFrame {
         setTfDsnNama("");
         setTfKodeMatkul("");
         setTfMhsBirthplace("");
-        setTfMhsNIM("");
+//        setTfMhsNIM("");
         setTfMhsNama("");
         setTfNamaMatkul("");
-        setTfAlamat("");
-        setTfNoHp("");
+        setTfDsnAlamat("");
+        setTfDsnNoHp("");
         setTfMhsAlamat("");
         setCboxMhsJKIndex(0);
         setCboxMhsKodeDoswal(0);
@@ -70,8 +86,30 @@ public class VAdmin extends javax.swing.JFrame {
         
 //        setTfMhsNIM(ContrAdmin.nextNIM);
     }
+
+    public String getTfDsnAlamat() {
+        return tfDsnAlamat.getText();
+    }
+
+    public void setTfDsnAlamat(String text) {
+        this.tfDsnAlamat.setText(text);
+    }
+
+    public String getTfDsnNoHp() {
+        return tfDsnNoHp.getText();
+    }
+
+    public void setTfDsnNoHp(String text) {
+        this.tfDsnNoHp.setText(text);
+    }
+    
+    
+    
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(null, message);
+    }
+    public void showMessageFieldKosong() {
+        JOptionPane.showMessageDialog(null, "Silahkan lengkapi semua field untuk melanjutkan");
     }
     public JButton getBtnAddMatkul() {
         return btnAddMatkul;
@@ -89,21 +127,6 @@ public class VAdmin extends javax.swing.JFrame {
         return btnDsnAdd;
     }
 
-    public String getTfAlamat() {
-        return tfAlamat.getText();
-    }
-
-    public void setTfAlamat(String tfAlamat) {
-        this.tfAlamat.setText(tfAlamat);
-    }
-
-    public String getTfNoHp() {
-        return tfNoHp.getText();
-    }
-
-    public void setTfNoHp(String tfNoHp) {
-        this.tfNoHp.setText(tfNoHp); 
-    }
 
     public JButton getBtnMhsAdd() {
         return btnMhsAdd;
@@ -111,10 +134,6 @@ public class VAdmin extends javax.swing.JFrame {
 
     public JComboBox<String> getCboxDsnJK() {
         return cboxDsnJK;
-    }
-
-    public JComboBox<String> getCboxKodeDosen() {
-        return cboxKodeDosen;
     }
 
     public JComboBox<String> getCboxMhsJK() {
@@ -125,9 +144,6 @@ public class VAdmin extends javax.swing.JFrame {
         return cboxMhsKodeDoswal;
     }
 
-    public JComboBox<String> getCboxSKS() {
-        return cboxSKS;
-    }
 
     public JDateChooser getDateDsnBirthday() {
         return dateDsnBirthday;
@@ -158,7 +174,7 @@ public class VAdmin extends javax.swing.JFrame {
     }
 
     public String getTfKodeMatkul() {
-        return tfKodeMatkul.getText();
+        return tfMatkulKode.getText();
     }
 
     public String getTfMhsBirthplace() {
@@ -174,7 +190,7 @@ public class VAdmin extends javax.swing.JFrame {
     }
 
     public String getTfNamaMatkul() {
-        return tfNamaMatkul.getText();
+        return tfMatkulNama.getText();
     }
 
     public void setTfDsnBirthplace(String tfDsnBirthplace) {
@@ -190,13 +206,23 @@ public class VAdmin extends javax.swing.JFrame {
     }
 
     public void setTfKodeMatkul(String tfKodeMatkul) {
-        this.tfKodeMatkul.setText(tfKodeMatkul);
+        this.tfMatkulKode.setText(tfKodeMatkul);
     }
 
     public void setTfMhsBirthplace(String tfMhsBirthplace) {
         this.tfMhsBirthplace.setText(tfMhsBirthplace);
     }
 
+    public JComboBox<String> getCboxMatkulTingkat() {
+        return cboxMatkulTingkat;
+    }
+
+    public void setCboxMatkulTingkat(JComboBox<String> cboxMatkulTingkat) {
+        this.cboxMatkulTingkat = cboxMatkulTingkat;
+    }
+
+    
+    
     public void setTfMhsNIM(String tfMhsNIM) {
         this.tfMhsNIM.setText(tfMhsNIM);
     }
@@ -206,7 +232,7 @@ public class VAdmin extends javax.swing.JFrame {
     }
 
     public void setTfNamaMatkul(String tfNamaMatkul) {
-        this.tfNamaMatkul.setText(tfNamaMatkul);
+        this.tfMatkulNama.setText(tfNamaMatkul);
     }
 
     
@@ -227,14 +253,16 @@ public class VAdmin extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tfKodeMatkul = new javax.swing.JTextField();
-        tfNamaMatkul = new javax.swing.JTextField();
-        cboxSKS = new javax.swing.JComboBox<>();
+        tfMatkulKode = new javax.swing.JTextField();
+        tfMatkulNama = new javax.swing.JTextField();
+        cboxMatkulSKS = new javax.swing.JComboBox<>();
         btnAddMatkul = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblMatkul = new javax.swing.JTable();
-        cboxKodeDosen = new javax.swing.JComboBox<>();
+        cboxMatkulKodeDosen = new javax.swing.JComboBox<>();
+        jLabel21 = new javax.swing.JLabel();
+        cboxMatkulTingkat = new javax.swing.JComboBox<>();
         Dosen = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblDosen = new javax.swing.JTable();
@@ -250,8 +278,8 @@ public class VAdmin extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         tfDsnNama = new javax.swing.JTextField();
         tfDsnKode = new javax.swing.JTextField();
-        tfAlamat = new javax.swing.JTextField();
-        tfNoHp = new javax.swing.JTextField();
+        tfDsnAlamat = new javax.swing.JTextField();
+        tfDsnNoHp = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         Mahasiswa = new javax.swing.JPanel();
@@ -282,21 +310,45 @@ public class VAdmin extends javax.swing.JFrame {
 
         jLabel4.setText("Dosen");
 
-        cboxSKS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "sks", "1", "2", "3", "4" }));
+        cboxMatkulSKS.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "=SKS=", "1", "2", "3", "4" }));
 
         btnAddMatkul.setText("Tambah");
 
-        jLabel1.setText("Kode Mata Kuliah");
+        jLabel1.setText("Kode Mata Kuliah (Integer)");
 
         tblMatkul.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Kode Matakuliah", "Judul Mata Kuliah", "SKS", "Dosen"
+                "Kode Matakuliah", "Judul Mata Kuliah", "SKS", "Dosen", "Tingkat"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane3.setViewportView(tblMatkul);
+
+        jLabel21.setText("Tingkat");
+
+        cboxMatkulTingkat.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "=Tingkat=", "1", "2", "3", "4" }));
+        cboxMatkulTingkat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxMatkulTingkatActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout Dosen1Layout = new javax.swing.GroupLayout(Dosen1);
         Dosen1.setLayout(Dosen1Layout);
@@ -309,18 +361,20 @@ public class VAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel1))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel21))
                 .addGap(39, 39, 39)
                 .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfKodeMatkul)
-                    .addComponent(tfNamaMatkul, javax.swing.GroupLayout.DEFAULT_SIZE, 968, Short.MAX_VALUE)
+                    .addComponent(tfMatkulKode)
+                    .addComponent(tfMatkulNama, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE)
+                    .addComponent(cboxMatkulKodeDosen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(Dosen1Layout.createSequentialGroup()
-                        .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnAddMatkul)
-                            .addComponent(cboxSKS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(cboxKodeDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(cboxMatkulSKS, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cboxMatkulTingkat, 0, 135, Short.MAX_VALUE))
                         .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                .addGap(759, 759, 759))
         );
         Dosen1Layout.setVerticalGroup(
             Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -328,23 +382,27 @@ public class VAdmin extends javax.swing.JFrame {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfKodeMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfMatkulKode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(tfNamaMatkul, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfMatkulNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(cboxSKS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboxMatkulSKS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel21)
+                    .addComponent(cboxMatkulTingkat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(Dosen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(cboxKodeDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cboxMatkulKodeDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAddMatkul)
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Mata Kuliah", Dosen1);
@@ -381,7 +439,7 @@ public class VAdmin extends javax.swing.JFrame {
 
         jLabel16.setText("Nama");
 
-        jLabel18.setText("Kode");
+        jLabel18.setText("Kode (Integer)");
 
         jLabel17.setText("No HP");
 
@@ -413,8 +471,8 @@ public class VAdmin extends javax.swing.JFrame {
                             .addComponent(tfDsnKode)
                             .addComponent(dateDsnBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tfDsnBirthplace, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
-                            .addComponent(tfAlamat)
-                            .addComponent(tfNoHp))))
+                            .addComponent(tfDsnAlamat)
+                            .addComponent(tfDsnNoHp))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         DosenLayout.setVerticalGroup(
@@ -441,11 +499,11 @@ public class VAdmin extends javax.swing.JFrame {
                     .addComponent(tfDsnBirthplace, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDsnAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfNoHp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfDsnNoHp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -599,6 +657,10 @@ public class VAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxMhsJKActionPerformed
 
+    private void cboxMatkulTingkatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxMatkulTingkatActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxMatkulTingkatActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -643,10 +705,11 @@ public class VAdmin extends javax.swing.JFrame {
     private javax.swing.JButton btnDsnAdd;
     private javax.swing.JButton btnMhsAdd;
     private javax.swing.JComboBox<String> cboxDsnJK;
-    private javax.swing.JComboBox<String> cboxKodeDosen;
+    private javax.swing.JComboBox<String> cboxMatkulKodeDosen;
+    private javax.swing.JComboBox<String> cboxMatkulSKS;
+    private javax.swing.JComboBox<String> cboxMatkulTingkat;
     private javax.swing.JComboBox<String> cboxMhsJK;
     private javax.swing.JComboBox<String> cboxMhsKodeDoswal;
-    private javax.swing.JComboBox<String> cboxSKS;
     private com.toedter.calendar.JDateChooser dateDsnBirthday;
     private com.toedter.calendar.JDateChooser dateMhsBirthday;
     private javax.swing.JLabel jLabel1;
@@ -662,6 +725,7 @@ public class VAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -676,16 +740,16 @@ public class VAdmin extends javax.swing.JFrame {
     private javax.swing.JTable tblDosen;
     private javax.swing.JTable tblMahasiswa;
     private javax.swing.JTable tblMatkul;
-    private javax.swing.JTextField tfAlamat;
+    private javax.swing.JTextField tfDsnAlamat;
     private javax.swing.JTextField tfDsnBirthplace;
     private javax.swing.JTextField tfDsnKode;
     private javax.swing.JTextField tfDsnNama;
-    private javax.swing.JTextField tfKodeMatkul;
+    private javax.swing.JTextField tfDsnNoHp;
+    private javax.swing.JTextField tfMatkulKode;
+    private javax.swing.JTextField tfMatkulNama;
     private javax.swing.JTextField tfMhsAlamat;
     private javax.swing.JTextField tfMhsBirthplace;
     private javax.swing.JTextField tfMhsNIM;
     private javax.swing.JTextField tfMhsNama;
-    private javax.swing.JTextField tfNamaMatkul;
-    private javax.swing.JTextField tfNoHp;
     // End of variables declaration//GEN-END:variables
 }

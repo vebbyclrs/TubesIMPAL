@@ -15,25 +15,24 @@ public class MataKuliah {
     private  int kodeMk;
     private String namaMk;
     private int SKS;
-    private int kodeDosen;
+    private int tingkat;
     private Dosen dosen; //ga usah array, soalnya di satu jadwal cuma ada 1 mahasiswa dengan 1 dosen
 
     public MataKuliah() {
     }
 
-    
-    
-    public MataKuliah(int kodeMk, String namaMk, int SKS) {
+    public MataKuliah(int kodeMk, String namaMk, int SKS, int tingkat) {
         this.kodeMk = kodeMk;
         this.namaMk = namaMk;
         this.SKS = SKS;
+        this.tingkat = tingkat;
+    }
+    public int getTingkat() {
+        return tingkat;
     }
 
-    public MataKuliah(int kodeMk, String namaMk, int SKS, Dosen dosen) {
-        this.kodeMk = kodeMk;
-        this.namaMk = namaMk;
-        this.SKS = SKS;
-        this.dosen = dosen;
+    public void setTingkat(int tingkat) {
+        this.tingkat = tingkat;
     }
     
     public int getKodeMk() {
@@ -60,13 +59,6 @@ public class MataKuliah {
         this.SKS = SKS;
     }
 
-    public int getKodeDosen() {
-        return kodeDosen;
-    }
-
-    public void setKodeDosen(int kodeDosen) {
-        this.kodeDosen = kodeDosen;
-    }
 
     public Dosen getDosen() {
         return dosen;

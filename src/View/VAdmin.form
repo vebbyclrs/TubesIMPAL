@@ -64,21 +64,23 @@
                           <Component id="jLabel3" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel21" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="tfKodeMatkul" alignment="0" max="32767" attributes="0"/>
-                          <Component id="tfNamaMatkul" alignment="0" pref="968" max="32767" attributes="0"/>
+                          <Component id="tfMatkulKode" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tfMatkulNama" alignment="0" pref="175" max="32767" attributes="0"/>
+                          <Component id="cboxMatkulKodeDosen" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btnAddMatkul" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboxSKS" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cboxKodeDosen" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="cboxMatkulSKS" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="cboxMatkulTingkat" alignment="0" pref="135" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="759" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -88,27 +90,32 @@
                       <Component id="jScrollPane3" min="-2" pref="228" max="-2" attributes="0"/>
                       <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tfKodeMatkul" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfMatkulKode" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="tfNamaMatkul" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfMatkulNama" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboxSKS" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboxMatkulSKS" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboxMatkulTingkat" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cboxKodeDosen" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboxMatkulKodeDosen" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnAddMatkul" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="109" max="32767" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -129,15 +136,15 @@
                 <Property name="text" type="java.lang.String" value="Dosen"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfKodeMatkul">
+            <Component class="javax.swing.JTextField" name="tfMatkulKode">
             </Component>
-            <Component class="javax.swing.JTextField" name="tfNamaMatkul">
+            <Component class="javax.swing.JTextField" name="tfMatkulNama">
             </Component>
-            <Component class="javax.swing.JComboBox" name="cboxSKS">
+            <Component class="javax.swing.JComboBox" name="cboxMatkulSKS">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="5">
-                    <StringItem index="0" value="sks"/>
+                    <StringItem index="0" value="=SKS="/>
                     <StringItem index="1" value="1"/>
                     <StringItem index="2" value="2"/>
                     <StringItem index="3" value="3"/>
@@ -156,7 +163,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Kode Mata Kuliah"/>
+                <Property name="text" type="java.lang.String" value="Kode Mata Kuliah (Integer)"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane3">
@@ -169,23 +176,80 @@
                 <Component class="javax.swing.JTable" name="tblMatkul">
                   <Properties>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="0">
-                        <Column editable="true" title="Kode Matakuliah" type="java.lang.Object"/>
-                        <Column editable="true" title="Judul Mata Kuliah" type="java.lang.Object"/>
-                        <Column editable="true" title="SKS" type="java.lang.Object"/>
-                        <Column editable="true" title="Dosen" type="java.lang.Object"/>
+                      <Table columnCount="5" rowCount="0">
+                        <Column editable="false" title="Kode Matakuliah" type="java.lang.String"/>
+                        <Column editable="false" title="Judul Mata Kuliah" type="java.lang.String"/>
+                        <Column editable="false" title="SKS" type="java.lang.String"/>
+                        <Column editable="false" title="Dosen" type="java.lang.String"/>
+                        <Column editable="false" title="Tingkat" type="java.lang.String"/>
                       </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JComboBox" name="cboxKodeDosen">
+            <Component class="javax.swing.JComboBox" name="cboxMatkulKodeDosen">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
                   <StringArray count="0"/>
                 </Property>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel21">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Tingkat"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cboxMatkulTingkat">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="5">
+                    <StringItem index="0" value="=Tingkat="/>
+                    <StringItem index="1" value="1"/>
+                    <StringItem index="2" value="2"/>
+                    <StringItem index="3" value="3"/>
+                    <StringItem index="4" value="4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cboxMatkulTingkatActionPerformed"/>
+              </Events>
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
@@ -227,8 +291,8 @@
                                   <Component id="tfDsnKode" alignment="0" max="32767" attributes="0"/>
                                   <Component id="dateDsnBirthday" alignment="0" max="32767" attributes="0"/>
                                   <Component id="tfDsnBirthplace" alignment="0" pref="192" max="32767" attributes="0"/>
-                                  <Component id="tfAlamat" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfNoHp" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfDsnAlamat" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfDsnNoHp" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -264,12 +328,12 @@
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tfAlamat" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfDsnAlamat" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="tfNoHp" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfDsnNoHp" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -395,16 +459,16 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Kode"/>
+                <Property name="text" type="java.lang.String" value="Kode (Integer)"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="tfDsnNama">
             </Component>
             <Component class="javax.swing.JTextField" name="tfDsnKode">
             </Component>
-            <Component class="javax.swing.JTextField" name="tfAlamat">
+            <Component class="javax.swing.JTextField" name="tfDsnAlamat">
             </Component>
-            <Component class="javax.swing.JTextField" name="tfNoHp">
+            <Component class="javax.swing.JTextField" name="tfDsnNoHp">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel17">
               <Properties>
