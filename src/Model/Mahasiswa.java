@@ -18,14 +18,14 @@ public class Mahasiswa {
     private int totalSKS; //di awal di set 0
     private long nim;
     private String nama;
-    private boolean isMale;
+    private int isMale;
     private Date tanggalLahir;
     private String tempatLahir;
     private String alamat;
 //    private float ipk;
     private long noHp;
     private int angkatan;
-    private boolean statusPembayaran;
+    private int statusPembayaran;
     private Dosen dosenWali;
     private ArrayList<Jadwal> jadwal;
     private String email;
@@ -34,7 +34,7 @@ public class Mahasiswa {
     public Mahasiswa() {
     }
 
-    public Mahasiswa(long nim, String nama, boolean isMale, Date tanggalLahir, String tempatLahir, String alamat, long noHp, int angkatan, Dosen dosenWali, String email, String password) {
+    public Mahasiswa(long nim, String nama, int isMale, Date tanggalLahir, String tempatLahir, String alamat, long noHp, int angkatan, Dosen dosenWali, String email, String password) {
         this.nim = nim;
         this.nama = nama;
         this.isMale = isMale;
@@ -48,9 +48,9 @@ public class Mahasiswa {
         this.password = password;
     }
 
-    public Mahasiswa(long nim, String nama, boolean isMale, 
+    public Mahasiswa(long nim, String nama, int isMale, 
             Date tanggalLahir, String tempatLahir, String alamat, 
-            long noHp, int angkatan, boolean statusPembayaran,
+            long noHp, int angkatan, int statusPembayaran,
             int totalSKS,  int dosenWali, String email, 
             String password) {
         this.totalSKS = totalSKS;
@@ -100,7 +100,7 @@ public class Mahasiswa {
         return password;
     }
 
-    public boolean isIsMale() {
+    public int isIsMale() {
         return isMale;
     }
 
@@ -157,11 +157,11 @@ public class Mahasiswa {
         this.nama = nama;
     }
 
-    public boolean IsMale() {
+    public int IsMale() {
         return isMale;
     }
 
-    public void setIsMale(boolean isMale) {
+    public void setIsMale(int isMale) {
         this.isMale = isMale;
     }
     public String getTempatLahir() {
@@ -196,11 +196,11 @@ public class Mahasiswa {
         this.angkatan = angkatan;
     }
 
-    public boolean isStatusPembayaran() {
+    public int isStatusPembayaran() {
         return statusPembayaran;
     }
 
-    public void setStatusPembayaran(boolean statusPembayaran) {
+    public void setStatusPembayaran(int statusPembayaran) {
         this.statusPembayaran = statusPembayaran;
     }
 }

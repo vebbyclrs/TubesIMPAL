@@ -33,9 +33,25 @@ public class VAdmin extends javax.swing.JFrame {
         btnDsnAdd.addActionListener(e);
         btnMhsAdd.addActionListener(e);
     }
-    
-    
 
+    public void setCboxMhsJKIndex(int idx) {
+        this.cboxMhsJK.setSelectedIndex(idx); 
+    }
+
+    public void setCboxMhsKodeDoswal(int idx) {
+        this.cboxMhsKodeDoswal.setSelectedIndex(idx); 
+    }
+
+    public void setTfMhsAlamat(String tfIsi) {
+        this.tfMhsAlamat.setText(tfIsi);
+    }
+
+    public void setDateMhsBirthday(JDateChooser dateMhsBirthday) {
+        this.dateMhsBirthday.resetKeyboardActions();
+    }
+
+    
+    
     public void reset() {
         setTfDsnBirthplace("");
         setTfDsnKode("");
@@ -47,7 +63,12 @@ public class VAdmin extends javax.swing.JFrame {
         setTfNamaMatkul("");
         setTfAlamat("");
         setTfNoHp("");
+        setTfMhsAlamat("");
+        setCboxMhsJKIndex(0);
+        setCboxMhsKodeDoswal(0);
+        setDateMhsBirthday(getDateMhsBirthday());
         
+//        setTfMhsNIM(ContrAdmin.nextNIM);
     }
     public void showMessage(String message) {
         JOptionPane.showMessageDialog(null, message);
@@ -58,10 +79,6 @@ public class VAdmin extends javax.swing.JFrame {
 
     public String getTfMhsAlamat() {
         return tfMhsAlamat.getText();
-    }
-
-    public void setTfMhsAlamat(String tfMhsAlamat) {
-        this.tfMhsAlamat.setText(tfMhsAlamat);
     }
 
     public JTable getTblDosen() {
@@ -476,7 +493,12 @@ public class VAdmin extends javax.swing.JFrame {
 
         jLabel11.setText("Jenis Kelamin");
 
-        cboxMhsJK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jenis Kelamin", "Perempuan", "Laki-laki" }));
+        cboxMhsJK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Jenis Kelamin", "Laki-laki", "Perempuan" }));
+        cboxMhsJK.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cboxMhsJKActionPerformed(evt);
+            }
+        });
 
         btnMhsAdd.setText("Tambahkan Mahasiswa");
 
@@ -572,6 +594,10 @@ public class VAdmin extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cboxMhsJKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboxMhsJKActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cboxMhsJKActionPerformed
 
     /**
      * @param args the command line arguments

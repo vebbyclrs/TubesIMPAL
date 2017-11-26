@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     30-Sep-17 11:16:45 PM                        */
+/* Created on:     26-Nov-17 1:58:42 PM                         */
 /*==============================================================*/
 
 
@@ -40,6 +40,8 @@ create table DOSEN
    ALAMAT               varchar(60),
    ISMALE               bool,
    NO_HP                bigint,
+   EMAIL                varchar(60),
+   PASSWORD             varchar(32),
    primary key (ID_DOSEN)
 );
 
@@ -71,6 +73,8 @@ create table MAHASISWA
    ANGKATAN             int,
    STATUS_PEMBAYARAN    bool,
    TOTAL_SKS            int,
+   EMAIL                varchar(60),
+   PASSWORD             varchar(32),
    primary key (NIM)
 );
 
