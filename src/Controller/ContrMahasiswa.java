@@ -38,16 +38,32 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     DefaultListModel mdl = new DefaultListModel();
 
     public ContrMahasiswa() {
+        
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        
         this.model = new Aplikasi();
         view = new VMahasiswa();
         view.setVisible(true);
         view.addListener(this);
         
         view.getTblTingkat1().removeAll();
-        showListTingkat(model.loadMataKuliah(1),view.getTblTingkat1());
-        showListTingkat(model.loadMataKuliah(2), view.getTblTingkat2());
-        showListTingkat(model.loadMataKuliah(3), view.getTblTingkat3());
-        showListTingkat(model.loadMataKuliah(4), view.getTblTingkat4());    
+        showListTingkat(model.loadMatkulTingkat(1),view.getTblTingkat1());
+        showListTingkat(model.loadMatkulTingkat(2), view.getTblTingkat2());
+        showListTingkat(model.loadMatkulTingkat(3), view.getTblTingkat3());
+        showListTingkat(model.loadMatkulTingkat(4), view.getTblTingkat4());    
         
         /*Tab Cetak KSM*/
 //        view.setTxtCKNama(mhs.getNama());

@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     26-Nov-17 5:54:26 PM                         */
+/* Created on:     27-Nov-17 9:21:43 PM                         */
 /*==============================================================*/
 
 
@@ -50,7 +50,7 @@ create table DOSEN
 /*==============================================================*/
 create table JADWAL
 (
-   IDJADWAL             int not null,
+   IDJADWAL             int not null auto_increment,
    ID_MATKUL            int,
    PUKUL                time,
    HARI                 varchar(10),
@@ -85,7 +85,7 @@ create table MATA_KULIAH
 (
    ID_MATKUL            int not null,
    ID_DOSEN             int,
-   NAMA_MATKUL          varbinary(60),
+   NAMA_MATKUL          varchar(60),
    SKS                  int,
    TINGKAT              int,
    primary key (ID_MATKUL)

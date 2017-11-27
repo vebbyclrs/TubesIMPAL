@@ -4,7 +4,8 @@
 
 <Workspace>
 	<Local Expanded="Yes">
-		<Model Expanded="Yes" ID="{62022751-4FCE-42B7-B1C2-4EDB9186AEF1}" Name="DesignDB" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="file:///D|/Telkom University/Semester V/Impal/Tubes Documents/DesignDB/DesignDB.prj"/>
+		<Model Expanded="Yes" ID="{62022751-4FCE-42B7-B1C2-4EDB9186AEF1}" Loaded="No" Name="DesignDB" Type="{FF4B6538-9856-42CF-B9B9-304ED370CEAA}" URL="file:///D|/Telkom University/Semester V/Impal/Tubes Documents/DesignDB/DesignDB.prj"/>
+		<Model Expanded="Yes" ID="{D00FE314-66AE-49C3-A64E-5E213324BDC0}" Name="PhysicalDataModel_2" Selected="Yes" Type="{CDE44E21-9669-11D1-9914-006097355D9B}" URL="file:///d|/telkom university/semester v/impal/tubes documents/designdb/versi1.pdm"/>
 	</Local>
 	<BrowserModule Name="Repository"/>
 </Workspace>

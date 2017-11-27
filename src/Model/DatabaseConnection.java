@@ -172,6 +172,27 @@ public class DatabaseConnection {
         }
         return berhasil;
     }
+
+    public boolean saveJadwal (Jadwal j) {
+        boolean berhasil = false;
+        String query = ( "INSERT INTO JADWAL (IDJADWAL, ID_MATKUL,PUKUL,HARI) VALUES ('"
+                    +j.getIdJadwal()+"','"
+                    +j.getMatkul().getKodeMk()+"','"
+                    +j.getPukul()+"','"
+                    +j.getHari()+"');"
+                );
+        try {
+            System.out.println(query);
+            berhasil = manipulate(query);
+            if (! berhasil) {
+                throw new IllegalArgumentException("Error save Dosen ke DB");
+            }            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return berhasil;
+    }
+
     public boolean saveJadwalDiambil(ArrayList<Jadwal> arrJadwal, long nim){
         boolean berhasil = false;
         try {
@@ -184,6 +205,7 @@ public class DatabaseConnection {
             berhasil = true;
         } catch (Exception e) {
             throw new IllegalArgumentException("Error save jadwal diambil");
+
         }
         return berhasil;
     }
