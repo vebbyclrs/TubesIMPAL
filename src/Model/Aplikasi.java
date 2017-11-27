@@ -206,7 +206,28 @@ public class Aplikasi {
             throw new IllegalArgumentException("terjadi kesalahan   load MataKuliah");
         }
     }
-    
+   /* public ArrayList<Mahasiswa> loadJadwal() {
+        daftarMahasiswa = new ArrayList<Mahasiswa>();
+        db.connect();
+        
+        String query = "select * from mahasiswa";
+        ResultSet rs = db.getData(query);
+        try {
+            while (rs.next()) {
+                Mahasiswa m = new Mahasiswa(rs.getLong("NIM"), rs.getString("NAMA"), rs.getInt("IS_MALE"),
+                        rs.getTimestamp("TANGGAL_LAHIR"), rs.getString("TEMPAT_LAHIR"), rs.getString("alamat"),
+                        rs.getLong("NO_HP"), rs.getInt("ANGKATAN"), rs.getInt("STATUS_PEMBAYARAN"),
+                        rs.getInt("TOTAL_sKS"), rs.getInt("ID_DOSEN"), rs.getString("EMAIL"),
+                        rs.getString("password"));
+                daftarMahasiswa.add(m);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new IllegalArgumentException("terjadi kesalahan saat load mahasiswa");
+        }
+        db.disconnect();
+        return daftarMahasiswa;
+    }*/
     
     
       
@@ -215,4 +236,18 @@ public class Aplikasi {
 //        Dosen ret;
 //        
 //    }
+    public int getSksFromIdMatkul(Object o){
+        int sks = 0;
+        try {
+            db.connect();
+            String query = "select SKS from mata_kuliah where ID_MATKUL="+o.toString()+";";
+            ResultSet rs = db.getData(query);
+            while (rs.next()){
+                sks = rs.getInt("SKS");
+            }
+        } catch (Exception e) {
+            throw new IllegalArgumentException("error getSksFromIdMatkul");
+        }
+        return sks;
+    }
 }
