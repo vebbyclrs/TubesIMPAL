@@ -188,24 +188,7 @@ public class Aplikasi {
         return daftarMatkul;
     }
     
-    private  ArrayList<MataKuliah> getMatkulFromRS(ResultSet rs){
-        try {   
-            while (rs.next()) {
-                    MataKuliah matkul = new MataKuliah(
-                            rs.getInt("ID_MATKUL"), 
-                            rs.getString("NAMA_MATKUL"),
-                            rs.getInt("SKS"), 
-                            rs.getInt("TINGKAT")
-                    );
-                    Dosen dosen = getDosenByKode(rs.getInt("ID_DOSEN"));
-                    matkul.setDosen(dosen);
-                    daftarMatkul.add(matkul);
-            }
-            return daftarMatkul;
-        } catch (Exception e) {
-            throw new IllegalArgumentException("terjadi kesalahan   load MataKuliah");
-        }
-    }
+   
    /* public ArrayList<Mahasiswa> loadJadwal() {
         daftarMahasiswa = new ArrayList<Mahasiswa>();
         db.connect();
@@ -249,5 +232,25 @@ public class Aplikasi {
             throw new IllegalArgumentException("error getSksFromIdMatkul");
         }
         return sks;
+    }
+
+
+ private  ArrayList<MataKuliah> getMatkulFromRS(ResultSet rs){
+        try {   
+            while (rs.next()) {
+                    MataKuliah matkul = new MataKuliah(
+                            rs.getInt("ID_MATKUL"), 
+                            rs.getString("NAMA_MATKUL"),
+                            rs.getInt("SKS"), 
+                            rs.getInt("TINGKAT")
+                    );
+                    Dosen dosen = getDosenByKode(rs.getInt("ID_DOSEN"));
+                    matkul.setDosen(dosen);
+                    daftarMatkul.add(matkul);
+            }
+            return daftarMatkul;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("terjadi kesalahan   load MataKuliah");
+        }
     }
 }
