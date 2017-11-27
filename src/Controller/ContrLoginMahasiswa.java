@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.*;
-import View.VLoginMahasiswa;
+import View.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -20,51 +20,73 @@ import javax.swing.JOptionPane;
  */
 public class ContrLoginMahasiswa implements ActionListener, KeyListener{
 
-    private VLoginMahasiswa loginFrame;
+    private VLoginMahasiswa view;
     private Aplikasi model;
+    private ContrMahasiswa selfContr;
+    ContrLoginDosen loginDosen;
+    ContrLoginAdmin loginAdmin;
 
     public ContrLoginMahasiswa() {
         model = new Aplikasi();
-        loginFrame = new VLoginMahasiswa();
-        loginFrame.setLocationRelativeTo(null);
-        loginFrame.setVisible(true);
+        view = new VLoginMahasiswa();
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
+        view.setActionListener(this);
+        view.setKeyListener(this);  
     }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource().equals(loginFrame.getBtnMasuk())) {
+        if (e.getSource().equals(view.getBtnMasuk())) {
             btnMasukPerformed(e);
+        }
+        else if (e.getSource().equals(view.getBtnLoginAdmin())) {
+            btnLoginAdminActionPerformed(e);
+        }
+        else if (e.getSource().equals(view.getBtnLoginDosen())) {
+            btnLoginDosenActionPerformed(e);
         }
     }
     
     public void btnMasukPerformed(ActionEvent e) {
-        String username = loginFrame.getTxtUserName().getText();
-        String password = loginFrame.getTxtUserName().getText();
+        String username = view.getTxtUserName().getText();
+        String password = view.getTxtPassword().getText();
         
         try {
-            Mahasiswa m = model.getMahasiswaByEmail(username);
+            Mahasiswa m = model.getMahasiswaByUsername(username);
             if (m == null) {
-                loginFrame.showMessage("Email salah");
+                view.showMessage("Email salah");
             } else {
                 if (!m.getPassword().equals(password)) {
-                    loginFrame.showMessage("Password salah");
+                    view.showMessage("Password salah");
                 } else {
-                    loginFrame.setVisible(false);
-                    
+                    view.setVisible(false);
+                    selfContr = new ContrMahasiswa();
                 }
             }
         } catch (Exception ae) {
             ae.printStackTrace();
         }
     }
-
+    public void btnLoginDosenActionPerformed(ActionEvent ae) {
+        System.out.println("btnLoginDosen pressed on Mahasiswa Login");
+        view.setVisible(false);
+        loginDosen = new ContrLoginDosen();
+    }
+    
+    public void btnLoginAdminActionPerformed (ActionEvent ae) {
+        System.out.println("btnLoginAdmin pressed on Mahasiswa Login");
+        view.setVisible(false);
+        loginAdmin = new ContrLoginAdmin();
+    }
+    
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getSource().equals(loginFrame.getBtnMasuk())) {
+        if (e.getSource().equals(view.getBtnMasuk())) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 btnMasukPerformed(null);
             }

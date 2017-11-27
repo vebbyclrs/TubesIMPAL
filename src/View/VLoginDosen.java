@@ -5,6 +5,9 @@
  */
 package View;
 
+import Controller.ContrLoginDosen;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
@@ -20,7 +23,17 @@ public class VLoginDosen extends javax.swing.JFrame {
     public VLoginDosen() {
         initComponents();
     }
-
+    
+    public void setActionListener(ActionListener e) {
+        btnLoginAdmin.addActionListener(e);
+        btnLoginMahasiswa.addActionListener(e);
+        btnMasuk.addActionListener(e);
+    }
+    public void setKeyListener(KeyListener e){
+        txtPassword.addKeyListener(e);
+        txtUserName.addKeyListener(e);
+    }
+    
     public JButton getBtnLoginAdmin() {
         return btnLoginAdmin;
     }
@@ -29,12 +42,12 @@ public class VLoginDosen extends javax.swing.JFrame {
         this.btnLoginAdmin = btnLoginAdmin;
     }
 
-    public JButton getBtnLoginDosen() {
-        return btnLoginDosen;
+    public JButton getBtnLoginMahasiswa() {
+        return btnLoginMahasiswa;
     }
 
-    public void setBtnLoginDosen(JButton btnLoginDosen) {
-        this.btnLoginDosen = btnLoginDosen;
+    public void setBtnLoginMahasiswa(JButton btnLoginDosen) {
+        this.btnLoginMahasiswa = btnLoginDosen;
     }
 
     public JButton getBtnMasuk() {
@@ -45,20 +58,20 @@ public class VLoginDosen extends javax.swing.JFrame {
         this.btnMasuk = btnMasuk;
     }
 
-    public JTextField getTxtPassword() {
-        return txtPassword;
+    public String getTxtPassword() {
+        return txtPassword.getText();
     }
 
-    public void setTxtPassword(JTextField txtPassword) {
-        this.txtPassword = txtPassword;
+    public void setTxtPassword(String text) {
+        this.txtPassword.setText(text);
     }
 
-    public JTextField getTxtUserName() {
-        return txtUserName;
+    public String getTxtUserName() {
+        return txtUserName.getText();
     }
 
-    public void setTxtUserName(JTextField txtUserName) {
-        this.txtUserName = txtUserName;
+    public void setTxtUserName(String txtUserName) {
+        this.txtUserName.setText(txtUserName);
     }
     
 
@@ -75,7 +88,7 @@ public class VLoginDosen extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        btnLoginDosen = new javax.swing.JButton();
+        btnLoginMahasiswa = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtUserName = new javax.swing.JTextField();
@@ -93,17 +106,17 @@ public class VLoginDosen extends javax.swing.JFrame {
             }
         });
 
-        jLabel4.setText("Bukan mahasiswa?");
+        jLabel4.setText("Bukan dosen?");
 
         jLabel5.setText("Anda akan login sebagai dosen");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setText("Login");
 
-        btnLoginDosen.setText("Login Mahasiswa");
-        btnLoginDosen.addActionListener(new java.awt.event.ActionListener() {
+        btnLoginMahasiswa.setText("Login Mahasiswa");
+        btnLoginMahasiswa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoginDosenActionPerformed(evt);
+                btnLoginMahasiswaActionPerformed(evt);
             }
         });
 
@@ -142,14 +155,14 @@ public class VLoginDosen extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(88, 88, 88)
-                        .addComponent(btnLoginDosen)
+                        .addComponent(btnLoginMahasiswa)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnLoginAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(80, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(154, 154, 154))
+                .addGap(166, 166, 166))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,7 +185,7 @@ public class VLoginDosen extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnLoginDosen)
+                    .addComponent(btnLoginMahasiswa)
                     .addComponent(btnLoginAdmin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(24, 24, 24))
         );
@@ -180,9 +193,9 @@ public class VLoginDosen extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLoginDosenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginDosenActionPerformed
+    private void btnLoginMahasiswaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginMahasiswaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLoginDosenActionPerformed
+    }//GEN-LAST:event_btnLoginMahasiswaActionPerformed
 
     private void btnLoginAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginAdminActionPerformed
         // TODO add your handling code here:
@@ -191,41 +204,10 @@ public class VLoginDosen extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VLoginDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VLoginDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VLoginDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VLoginDosen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VLoginDosen().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnLoginAdmin;
-    private javax.swing.JButton btnLoginDosen;
+    private javax.swing.JButton btnLoginMahasiswa;
     private javax.swing.JButton btnMasuk;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -235,4 +217,10 @@ public class VLoginDosen extends javax.swing.JFrame {
     private javax.swing.JTextField txtPassword;
     private javax.swing.JTextField txtUserName;
     // End of variables declaration//GEN-END:variables
+
+    
+
+    
+
+    
 }

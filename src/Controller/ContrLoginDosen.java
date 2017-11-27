@@ -5,48 +5,91 @@
  */
 package Controller;
 
-import Model.*;
-import View.VLoginDosen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import Model.*;
+import View.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
+import javax.swing.JOptionPane;
+        
 /**
  *
- * @author vebbyclrs
+ * @author VebbyClrs
  */
-public class ContrLoginDosen implements ActionListener, KeyListener {
+public class ContrLoginDosen implements ActionListener,KeyListener  {
 
-    Aplikasi model;
-    VLoginDosen loginFrame;
-    
+    VLoginDosen view;
+    Aplikasi apk;
+    VLoginAdmin viAdmin;
+    VLoginMahasiswa viMhs;
+
     public ContrLoginDosen() {
-        model = new Aplikasi();
-        loginFrame = new VLoginDosen();
-        loginFrame.setLocationRelativeTo(null);
-        loginFrame.setVisible(true);
+        view = new VLoginDosen();
+        apk = new Aplikasi();
+        view.setVisible(true);
+        view.setLocationRelativeTo(null);
+        
+        view.setActionListener(this);
+        view.setKeyListener(this);
     }
     
-    public void btnMasukPerformed (ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); 
+    public  void btnLoginActionPerformed(ActionEvent ae) /*DONE*/{
+        System.out.println("btnLoginPerformed!!!!!");
+        String username = view.getTxtUserName();
+        String pass = view.getTxtPassword();
+        
+        try {
+            Dosen dsn = apk.getDosenByUsername(username);
+            if (dsn.getUsername().equals(username) ){
+                JOptionPane.showMessageDialog(viAdmin, "Pengguna tidak ditemukan", "Login gagal", JOptionPane.ERROR_MESSAGE);
+            } else {
+                if (dsn.getPassword().equals(pass)) {
+                    JOptionPane.showMessageDialog(viAdmin, "Password salah", "Login gagal", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    view.setVisible(false);
+                    new ContrDosen();
+                }
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(view, e.getLocalizedMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
     }
-
+    
+    public void btnLoginMhsActionPerformed (ActionEvent ae) {
+        System.out.println("btnLoginMhsPerformed!!!!!");
+        view.setVisible(false);
+        new ContrLoginMahasiswa();
+    }
+    
+    public void btnLoginAdminActionPerformed (ActionEvent ae) {
+        System.out.println("btnLoginAdminActionPerformed!!!!!");
+        view.setVisible(false);
+        new ContrLoginAdmin();
+    }
+    
     @Override
     public void actionPerformed(ActionEvent e) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (e.getSource().equals(view.getBtnMasuk())) {
+            btnLoginActionPerformed(e);
+        } else if (e.getSource().equals(view.getBtnLoginAdmin())) {
+            btnLoginAdminActionPerformed(e);
+        } else if (e.getSource().equals(view.getBtnLoginMahasiswa())) {
+            btnLoginMhsActionPerformed(e);
+        }
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
-       
+        
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getSource().equals(loginFrame.getBtnMasuk())) {
+        if (e.getSource().equals(view.getTxtPassword())) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-                btnMasukPerformed(null);
+                btnLoginActionPerformed(null);
             }
         }
     }
@@ -55,7 +98,7 @@ public class ContrLoginDosen implements ActionListener, KeyListener {
     public void keyReleased(KeyEvent e) {
         
     }
-    
+
     
     
 }

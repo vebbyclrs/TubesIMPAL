@@ -109,7 +109,7 @@ public class VAdmin extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, message);
     }
     public void showMessageFieldKosong() {
-        JOptionPane.showMessageDialog(null, "Silahkan lengkapi semua field untuk melanjutkan");
+        JOptionPane.showMessageDialog(this, "Silahkan lengkapi semua field untuk melanjutkan", "Field tidak lengkap", 2);
     }
     public JButton getBtnAddMatkul() {
         return btnAddMatkul;
@@ -127,6 +127,37 @@ public class VAdmin extends javax.swing.JFrame {
         return btnDsnAdd;
     }
 
+    public String getTfDsnPassword() {
+        return tfDsnPassword.getText();
+    }
+
+    public void setTfDsnPassword(String tfDsnPassword) {
+        this.tfDsnPassword.setText(tfDsnPassword);
+    }
+
+    public String getTfDsnUsername() {
+        return tfDsnUsername.getText();
+    }
+
+    public void setTfDsnUsername(String tfDsnUsername) {
+        this.tfDsnUsername.setText(tfDsnUsername);
+    }
+
+    public String getTfMhsPassword() {
+        return tfMhsPassword.getText();
+    }
+
+    public void setTfMhsPassword(String tfMhsPassword) {
+        this.tfMhsPassword.setText(tfMhsPassword);
+    }
+
+    public String getTfMhsUsername() {
+        return tfMhsUsername.getText();
+    }
+
+    public void setTfMhsUsername(String tfMhsUsername) {
+        this.tfMhsUsername.setText(tfMhsUsername);
+    }
 
     public JButton getBtnMhsAdd() {
         return btnMhsAdd;
@@ -282,6 +313,10 @@ public class VAdmin extends javax.swing.JFrame {
         tfDsnNoHp = new javax.swing.JTextField();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        tfDsnUsername = new javax.swing.JTextField();
+        tfDsnPassword = new javax.swing.JTextField();
+        jLabel25 = new javax.swing.JLabel();
         Mahasiswa = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblMahasiswa = new javax.swing.JTable();
@@ -301,6 +336,10 @@ public class VAdmin extends javax.swing.JFrame {
         btnMhsAdd = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         tfMhsAlamat = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        tfMhsPassword = new javax.swing.JTextField();
+        jLabel23 = new javax.swing.JLabel();
+        tfMhsUsername = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -445,6 +484,10 @@ public class VAdmin extends javax.swing.JFrame {
 
         jLabel19.setText("Alamat");
 
+        jLabel24.setText("Username");
+
+        jLabel25.setText("Password");
+
         javax.swing.GroupLayout DosenLayout = new javax.swing.GroupLayout(Dosen);
         Dosen.setLayout(DosenLayout);
         DosenLayout.setHorizontalGroup(
@@ -462,7 +505,9 @@ public class VAdmin extends javax.swing.JFrame {
                             .addComponent(jLabel14)
                             .addComponent(jLabel12)
                             .addComponent(jLabel17)
-                            .addComponent(jLabel19))
+                            .addComponent(jLabel19)
+                            .addComponent(jLabel24)
+                            .addComponent(jLabel25))
                         .addGap(115, 115, 115)
                         .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnDsnAdd)
@@ -472,7 +517,9 @@ public class VAdmin extends javax.swing.JFrame {
                             .addComponent(dateDsnBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(tfDsnBirthplace, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
                             .addComponent(tfDsnAlamat)
-                            .addComponent(tfDsnNoHp))))
+                            .addComponent(tfDsnNoHp)
+                            .addComponent(tfDsnUsername)
+                            .addComponent(tfDsnPassword))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         DosenLayout.setVerticalGroup(
@@ -505,6 +552,14 @@ public class VAdmin extends javax.swing.JFrame {
                 .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfDsnNoHp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfDsnUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfDsnPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel25))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel12)
@@ -562,6 +617,10 @@ public class VAdmin extends javax.swing.JFrame {
 
         jLabel20.setText("Alamat");
 
+        jLabel22.setText("Password");
+
+        jLabel23.setText("Username");
+
         javax.swing.GroupLayout MahasiswaLayout = new javax.swing.GroupLayout(Mahasiswa);
         Mahasiswa.setLayout(MahasiswaLayout);
         MahasiswaLayout.setHorizontalGroup(
@@ -579,7 +638,9 @@ public class VAdmin extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel20))
+                    .addComponent(jLabel20)
+                    .addComponent(jLabel22)
+                    .addComponent(jLabel23))
                 .addGap(115, 115, 115)
                 .addGroup(MahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnMhsAdd)
@@ -589,7 +650,9 @@ public class VAdmin extends javax.swing.JFrame {
                     .addComponent(cboxMhsKodeDoswal, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(tfMhsBirthplace)
                     .addComponent(dateMhsBirthday, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(tfMhsAlamat))
+                    .addComponent(tfMhsAlamat)
+                    .addComponent(tfMhsPassword)
+                    .addComponent(tfMhsUsername))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         MahasiswaLayout.setVerticalGroup(
@@ -618,7 +681,15 @@ public class VAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(MahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfMhsAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel20))))
+                            .addComponent(jLabel20))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(MahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfMhsUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(MahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(tfMhsPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel22))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(MahasiswaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel10)
@@ -629,7 +700,7 @@ public class VAdmin extends javax.swing.JFrame {
                     .addComponent(cboxMhsJK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnMhsAdd)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Mahasiswa", Mahasiswa);
@@ -664,38 +735,6 @@ public class VAdmin extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VAdmin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VAdmin().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel Dosen;
@@ -726,6 +765,10 @@ public class VAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -745,11 +788,15 @@ public class VAdmin extends javax.swing.JFrame {
     private javax.swing.JTextField tfDsnKode;
     private javax.swing.JTextField tfDsnNama;
     private javax.swing.JTextField tfDsnNoHp;
+    private javax.swing.JTextField tfDsnPassword;
+    private javax.swing.JTextField tfDsnUsername;
     private javax.swing.JTextField tfMatkulKode;
     private javax.swing.JTextField tfMatkulNama;
     private javax.swing.JTextField tfMhsAlamat;
     private javax.swing.JTextField tfMhsBirthplace;
     private javax.swing.JTextField tfMhsNIM;
     private javax.swing.JTextField tfMhsNama;
+    private javax.swing.JTextField tfMhsPassword;
+    private javax.swing.JTextField tfMhsUsername;
     // End of variables declaration//GEN-END:variables
 }

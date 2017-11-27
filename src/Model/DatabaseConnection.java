@@ -135,10 +135,8 @@ public class DatabaseConnection {
                     + "'"+matkul.getSKS()+"',"
                     + "'"+matkul.getTingkat()+"');";
             System.out.println(query);
-            manipulate(query);
-            if (! berhasil) {
-                throw new IllegalArgumentException("Terjadi kesalahan saat save matkul");
-            }
+            berhasil = manipulate(query);
+            
         } catch (Exception e) {
             e.printStackTrace();
             throw new IllegalArgumentException("Terjadi kesalahan saat save matkul2");
