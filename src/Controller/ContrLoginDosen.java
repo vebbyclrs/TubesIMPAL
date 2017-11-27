@@ -25,6 +25,21 @@ public class ContrLoginDosen implements ActionListener,KeyListener  {
     VLoginMahasiswa viMhs;
 
     public ContrLoginDosen() {
+        
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
         view = new VLoginDosen();
         apk = new Aplikasi();
         view.setVisible(true);

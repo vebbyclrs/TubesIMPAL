@@ -13,6 +13,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -166,6 +167,25 @@ public class DatabaseConnection {
             if (! berhasil) {
                 throw new IllegalArgumentException("Error save Dosen ke DB");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return berhasil;
+    }
+    public boolean saveJadwal (Jadwal j) {
+        boolean berhasil = false;
+        String query = ( "INSERT INTO JADWAL (IDJADWAL, ID_MATKUL,PUKUL,HARI) VALUES ('"
+                    +j.getIdJadwal()+"','"
+                    +j.getMatkul().getKodeMk()+"','"
+                    +j.getPukul()+"','"
+                    +j.getHari()+"');"
+                );
+        try {
+            System.out.println(query);
+            berhasil = manipulate(query);
+            if (! berhasil) {
+                throw new IllegalArgumentException("Error save Dosen ke DB");
+            }            
         } catch (Exception e) {
             e.printStackTrace();
         }

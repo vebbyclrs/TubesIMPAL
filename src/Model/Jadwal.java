@@ -17,17 +17,18 @@ import java.util.ArrayList;
 public class Jadwal {
     private int idJadwal;
     private MataKuliah matkul; 
+    private Time pukul;
+    private String hari;
     /**
      * matkul Bukan array, karena  yang jadi array harusnya si jadwal itu sendiri,
      * Jadi misal ada jadwal1 : Kalkulus jam 9.30 - 11.30 hari selasa, kan matakuliah dalam 1 jadwal cuma 1.
      */
-    private Time pukul;
-    private String hari;
     
-    public Jadwal(int idJadwal, MataKuliah matkul, int jam, int menit, String hari) {
+    
+    public Jadwal(int idJadwal, MataKuliah matkul, Time pukul, String hari) {
         this.idJadwal = idJadwal;
         this.matkul = matkul;
-        this.pukul = new Time(jam, menit, 0);
+        this.pukul = pukul;
         this.hari = hari;
     }
     

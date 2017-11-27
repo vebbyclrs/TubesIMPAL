@@ -56,4 +56,12 @@ public class Cek {
         }
         return full;
     }
+    public boolean vAdmin_Jadwal(VAdmin viAdmin) {
+        boolean full = true;
+        if ((viAdmin.getJadCbHari().getSelectedIndex() == 0)||(viAdmin.getJadCbJam().getSelectedIndex() ==0 )||
+                (viAdmin.getJadCbMenit().getSelectedIndex() == 0) || (viAdmin.getJadTblMatkul().getSelectedRowCount() == 0)){
+            full = false;
+        }
+        return full;
+    }
 }
