@@ -13,7 +13,7 @@ import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.sql.Date;
-import javax.swing.JOptionPane;
+import java.util.ArrayList;
 
 /**
  *
@@ -172,6 +172,7 @@ public class DatabaseConnection {
         }
         return berhasil;
     }
+
     public boolean saveJadwal (Jadwal j) {
         boolean berhasil = false;
         String query = ( "INSERT INTO JADWAL (IDJADWAL, ID_MATKUL,PUKUL,HARI) VALUES ('"
@@ -188,6 +189,23 @@ public class DatabaseConnection {
             }            
         } catch (Exception e) {
             e.printStackTrace();
+        }
+        return berhasil;
+    }
+
+    public boolean saveJadwalDiambil(ArrayList<Jadwal> arrJadwal, long nim){
+        boolean berhasil = false;
+        try {
+            for (Jadwal jadwal : arrJadwal) {
+                String nimm = Long.toString(nim);
+                String takenJadwal = Integer.toString(jadwal.getIdJadwal());
+                String query = "INSERT INTO `taken_schedule`(`NIM`, `IDJADWAL`) "
+                        + "VALUES ("+nimm+","+takenJadwal+");";
+            }
+            berhasil = true;
+        } catch (Exception e) {
+            throw new IllegalArgumentException("Error save jadwal diambil");
+
         }
         return berhasil;
     }

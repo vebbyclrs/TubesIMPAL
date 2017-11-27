@@ -255,6 +255,7 @@ public class Aplikasi {
         return daftarMatkul;
     }
     
+
     public ArrayList<ArrayList<MataKuliah>> loadDaftarMatkulAllTingkattttt() {
         daftarMatkulAllTingkat = new ArrayList<>();
         daftarMatkulAllTingkat.add(new ArrayList<>());
@@ -268,7 +269,8 @@ public class Aplikasi {
         daftarMatkulAllTingkat.set(3, loadMatkulTingkat(3));
         return daftarMatkulAllTingkat;
     }
-    
+
+
     private  ArrayList<MataKuliah> getMatkulFromRS(ResultSet rs){
         try {   
             while (rs.next()) {
@@ -305,4 +307,19 @@ public class Aplikasi {
         }
         return d;
     }
+   public int getSksFromIdMatkul(Object o) {
+       int sks = 0;
+       try {
+           db.connect();
+           String query = "SELECT `SKS` FROM `mata_kuliah` WHERE `ID_MATKUL`="+o;
+           ResultSet rs = db.getData(query);
+           while(rs.next()){
+               sks = rs.getInt("SKS");
+           }
+           
+       } catch (Exception e) {
+           throw new IllegalArgumentException("gagal getSKSFromIdMatkul");
+       }
+       return sks;
+   }
 }
