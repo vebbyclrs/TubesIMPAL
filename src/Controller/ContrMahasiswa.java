@@ -69,12 +69,14 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source.equals(view.getBtnAddT1())) {
-            String temp = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString();
+            String temp = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 2).toString();
             //System.out.println(view.getTblTingkat2().getValueAt(view.getTblTingkat1().getSelectedRow(), 2));
-          //  JumlahSks +=Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
-             mdl.addElement(view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString());
-            view.getListRegMatkulPilihan().setModel(mdl);
-            view.getListAccMatkulPilihan().setModel(mdl);
+            JumlahSks +=getJumlahSKS(temp);
+            String temp2 = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 3).toString();
+            String temp3 = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString();
+            int temp4 = getJumlahSKS(temp);
+             //mdl.addElement(view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString());
+             addList(temp2+"("+temp3+")" + " :" +temp4 +" sks " );
          //   System.out.println(view.getListTingkat1().getSelectedIndex());
           //  showListRegistrasi(daftarRegMatkul, view.getListRegMatkulPilihan());
         } else if (source.equals(view.getBtnAddT2())) {
@@ -109,7 +111,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
             view.getListAccMatkulPilihan().setModel(mdl);
          
         }
-//        view.setTxtTotSKS(Integer.toString(JumlahSks));
+        view.setTxtTotSKS(Integer.toString(JumlahSks));
         
     }
 
@@ -149,7 +151,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
             String[] arrData = {matkul.getNamaMk(),
                 Integer.toString(matkul.getKodeMk()),
                // matkul.getDosen().getNama(),
-                Integer.toString(matkul.getSKS()),
+                Integer.toString(matkul.getKodeMk()),
                 matkul.getNamaMk()};
                 data[i] = arrData;
             }
@@ -166,10 +168,17 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         }
         }
        
+    public void addList(String s){
+        mdl.addElement(s);
+        view.getListAccMatkulPilihan().setModel(mdl);
+        view.getListRegMatkulPilihan().setModel(mdl);
+}
+    public int getJumlahSKS(Object o){
+        int jmlh;
+        jmlh = model.getSksFromIdMatkul(o);
+        
+        return jmlh;
+    } 
     
-    
-    public void showMahasiswa(){
-         //bingung
-         
-    }
+ 
 }

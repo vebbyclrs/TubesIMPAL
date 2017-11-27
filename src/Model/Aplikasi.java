@@ -192,7 +192,8 @@ public class Aplikasi {
         return daftarMatkul;
     }
     
-    private  ArrayList<MataKuliah> getMatkulFromRS(ResultSet rs){
+
+private  ArrayList<MataKuliah> getMatkulFromRS(ResultSet rs){
         try {   
             while (rs.next()) {
                     MataKuliah matkul = new MataKuliah(
