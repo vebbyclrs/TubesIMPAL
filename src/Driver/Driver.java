@@ -16,8 +16,6 @@ public class Driver {
        new ContrLoginMahasiswa();
 //        new ContrMahasiswa1();
 //        new ContrAdmin();
-//            new ContrLoginAdmin();
-//        new ContrLoginAdmin();
         
 
     }
