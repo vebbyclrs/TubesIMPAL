@@ -148,9 +148,8 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="5" rowCount="0">
+                              <Table columnCount="4" rowCount="0">
                                 <Column editable="false" title="Shift" type="java.lang.Object"/>
-                                <Column editable="false" title="Ruangan" type="java.lang.Object"/>
                                 <Column editable="false" title="Kode Mata Kuliah" type="java.lang.Object"/>
                                 <Column editable="false" title="Nama Mata Kuliah" type="java.lang.Object"/>
                                 <Column editable="true" title="Kelas" type="java.lang.Object"/>
@@ -158,11 +157,6 @@
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
@@ -244,9 +238,8 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="5" rowCount="0">
+                              <Table columnCount="4" rowCount="0">
                                 <Column editable="false" title="Shift" type="java.lang.Object"/>
-                                <Column editable="false" title="Ruangan" type="java.lang.Object"/>
                                 <Column editable="false" title="Kode Mata Kuliah" type="java.lang.Object"/>
                                 <Column editable="false" title="Nama Mata Kuliah" type="java.lang.Object"/>
                                 <Column editable="true" title="Kelas" type="java.lang.Object"/>
@@ -254,11 +247,6 @@
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
@@ -340,9 +328,8 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="5" rowCount="0">
+                              <Table columnCount="4" rowCount="0">
                                 <Column editable="false" title="Shift" type="java.lang.Object"/>
-                                <Column editable="false" title="Ruangan" type="java.lang.Object"/>
                                 <Column editable="false" title="Kode Mata Kuliah" type="java.lang.Object"/>
                                 <Column editable="false" title="Nama Mata Kuliah" type="java.lang.Object"/>
                                 <Column editable="true" title="Kelas" type="java.lang.Object"/>
@@ -350,11 +337,6 @@
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
@@ -436,9 +418,8 @@
                               <Color blue="ff" green="ff" red="ff" type="rgb"/>
                             </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="5" rowCount="0">
+                              <Table columnCount="4" rowCount="0">
                                 <Column editable="false" title="Shift" type="java.lang.Object"/>
-                                <Column editable="false" title="Ruangan" type="java.lang.Object"/>
                                 <Column editable="false" title="Kode Mata Kuliah" type="java.lang.Object"/>
                                 <Column editable="false" title="Nama Mata Kuliah" type="java.lang.Object"/>
                                 <Column editable="true" title="Kelas" type="java.lang.Object"/>
@@ -446,11 +427,6 @@
                             </Property>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                                  <Title/>
-                                  <Editor/>
-                                  <Renderer/>
-                                </Column>
                                 <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                                   <Title/>
                                   <Editor/>
@@ -781,32 +757,43 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="txtEmail" max="32767" attributes="0"/>
-                          <Component id="txtName" max="32767" attributes="0"/>
-                          <Component id="txtNIM" pref="168" max="32767" attributes="0"/>
-                          <Component id="cboxJenisK" alignment="0" max="32767" attributes="0"/>
-                          <Component id="txtTptLahir" max="32767" attributes="0"/>
-                          <Component id="txtTglLahir" max="32767" attributes="0"/>
-                          <Component id="txtNoHp" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnTptLahir" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnTglLahir" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnNoHp" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnEmail" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel10" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="txtEmail" max="32767" attributes="0"/>
+                                  <Component id="txtName" max="32767" attributes="0"/>
+                                  <Component id="txtNIM" pref="168" max="32767" attributes="0"/>
+                                  <Component id="cboxJenisK" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txtTptLahir" max="32767" attributes="0"/>
+                                  <Component id="txtTglLahir" max="32767" attributes="0"/>
+                                  <Component id="txtNoHp" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="btnTptLahir" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnTglLahir" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnNoHp" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnEmail" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
+                                  <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
                       <EmptySpace pref="268" max="32767" attributes="0"/>
                   </Group>
@@ -854,7 +841,11 @@
                           <Component id="txtEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnEmail" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="304" max="32767" attributes="0"/>
+                      <EmptySpace min="-2" pref="81" max="-2" attributes="0"/>
+                      <Component id="jLabel15" min="-2" pref="14" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="175" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -973,6 +964,22 @@
             <Component class="javax.swing.JButton" name="btnEmail">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Ganti"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="btnLogout">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Logout"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnLogoutActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel15">
+              <Properties>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="cc" green="0" red="0" type="rgb"/>
+                </Property>
+                <Property name="text" type="java.lang.String" value="Ingin keluar?"/>
               </Properties>
             </Component>
           </SubComponents>

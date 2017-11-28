@@ -38,6 +38,22 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     DefaultListModel mdl = new DefaultListModel();
 
     public ContrMahasiswa() {
+        
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        
         this.model = new Aplikasi();
         view = new VMahasiswa();
         view.setVisible(true);
@@ -62,6 +78,8 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
 //        view.setTxtEmail(mhs.getEmail());
         
     }
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -120,8 +138,11 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
             System.out.println("acc");
             model.saveJadwalTaken(daftarJadwal, 123);
         }
-view.setTxtTotSKS(Integer.toString(JumlahSks));
-        
+        else if (e.getSource().equals(view.getBtnLogout())) {
+            view.setVisible(false);
+            ContrLoginMahasiswa login = new ContrLoginMahasiswa();
+        }
+        view.setTxtTotSKS(Integer.toString(JumlahSks));
     }
 
     @Override

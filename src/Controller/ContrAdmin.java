@@ -6,10 +6,12 @@
 package Controller;
 
 import View.VAdmin;
+import View.VLoginAdmin;
 import Model.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
+import java.sql.Time;
 import java.time.Instant;
 import java.util.ArrayList;
 import javax.swing.JComboBox;
@@ -23,22 +25,41 @@ import javax.swing.table.DefaultTableModel;
 public class ContrAdmin implements ActionListener {
     private VAdmin view;
     private Aplikasi model;
+    private ContrLoginAdmin vlogin;
     private Cek cek = new Cek();
     
     
     public ContrAdmin() {
+        
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        
         this.view = new VAdmin();
         this.model = new Aplikasi();
 //        nextNIM = model.loadMahasiswa().get(model.loadMahasiswa().size()).getNim()+1;
         view.setVisible(true);
         view.setActionListener(this);
         view.setTfMhsNIM(model.nextNIM+"");
+        view.setJadTfIdJadwal(model.nextIDJad+"");
         
         addDosenToTableDosen(model.loadDosen(), view.getTblDosen());
         addDosenToCBox(model.loadDosen(), view.getCboxMatkulKodeDosen());
         addDosenToCBox(model.loadDosen(), view.getCboxMhsKodeDoswal());
         addMahasiswaToTableMhs(model.loadMahasiswa(), view.getTblMahasiswa());
         addMatkulToTableMatkul(model.loadMatkul(), view.getTblMatkul());
+        addMatkulToTableMatkul(model.loadMatkul(), view.getTblJadwalMatkul());
         
     }
     private void addDosenToTableDosen(ArrayList<Dosen> data, JTable table) /**Done*/{ 
@@ -63,7 +84,13 @@ public class ContrAdmin implements ActionListener {
             t.addRow(s);
         }
     }
-    
+    private  void addDosenToCBox(ArrayList<Dosen> data, JComboBox cb)/*DONE*/{
+        cb.removeAllItems();
+        cb.addItem("--Pilih dosen--");
+        for (Dosen dosen : data) {
+            cb.addItem(dosen.getKode());
+        }
+    }
     private void addMahasiswaToTableMhs(ArrayList<Mahasiswa> data, JTable table) {
         DefaultTableModel t = (DefaultTableModel) table.getModel();
 
@@ -85,7 +112,6 @@ public class ContrAdmin implements ActionListener {
             t.addRow(s);
         }
     }
-    
     private void addMatkulToTableMatkul(ArrayList<MataKuliah> data, JTable table) {
         DefaultTableModel t = (DefaultTableModel) table.getModel();
 
@@ -100,6 +126,8 @@ public class ContrAdmin implements ActionListener {
             t.addRow(s);
         }
     }
+    
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
@@ -150,6 +178,7 @@ public class ContrAdmin implements ActionListener {
                     if (model.addMatkul(matkul)) {
                         view.showMessage("Berhasil ditambahkan");
                         addMatkulToTableMatkul(model.loadMatkul(), view.getTblMatkul());
+                        addMatkulToTableMatkul(model.loadMatkul(), view.getTblJadwalMatkul());
 //                        throw new IllegalArgumentException("Belum!");
 
                     } else {
@@ -200,15 +229,65 @@ public class ContrAdmin implements ActionListener {
                 JOptionPane.showMessageDialog(view, ae.getLocalizedMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 ae.printStackTrace();
             }
+        } else if (src.equals(view.getJadBtnAdd())) {
+            int selectedRow = view.getJadTblMatkul().getSelectedRow();
+//            int selectedColumn = view.getJadTblMatkul().getSelectedColumn();
+            System.out.println("Selected Row = "+selectedRow);
+            if (selectedRow == -1) {
+                view.showMessage("Tidak ada matakuliah yang dipilih");
+            } else {
+                try {
+                    MataKuliah m = new MataKuliah(
+                            Integer.parseInt(view.getJadTblMatkul().getValueAt(selectedRow, 0)+""),
+                            view.getJadTblMatkul().getValueAt(selectedRow, 1)+"",
+                            Integer.parseInt(view.getJadTblMatkul().getValueAt(selectedRow, 2)+""),
+                            Integer.parseInt(view.getJadTblMatkul().getValueAt(selectedRow, 4)+"")
+                    );
+                    Dosen d = model.getDosenByKode(Integer.parseInt(view.getJadTblMatkul().getValueAt(selectedRow, 3)+""));
+                    m.setDosen(d);
+                    
+                    Time t = new Time(Integer.parseInt(view.getJadCbJam().getSelectedItem()+""),
+                            Integer.parseInt(view.getJadCbMenit().getSelectedItem()+""),
+                            0);
+                    System.out.println("Time: "+t.getTime());
+   
+                    Jadwal j =new Jadwal(
+                            0,
+                            m,
+                            t,
+                            view.getJadCbHari().getSelectedItem()+"");
+                    
+                    if (model.addJadwal(j)) {
+                        view.showMessage("Jadwal berhasil ditambahkan");
+                        addJadwalToTableJadwal(model.loadJadwal(), view.getJadTblJadwal());
+                        view.setJadTfIdJadwal(model.nextIDJad+"");
+                        view.reset();
+                    }
+                } catch (Exception ae) {
+                    ae.printStackTrace();
+                    JOptionPane.showMessageDialog(view, ae.getLocalizedMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        } else if (e.getSource().equals(view.getBtnLogout())) {
+            view.setVisible(false);
+            vlogin = new ContrLoginAdmin();
+            
         }
         
     }
     
-    public void addDosenToCBox(ArrayList<Dosen> data, JComboBox cb)/*DONE*/{
-        cb.removeAllItems();
-        cb.addItem("--Pilih dosen--");
-        for (Dosen dosen : data) {
-            cb.addItem(dosen.getKode());
+    private  void addJadwalToTableJadwal (ArrayList<Jadwal> listJadwal, JTable table) {
+        DefaultTableModel t = (DefaultTableModel) table.getModel();
+
+        t.setRowCount(0);
+        for (Jadwal j : listJadwal) {
+            String[] s = {
+                j.getIdJadwal()+"",
+                j.getMatkul().getKodeMk()+"",
+                j.getHari(),
+                j.getPukul().toString()                
+            };
+            t.addRow(s);
         }
     }
     
