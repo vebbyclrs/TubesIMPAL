@@ -5,6 +5,11 @@
  */
 package View;
 
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
+import javax.swing.JList;
+import javax.swing.JTextField;
+
 /**
  *
  * @author VebbyClrs
@@ -18,6 +23,119 @@ public class VDosen extends javax.swing.JFrame {
         initComponents();
     }
 
+    public void setActionListener (ActionListener ae) {
+        btnAcc.addActionListener(ae);
+        btnLogout.addActionListener(ae);
+        btnTolak.addActionListener(ae);
+        btnUbah.addActionListener(ae);
+    }
+    
+    public JButton getBtnAcc() {
+        return btnAcc;
+    }
+
+    public void setBtnAcc(JButton btnAcc) {
+        this.btnAcc = btnAcc;
+    }
+
+    public JButton getBtnLogout() {
+        return btnLogout;
+    }
+
+    public void setBtnLogout(JButton btnLogout) {
+        this.btnLogout = btnLogout;
+    }
+
+    public JButton getBtnTolak() {
+        return btnTolak;
+    }
+
+    public void setBtnTolak(JButton btnTolak) {
+        this.btnTolak = btnTolak;
+    }
+
+    public JButton getBtnUbah() {
+        return btnUbah;
+    }
+
+    public void setBtnUbah(JButton btnUbah) {
+        this.btnUbah = btnUbah;
+    }
+
+    public JList<String> getListMahasiswa() {
+        return listMahasiswa;
+    }
+
+    public void setListMahasiswa(JList<String> listMahasiswa) {
+        this.listMahasiswa = listMahasiswa;
+    }
+
+    public JList<String> getListMatkulMhs() {
+        return listMatkulMhs;
+    }
+
+    public void setListMatkulMhs(JList<String> listMatkulMhs) {
+        this.listMatkulMhs = listMatkulMhs;
+    }
+
+    public String getTfAlamat() {
+        return tfAlamat.getText();
+    }
+
+    public void setTfAlamat(String tfAlamat) {
+        this.tfAlamat.setText(tfAlamat);
+    }
+
+    public String getTfIdDosen() {
+        return tfIdDosen.getText();
+    }
+
+    public void setTfIdDosen(String tfIdDosen) {
+        this.tfIdDosen.setText(tfIdDosen);
+    }
+
+    public String getTfJenisKelamin() {
+        return tfJenisKelamin.getText();
+    }
+
+    public void setTfJenisKelamin(String tfJenisKelamin) {
+        this.tfJenisKelamin.setText(tfJenisKelamin);
+    }
+
+    public String getTfNama() {
+        return tfNama.getText();
+    }
+
+    public void setTfNama(String tfNama) {
+        this.tfNama.setText(tfNama);
+    }
+
+    public String getTfNoHp() {
+        return tfNoHp.getText();
+    }
+
+    public void setTfNoHp(String tfNoHp) {
+        this.tfNoHp.setText(tfNoHp);
+    }
+
+    public String getTfTanggalLahir() {
+        return tfTanggalLahir.getText();
+    }
+
+    public void setTfTanggalLahir(String tfTanggalLahir) {
+        this.tfTanggalLahir.setText(tfTanggalLahir);
+    }
+
+    public String getTfUsername() {
+        return tfUsername.getText();
+    }
+
+    public void setTfUsername(String tfUsername) {
+        this.tfUsername.setText(tfUsername);
+    }
+
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,17 +145,205 @@ public class VDosen extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        tfIdDosen = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        tfNama = new javax.swing.JTextField();
+        tfTanggalLahir = new javax.swing.JTextField();
+        tfAlamat = new javax.swing.JTextField();
+        tfJenisKelamin = new javax.swing.JTextField();
+        tfNoHp = new javax.swing.JTextField();
+        tfUsername = new javax.swing.JTextField();
+        btnUbah = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        listMahasiswa = new javax.swing.JList<>();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        listMatkulMhs = new javax.swing.JList<>();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        btnAcc = new javax.swing.JButton();
+        btnTolak = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabel1.setText("ID Dosen");
+
+        tfIdDosen.setEditable(false);
+
+        jLabel2.setText("Nama");
+
+        jLabel3.setText("Tempat / Tanggal Lahir");
+
+        jLabel5.setText("Jenis Kelamin");
+
+        jLabel6.setText("Alamat");
+
+        jLabel7.setText("No HP");
+
+        jLabel8.setText("Username");
+
+        tfNama.setEditable(false);
+
+        tfTanggalLahir.setEditable(false);
+
+        tfJenisKelamin.setEditable(false);
+
+        btnUbah.setText("Ubah");
+
+        btnLogout.setText("Logout");
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(85, 85, 85)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnUbah)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(tfAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfJenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfIdDosen, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfNoHp, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(btnLogout))
+                .addContainerGap(599, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tfIdDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNama, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfTanggalLahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(tfJenisKelamin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(tfAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfNoHp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnUbah)
+                .addGap(38, 38, 38)
+                .addComponent(btnLogout)
+                .addContainerGap(165, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Profil", jPanel2);
+
+        jScrollPane1.setViewportView(listMahasiswa);
+
+        jScrollPane2.setViewportView(listMatkulMhs);
+
+        jLabel9.setText("Mahasiswa yang belum di proses:");
+
+        jLabel10.setText("Pilihan jadwal mata kuliah dari mahasiswa terpilih:");
+
+        btnAcc.setText("ACC");
+
+        btnTolak.setText("Tolak");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(64, 64, 64)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel10)
+                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel11)
+                                .addGap(418, 625, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(142, 142, 142)
+                        .addComponent(btnAcc, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnTolak, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel10))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 412, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnAcc)
+                            .addComponent(btnTolak))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel11)))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Proses Request Mahasiswa", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -47,5 +353,33 @@ public class VDosen extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnAcc;
+    private javax.swing.JButton btnLogout;
+    private javax.swing.JButton btnTolak;
+    private javax.swing.JButton btnUbah;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JList<String> listMahasiswa;
+    private javax.swing.JList<String> listMatkulMhs;
+    private javax.swing.JTextField tfAlamat;
+    private javax.swing.JTextField tfIdDosen;
+    private javax.swing.JTextField tfJenisKelamin;
+    private javax.swing.JTextField tfNama;
+    private javax.swing.JTextField tfNoHp;
+    private javax.swing.JTextField tfTanggalLahir;
+    private javax.swing.JTextField tfUsername;
     // End of variables declaration//GEN-END:variables
 }

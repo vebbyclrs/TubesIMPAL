@@ -80,6 +80,8 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
 //        view.setTxtEmail(mhs.getEmail());
         
     }
+    
+    
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -131,8 +133,11 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
             view.getListAccMatkulPilihan().setModel(mdl);
          
         }
+        else if (e.getSource().equals(view.getBtnLogout())) {
+            view.setVisible(false);
+            ContrLoginMahasiswa login = new ContrLoginMahasiswa();
+        }
         view.setTxtTotSKS(Integer.toString(JumlahSks));
-        
     }
 
     @Override
