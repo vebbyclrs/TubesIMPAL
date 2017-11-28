@@ -26,6 +26,21 @@ public class ContrLoginAdmin implements ActionListener,KeyListener  {
     ContrLoginMahasiswa loginMhsContr;
 
     public ContrLoginAdmin() {
+        
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Windows".equals(info.getName()))
+                {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
         view = new VLoginAdmin();
         apk = new Aplikasi();
         view.setVisible(true);
@@ -87,7 +102,7 @@ public class ContrLoginAdmin implements ActionListener,KeyListener  {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getSource().equals(view.getTxtPassword())) {
+        if ((e.getSource().equals(view.getTxtPassword())) || (e.getSource().equals(view.getTxtUserName()))) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 btnLoginActionPerformed(null);
             }

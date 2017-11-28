@@ -30,12 +30,11 @@ public class ContrAdmin implements ActionListener {
     
     
     public ContrAdmin() {
-        
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
             {
-                if ("Nimbus".equals(info.getName()))
+                if ("Windows".equals(info.getName()))
                 {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
@@ -45,7 +44,6 @@ public class ContrAdmin implements ActionListener {
         {
             ex.printStackTrace();
         }
-        
         this.view = new VAdmin();
         this.model = new Aplikasi();
 //        nextNIM = model.loadMahasiswa().get(model.loadMahasiswa().size()).getNim()+1;
@@ -143,7 +141,9 @@ public class ContrAdmin implements ActionListener {
                     d.setIsMale(view.getCboxDsnJK().getSelectedIndex());
                     d.setAlamat(view.getTfDsnAlamat());
                     d.setNoHp(Long.parseLong(view.getTfDsnNoHp()));
-
+                    d.setUsername(view.getTfDsnUsername());
+                    d.setPassword(view.getTfDsnPassword());
+                    
                     if (model.addDosen(d)) {
                         view.showMessage("Berhasil ditambahkan");
                         addDosenToTableDosen(model.loadDosen(), view.getTblDosen());
@@ -180,6 +180,7 @@ public class ContrAdmin implements ActionListener {
                         addMatkulToTableMatkul(model.loadMatkul(), view.getTblMatkul());
                         addMatkulToTableMatkul(model.loadMatkul(), view.getTblJadwalMatkul());
 //                        throw new IllegalArgumentException("Belum!");
+                        view.reset();
 
                     } else {
                         view.showMessage("Gagal menyimpan mata kuliah");
@@ -211,6 +212,8 @@ public class ContrAdmin implements ActionListener {
                     mhs.setIsMale(view.getCboxMhsJK().getSelectedIndex());
                     mhs.setTempatLahir(view.getTfMhsBirthplace());
                     mhs.setAlamat(view.getTfMhsAlamat());
+                    mhs.setPassword(view.getTfMhsPassword());
+                    mhs.setUsername(view.getTfMhsUsername());
                     
                     Dosen dosen = model.getDosenByKode(Integer.parseInt(view.getCboxMhsKodeDoswal().getSelectedItem().toString()));
                     System.out.println(dosen.getKode());

@@ -159,7 +159,8 @@ public class VAdmin extends javax.swing.JFrame {
         setCboxMhsJKIndex(0);
         setCboxMhsKodeDoswal(0);
         setDateMhsBirthday(getDateMhsBirthday());
-        
+        setTfKodeMatkul("");
+        setTfNamaMatkul("");
 //        setTfMhsNIM(ContrAdmin.nextNIM);
     }
 
@@ -555,7 +556,7 @@ public class VAdmin extends javax.swing.JFrame {
                     .addComponent(cboxMatkulKodeDosen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnAddMatkul)
-                .addContainerGap(113, Short.MAX_VALUE))
+                .addContainerGap(143, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Mata Kuliah", Dosen1);
@@ -635,7 +636,7 @@ public class VAdmin extends javax.swing.JFrame {
                             .addComponent(tfDsnNoHp)
                             .addComponent(tfDsnUsername)
                             .addComponent(tfDsnPassword))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(732, Short.MAX_VALUE))
         );
         DosenLayout.setVerticalGroup(
             DosenLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -944,10 +945,10 @@ public class VAdmin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel29)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(86, 86, 86)
-                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE))))
+                        .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE))))
         );
 
         jTabbedPane2.addTab("Jadwal", jPanel1);
@@ -971,7 +972,7 @@ public class VAdmin extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(251, Short.MAX_VALUE)
+                .addContainerGap(281, Short.MAX_VALUE)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(246, 246, 246))
         );
@@ -989,7 +990,7 @@ public class VAdmin extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 568, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2)
         );
 
         pack();

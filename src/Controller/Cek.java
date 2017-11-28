@@ -22,9 +22,25 @@ public class Cek {
                 viAdmin.getTfMhsAlamat().equals("") ||
                 viAdmin.getTfMhsBirthplace().equals("")||
                 viAdmin.getCboxMhsKodeDoswal().getSelectedIndex() == 0 ||
-                viAdmin.getCboxMhsJK().getSelectedIndex() == 0) {
+                viAdmin.getCboxMhsJK().getSelectedIndex() == 0||
+                viAdmin.getTfMhsPassword().equals("") || viAdmin.getTfMhsUsername().equals("")){
+//            System.out.println((viAdmin.getTfMhsNama()));
+//            System.out.println((viAdmin.getTfMhsAlamat()));
+//            System.out.println((viAdmin.getTfMhsBirthplace()));
+//            System.out.println((viAdmin.getCboxMhsKodeDoswal()));
+//            System.out.println((viAdmin.getCboxMhsJK().getSelectedIndex()));
+//            System.out.println((viAdmin.getTfMhsPassword()));
+//            System.out.println((viAdmin.getTfMhsUsername()));
             full = false;
         }
+        System.out.println((viAdmin.getTfMhsNama()));
+            System.out.println((viAdmin.getTfMhsAlamat()));
+            System.out.println((viAdmin.getTfMhsBirthplace()));
+            System.out.println((viAdmin.getCboxMhsKodeDoswal()));
+            System.out.println((viAdmin.getCboxMhsJK().getSelectedIndex()));
+            System.out.println((viAdmin.getTfMhsPassword()));
+            System.out.println((viAdmin.getTfMhsUsername()));
+            full = false;
         return full;
     }
     public boolean vAdmin_Dosen(VAdmin viAdmin) {
@@ -37,7 +53,8 @@ public class Cek {
                 viAdmin.getTfDsnBirthplace().equals("") ||
                 viAdmin.getTfDsnAlamat().equals("")||
                 viAdmin.getTfDsnNoHp().equals("")||
-                viAdmin.getCboxDsnJK().getSelectedIndex() == 0) {
+                viAdmin.getCboxDsnJK().getSelectedIndex() == 0||
+                viAdmin.getTfDsnUsername().equals("") || viAdmin.getTfDsnPassword().equals("")) {
             full = false;
         }
         return full;

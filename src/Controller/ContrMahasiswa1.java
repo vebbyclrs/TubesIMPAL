@@ -16,6 +16,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.JTable;
@@ -30,13 +31,13 @@ public class ContrMahasiswa1 implements ActionListener, KeyListener, ListSelecti
     Aplikasi model;
     VMahasiswa view;
 
-    public ContrMahasiswa1() {
+    public ContrMahasiswa1(Mahasiswa m) {
         
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
             {
-                if ("Nimbus".equals(info.getName()))
+                if ("Windows".equals(info.getName()))
                 {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
@@ -53,13 +54,14 @@ public class ContrMahasiswa1 implements ActionListener, KeyListener, ListSelecti
         view.addListener(this);
         
         view.getTblTingkat1().removeAll();
-        addMatkulToTableMatkul(model.loadMatkulTingkat(1), view.getTblTingkat1());
-        addMatkulToTableMatkul(model.loadMatkulTingkat(2), view.getTblTingkat2());
-        addMatkulToTableMatkul(model.loadMatkulTingkat(3), view.getTblTingkat3());
-        addMatkulToTableMatkul(model.loadMatkulTingkat(4), view.getTblTingkat4());
         
+        showProfileTab(m);
         
-        
+        addJadwalToTableMatkul(model.loadJadwalTingkat(1), view.getTblTingkat1());
+        addJadwalToTableMatkul(model.loadJadwalTingkat(2), view.getTblTingkat2());
+        addJadwalToTableMatkul(model.loadJadwalTingkat(3), view.getTblTingkat3());
+        addJadwalToTableMatkul(model.loadJadwalTingkat(4), view.getTblTingkat4());
+      
     }
     
     
@@ -69,9 +71,38 @@ public class ContrMahasiswa1 implements ActionListener, KeyListener, ListSelecti
     @Override
     public void actionPerformed(ActionEvent e) {
         Object src = e.getSource();
+        if (src.equals(view.getBtnAddT1())) {
+            if (view.getTblTingkat1().getSelectedRow() == -1) {
+                view.showMessage("Tidak ada jadwal yang dipilih");
+            } else {
+                Jadwal j = model.getJadwalById(Integer.parseInt(view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0)+""));
+                /**
+                 * belom kelar
+                 */
+            }
+            
+        }
+        else if (src.equals(view.getBtnLogout())) {
+            view.setVisible(false);
+            ContrLoginMahasiswa clogin= new ContrLoginMahasiswa();
+        }
         
     }
 
+    public void showProfileTab(Mahasiswa mhs){
+        view.setTxtName(mhs.getNama());
+        view.setTxtNIM(Long.toString(mhs.getNim()));
+        view.setTxtTptLahir(mhs.getTempatLahir());
+        view.setTxtTglLahir(mhs.getTanggalLahir().toString());
+        view.setTxtNoHp(Long.toString(mhs.getNoHp()));
+        view.setTxtEmail(mhs.getUsername());
+        if (mhs.IsMale() == 1) {
+            view.getTfJK().setText("Laki-Laki");
+        }else {
+            view.getTfJK().setText("Perempuan");
+        }
+    }
+    
     @Override
     public void keyTyped(KeyEvent e) {
         
@@ -92,28 +123,30 @@ public class ContrMahasiswa1 implements ActionListener, KeyListener, ListSelecti
         
     }
 
-    private void addMatkulToTableMatkul(ArrayList<MataKuliah> data, JTable table) {
+    private void addJadwalToTableMatkul(ArrayList<Jadwal> data, JTable table) {
         DefaultTableModel t = (DefaultTableModel) table.getModel();
 
         t.setRowCount(0);
-        for (MataKuliah m : data) {
-            String[] s = {""+m.getKodeMk()
-                    , m.getNamaMk()
-                    , m.getSKS()+""
-                    , m.getDosen().getKode()+""
-                    ,m.getTingkat()+""
-            };
-            System.out.println(s[0]);
-            t.addRow(s);
+        
+        for (Jadwal j : data) {
+            System.out.println(j.getMatkul().getKodeMk());
+            String[] s = {
+                j.getIdJadwal()+"",
+                j.getHari()+" "+j.getPukul(),
+                j.getMatkul().getKodeMk()+"",
+                j.getMatkul().getNamaMk(),
+                j.getMatkul().getDosen().getNama() +" ("+ j.getMatkul().getDosen().getKode()+")"};
+            t.addRow(s);   
+            System.out.println(s[2]);
         }
     }
     
-    private void refreshAllTableMatkul(){
-        addMatkulToTableMatkul(model.loadDaftarMatkulAllTingkattttt().get(0), view.getTblTingkat1());
-        addMatkulToTableMatkul(model.loadDaftarMatkulAllTingkattttt().get(1), view.getTblTingkat2());
-        addMatkulToTableMatkul(model.loadDaftarMatkulAllTingkattttt().get(2), view.getTblTingkat3());
-        addMatkulToTableMatkul(model.loadDaftarMatkulAllTingkattttt().get(3), view.getTblTingkat4());
-    }
+//    private void refreshAllTableMatkul(){
+//        addMatkulToTableMatkul(model.loadDaftarMatkulAllTingkattttt().get(0), view.getTblTingkat1());
+//        addMatkulToTableMatkul(model.loadDaftarMatkulAllTingkattttt().get(1), view.getTblTingkat2());
+//        addMatkulToTableMatkul(model.loadDaftarMatkulAllTingkattttt().get(2), view.getTblTingkat3());
+//        addMatkulToTableMatkul(model.loadDaftarMatkulAllTingkattttt().get(3), view.getTblTingkat4());
+//    }
         
 //       //tabeltingkat.removeAll();
 ////list.removeAll() 

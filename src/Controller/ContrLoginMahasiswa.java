@@ -22,17 +22,17 @@ public class ContrLoginMahasiswa implements ActionListener, KeyListener{
 
     private VLoginMahasiswa view;
     private Aplikasi model;
-    private ContrMahasiswa selfContr;
+    private ContrMahasiswa1 selfContr;
     ContrLoginDosen loginDosen;
     ContrLoginAdmin loginAdmin;
 
     public ContrLoginMahasiswa() {
         
-        try
+       try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
             {
-                if ("Nimbus".equals(info.getName()))
+                if ("Windows".equals(info.getName()))
                 {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
@@ -77,13 +77,15 @@ public class ContrLoginMahasiswa implements ActionListener, KeyListener{
                     view.showMessage("Password salah");
                 } else {
                     view.setVisible(false);
-                    selfContr = new ContrMahasiswa();
+                    selfContr = new ContrMahasiswa1(m);
                 }
             }
         } catch (Exception ae) {
             ae.printStackTrace();
         }
     }
+    
+    
     public void btnLoginDosenActionPerformed(ActionEvent ae) {
         System.out.println("btnLoginDosen pressed on Mahasiswa Login");
         view.setVisible(false);
@@ -102,7 +104,7 @@ public class ContrLoginMahasiswa implements ActionListener, KeyListener{
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (e.getSource().equals(view.getBtnMasuk())) {
+        if ((e.getSource().equals(view.getTxtPassword()))||e.getSource().equals(view.getTxtUserName())) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 btnMasukPerformed(null);
             }

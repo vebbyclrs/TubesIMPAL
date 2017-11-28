@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.event.ListSelectionListener;
@@ -42,7 +43,9 @@ public class VMahasiswa extends javax.swing.JFrame {
         btnTptLahir.addActionListener(e);
         btnLogout.addActionListener(e);
     }
-    
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(null,message);
+    }
     public JButton getBtnAddT1() {
         return btnAddT1;
     }
@@ -141,13 +144,15 @@ public class VMahasiswa extends javax.swing.JFrame {
         this.btnTptLahir = btnTptLahir;
     }
 
-    public JComboBox<String> getCboxJenisK() {
-        return cboxJenisK;
+    public JTextField getTfJK() {
+        return tfJK;
     }
 
-    public void setCboxJenisK(JComboBox<String> cboxJenisK) {
-        this.cboxJenisK = cboxJenisK;
+    public void setTfJK(JTextField tfJK) {
+        this.tfJK = tfJK;
     }
+
+    
 
     public JList<String> getListAccMatkulPilihan() {
         return listAccMatkulPilihan;
@@ -345,7 +350,6 @@ public class VMahasiswa extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
         txtNIM = new javax.swing.JTextField();
-        cboxJenisK = new javax.swing.JComboBox<>();
         txtTptLahir = new javax.swing.JTextField();
         txtTglLahir = new javax.swing.JTextField();
         btnTptLahir = new javax.swing.JButton();
@@ -358,6 +362,7 @@ public class VMahasiswa extends javax.swing.JFrame {
         btnEmail = new javax.swing.JButton();
         btnLogout = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
+        tfJK = new javax.swing.JTextField();
 
         jScrollPane1.setViewportView(jTextPane1);
 
@@ -369,11 +374,11 @@ public class VMahasiswa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+                "ID Jadwal", "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Dosen"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -381,6 +386,9 @@ public class VMahasiswa extends javax.swing.JFrame {
             }
         });
         jScrollPane8.setViewportView(tblTingkat1);
+        if (tblTingkat1.getColumnModel().getColumnCount() > 0) {
+            tblTingkat1.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         btnAddT1.setText("Add");
 
@@ -411,11 +419,11 @@ public class VMahasiswa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+                "ID Jadwal", "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Dosen"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -423,6 +431,9 @@ public class VMahasiswa extends javax.swing.JFrame {
             }
         });
         jScrollPane10.setViewportView(tblTingkat2);
+        if (tblTingkat2.getColumnModel().getColumnCount() > 0) {
+            tblTingkat2.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         btnAddT2.setText("Add");
 
@@ -453,11 +464,11 @@ public class VMahasiswa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+                "ID Jadwal", "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Dosen"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -465,6 +476,9 @@ public class VMahasiswa extends javax.swing.JFrame {
             }
         });
         jScrollPane9.setViewportView(tblTingkat3);
+        if (tblTingkat3.getColumnModel().getColumnCount() > 0) {
+            tblTingkat3.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         btnAddT3.setText("Add");
 
@@ -495,11 +509,11 @@ public class VMahasiswa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+                "IDJadwal", "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Dosen"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, true
+                false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -507,6 +521,9 @@ public class VMahasiswa extends javax.swing.JFrame {
             }
         });
         jScrollPane11.setViewportView(tblTingkat4);
+        if (tblTingkat4.getColumnModel().getColumnCount() > 0) {
+            tblTingkat4.getColumnModel().getColumn(0).setMaxWidth(0);
+        }
 
         btnAddT4.setText("Add");
 
@@ -741,8 +758,6 @@ public class VMahasiswa extends javax.swing.JFrame {
             }
         });
 
-        cboxJenisK.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pilih Jenis Kelamin", "Perempuan", "Laki-Laki" }));
-
         txtTptLahir.setEditable(false);
         txtTptLahir.setText("Your Birthplace");
 
@@ -785,6 +800,9 @@ public class VMahasiswa extends javax.swing.JFrame {
         jLabel15.setForeground(new java.awt.Color(0, 0, 204));
         jLabel15.setText("Ingin keluar?");
 
+        tfJK.setEditable(false);
+        tfJK.setText("Your Sex");
+
         javax.swing.GroupLayout ProfilLayout = new javax.swing.GroupLayout(Profil);
         Profil.setLayout(ProfilLayout);
         ProfilLayout.setHorizontalGroup(
@@ -806,10 +824,10 @@ public class VMahasiswa extends javax.swing.JFrame {
                             .addComponent(txtEmail)
                             .addComponent(txtName)
                             .addComponent(txtNIM, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                            .addComponent(cboxJenisK, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(txtTptLahir)
                             .addComponent(txtTglLahir)
-                            .addComponent(txtNoHp))
+                            .addComponent(txtNoHp)
+                            .addComponent(tfJK))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnTptLahir)
@@ -837,7 +855,7 @@ public class VMahasiswa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(cboxJenisK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfJK, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTptLahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -940,7 +958,6 @@ public class VMahasiswa extends javax.swing.JFrame {
     private javax.swing.JButton btnRequestACC;
     private javax.swing.JButton btnTglLahir;
     private javax.swing.JButton btnTptLahir;
-    private javax.swing.JComboBox<String> cboxJenisK;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -976,6 +993,7 @@ public class VMahasiswa extends javax.swing.JFrame {
     private javax.swing.JTable tblTingkat2;
     private javax.swing.JTable tblTingkat3;
     private javax.swing.JTable tblTingkat4;
+    private javax.swing.JTextField tfJK;
     private javax.swing.JTextField txtCKDoswal;
     private javax.swing.JTextField txtCKNama;
     private javax.swing.JTextField txtCKNim;

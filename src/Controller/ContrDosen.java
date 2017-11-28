@@ -14,6 +14,28 @@ import java.awt.event.ActionListener;
  */
 public class ContrDosen implements ActionListener{
 
+    
+
+    public ContrDosen() {
+        
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Windows".equals(info.getName()))
+                {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+        
+        
+     
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
