@@ -350,6 +350,7 @@ public class Aplikasi {
         daftarJadwal = new ArrayList<Jadwal>();
         try {
             for (MataKuliah matakuliah : daftarMatkul) {
+                
                 String query = "select * from jadwal where id_matkul=" + matakuliah.getKodeMk() + ";";
                 ResultSet rs = db.getData(query);
 
@@ -377,12 +378,16 @@ public class Aplikasi {
                 if (jadwal.getMatkul().getKodeMk() == id_matkul){
                     jdwl = jadwal;
                 }
+                jadwal.getIdJadwal();
                 
             }
         } catch (Exception e) {
             throw new IllegalArgumentException("gagal getJadwal");
         }
+        
         return jdwl;
     }
-
+    public void saveJadwalTaken(ArrayList<Jadwal> jadwal, long nim){
+        System.out.println(2222);
+    }
 }

@@ -60,10 +60,8 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         view.addListener(this);
         
         view.getTblTingkat1().removeAll();
-        showListTingkat(model.loadMatkulTingkat(1),view.getTblTingkat1());
-        showListTingkat(model.loadMatkulTingkat(2), view.getTblTingkat2());
-        showListTingkat(model.loadMatkulTingkat(3), view.getTblTingkat3());
-        showListTingkat(model.loadMatkulTingkat(4), view.getTblTingkat4());    
+        showListTingkat();
+          
         
         /*Tab Cetak KSM*/
 //        view.setTxtCKNama(mhs.getNama());
@@ -87,29 +85,27 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source.equals(view.getBtnAddT1())) {
-            String kodeMK = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 2).toString();
-            //System.out.println(view.getTblTingkat2().getValueAt(view.getTblTingkat1().getSelectedRow(), 2));
+            String kodeMK = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 2).toString();      
             JumlahSks +=getJumlahSKS(kodeMK);
             String namaMK = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 3).toString();
-            String shift = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString();
-            
-            int sks = getJumlahSKS(kodeMK);
-             //mdl.addElement(view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString());
+            String shift = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString();           
+            int sks = getJumlahSKS(kodeMK);           
              addList(namaMK+"("+shift+")" + " :" +sks +" sks , kode : "+kodeMK );
-             
-             daftarJadwal.add(model.getJadwal(Integer.parseInt(kodeMK)));
-             System.out.println(daftarJadwal.size());
+             System.out.println(model.getJadwal(1).getMatkul().getNamaMk());
+            daftarJadwal.add(model.getJadwal(Integer.parseInt(kodeMK)));
+             //System.out.println(daftarJadwal.get(1));
          //   System.out.println(view.getListTingkat1().getSelectedIndex());
           //  showListRegistrasi(daftarRegMatkul, view.getListRegMatkulPilihan());
         } else if (source.equals(view.getBtnAddT2())) {
-            System.out.println("2");
-           // String temp = view.getListTingkat2().getSelectedValue().toString();
-            //this.JumlahSks += Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
-            //mdl.addElement(view.getListTingkat2().getSelectedValue().toString());
-           // view.getListRegMatkulPilihan().setModel(mdl);
-           // view.getListAccMatkulPilihan().setModel(mdl);
-           // System.out.println(view.getListTingkat1().getSelectedIndex());
-          //  showListRegistrasi(daftarRegMatkul, view.getListRegMatkulPilihan());
+          String kodeMK = view.getTblTingkat2().getValueAt(view.getTblTingkat2().getSelectedRow(), 2).toString();      
+            JumlahSks +=getJumlahSKS(kodeMK);
+            String namaMK = view.getTblTingkat2().getValueAt(view.getTblTingkat1().getSelectedRow(), 3).toString();
+            String shift = view.getTblTingkat2().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString();           
+            int sks = getJumlahSKS(kodeMK);           
+             addList(namaMK+"("+shift+")" + " :" +sks +" sks , kode : "+kodeMK );
+             System.out.println(model.getJadwal(2).getMatkul().getNamaMk());
+             daftarJadwal.add(model.getJadwal(Integer.parseInt(kodeMK)));  System.out.println("2");
+             
         } else if (source.equals(view.getBtnAddT3())){          
         //    String temp = view.getListTingkat3().getSelectedValue().toString();
          //   this.JumlahSks += Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
@@ -126,12 +122,21 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
             //view.getListAccMatkulPilihan().setModel(mdl);
             //showListRegistrasi(daftarRegMatkul, view.getListRegMatkulPilihan());
         } else if(source.equals(view.getBtnRemove())){
-            String temp = view.getListRegMatkulPilihan().getSelectedValue().toString();
-           // this.JumlahSks -= Integer.parseInt(temp.substring((temp.length()-2),(temp.length()-1)));
-            mdl.remove(view.getListRegMatkulPilihan().getSelectedIndex());
+           
+           int index = view.getListRegMatkulPilihan().getSelectedIndex();
+           this.JumlahSks -= daftarJadwal.get(index).getMatkul().getSKS();
+           mdl.remove(view.getListRegMatkulPilihan().getSelectedIndex());
+           
+           
             view.getListRegMatkulPilihan().setModel(mdl);
-            view.getListAccMatkulPilihan().setModel(mdl);
-         
+            view.getListAccMatkulPilihan().setModel(mdl); 
+            removeDaftarJadwal(index);
+            
+            //System.out.println(daftarJadwal.size());
+            
+        }else if (source.equals(view.getBtnRequestACC())){
+            System.out.println("acc");
+            model.saveJadwalTaken(daftarJadwal, 123);
         }
         else if (e.getSource().equals(view.getBtnLogout())) {
             view.setVisible(false);
@@ -204,6 +209,98 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         
         return jmlh;
     } 
+    void removeDaftarJadwal(int index){
+        System.out.println(daftarJadwal.get(index).getMatkul().getNamaMk());
+        daftarJadwal.remove(index);
+        System.out.println(daftarJadwal.size());
+    }
     
- 
+ public void showListTingkat() {
+       ArrayList<Jadwal> daftarJadwalFull = new ArrayList<>();
+       daftarJadwalFull = model.loadJadwal();
+        try {
+            
+       String[] columnNames = {"Hari",
+                        "Pukul",
+                        "Kode Mata Kuliah",
+                        "Nama Mata Kuliah"
+                        }; 
+       
+       
+       int intTingkat1 = 0;
+       int intTingkat2 = 0;
+       int intTingkat3 = 0;
+       int intTingkat4 = 0;
+       
+       int counter1 = 0;
+       int counter2 = 0;
+       int counter3 = 0;
+       int counter4 = 0;
+            for (Jadwal jadwal : daftarJadwalFull) {
+                if(jadwal.getMatkul().getTingkat()==1){
+                    counter1++;
+                }else if (jadwal.getMatkul().getTingkat()==2){
+                    counter2++;
+                }else if (jadwal.getMatkul().getTingkat()==3){
+                    counter3++;
+                }else if (jadwal.getMatkul().getTingkat()==4){
+                    counter4++;
+                }
+                
+            }
+                    
+       Object[][] data1 = new Object [counter1][4];
+       Object[][] data2 = new Object [counter2][4];
+       Object[][] data3 = new Object [counter3][4];
+       Object[][] data4 = new Object [counter4][4];
+       
+        for (Jadwal jadwal : daftarJadwalFull) {
+                if(jadwal.getMatkul().getTingkat()==1){
+                    String[] arrData = {jadwal.getHari(),
+                    jadwal.getPukul().toString(),
+                    Integer.toString(jadwal.getMatkul().getKodeMk()),
+                    jadwal.getMatkul().getNamaMk(),};
+                    data1[intTingkat1] = arrData;
+                    intTingkat1++;
+                }else if (jadwal.getMatkul().getTingkat()==2){
+                    String[] arrData = {jadwal.getHari(),
+                    jadwal.getPukul().toString(),
+                    Integer.toString(jadwal.getMatkul().getKodeMk()),
+                    jadwal.getMatkul().getNamaMk(),};
+                    data2[intTingkat2] = arrData;
+                    intTingkat2++;
+                }else if (jadwal.getMatkul().getTingkat()==3){
+                    String[] arrData = {jadwal.getHari(),
+                    jadwal.getPukul().toString(),
+                    Integer.toString(jadwal.getMatkul().getKodeMk()),
+                    jadwal.getMatkul().getNamaMk(),};
+                    data3[intTingkat3] = arrData;
+                    intTingkat3++;
+                }else if (jadwal.getMatkul().getTingkat()==4){
+                    String[] arrData = {jadwal.getHari(),
+                    jadwal.getPukul().toString(),
+                    Integer.toString(jadwal.getMatkul().getKodeMk()),
+                    jadwal.getMatkul().getNamaMk(),};
+                    data4[intTingkat4] = arrData;
+                    intTingkat4++;
+                }
+            }
+        DefaultTableModel tabel1 = new DefaultTableModel(data1, columnNames);
+        DefaultTableModel tabel2 = new DefaultTableModel(data2, columnNames);
+        DefaultTableModel tabel3 = new DefaultTableModel(data3, columnNames);
+        DefaultTableModel tabel4 = new DefaultTableModel(data4, columnNames);
+        view.getTblTingkat1().setModel(tabel1);
+        view.getTblTingkat2().setModel(tabel2);
+        view.getTblTingkat3().setModel(tabel3);
+        view.getTblTingkat4().setModel(tabel4);
+
+            
+           // tabeltingkat.setModel(model);
+          //  dataList[i] = matkul.getKodeMk() + ":" + matkul.getNamaMk() + " (" + matkul.getSKS() + ")";
+          //  list.setListData(dataList);
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog( null,"Belum terdapat mata kuliah pada DB","Null database", 1);
+        }
+        }
 }
