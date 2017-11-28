@@ -31,6 +31,9 @@ public class Jadwal {
         this.pukul = pukul;
         this.hari = hari;
     }
+
+    public Jadwal() {
+    }
     
     public int getIdJadwal() {
         return idJadwal;

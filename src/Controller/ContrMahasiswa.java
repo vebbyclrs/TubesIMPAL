@@ -37,13 +37,12 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     ArrayList<Jadwal> daftarJadwal = new ArrayList<Jadwal>();
     DefaultListModel mdl = new DefaultListModel();
 
-    public ContrMahasiswa() {
-        
+    public ContrMahasiswa(Mahasiswa mhs) {
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
             {
-                if ("Nimbus".equals(info.getName()))
+                if ("Windows".equals(info.getName()))
                 {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
@@ -53,7 +52,6 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         {
             ex.printStackTrace();
         }
-        
         this.model = new Aplikasi();
         view = new VMahasiswa();
         view.setVisible(true);
@@ -70,12 +68,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         //view.setTxtCKStatusReg();
         
         /*Tab Profil*/
-//        view.setTxtName(mhs.getNama());
-//        view.setTxtNIM(Long.toString(mhs.getNim()));
-//        view.setTxtTptLahir(mhs.getTempatLahir());
-//        view.setTxtTglLahir(mhs.getTanggalLahir().toString());
-//        view.setTxtNoHp(Long.toString(mhs.getNoHp()));
-//        view.setTxtEmail(mhs.getEmail());
+        showProfileTab(mhs);
         
     }
     
@@ -198,6 +191,22 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         }
         }
        
+    
+    
+    public void showProfileTab(Mahasiswa mhs){
+        view.setTxtName(mhs.getNama());
+        view.setTxtNIM(Long.toString(mhs.getNim()));
+        view.setTxtTptLahir(mhs.getTempatLahir());
+        view.setTxtTglLahir(mhs.getTanggalLahir().toString());
+        view.setTxtNoHp(Long.toString(mhs.getNoHp()));
+        view.setTxtEmail(mhs.getUsername());
+        if (mhs.IsMale() == 1) {
+            view.getTfJK().setText("Laki-Laki");
+        }else {
+            view.getTfJK().setText("Perempuan");
+        }
+    }
+    
     public void addList(String s){
         mdl.addElement(s);
         view.getListAccMatkulPilihan().setModel(mdl);

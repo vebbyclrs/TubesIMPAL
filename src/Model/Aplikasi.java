@@ -21,7 +21,7 @@ public class Aplikasi {
     ArrayList<Jadwal> daftarJadwal;
     
     ArrayList<Admin> daftarAdmin;
-    ArrayList<ArrayList<MataKuliah>> daftarMatkulAllTingkat;
+    ArrayList<ArrayList<Jadwal>> daftarJadwalAllTingkat;
     DatabaseConnection db;
     public static long nextNIM;
 
@@ -36,9 +36,9 @@ public class Aplikasi {
         daftarMatkul = loadMatkul();
 
         daftarJadwal = loadJadwal();
-        daftarMatkulAllTingkat = loadDaftarMatkulAllTingkattttt();
+//        daftarJadwalAllTingkat();
         /**
-         * LOAD DULU SI DAFTARMATKULTINGKAT
+         * LOAD DULU SI daftarJadwalAllTingkat
          */
         //        System.out.println(daftarMahasiswa.get(daftarMahasiswa.size()-1))
         
@@ -91,6 +91,15 @@ public class Aplikasi {
 
         db.disconnect();
         return daftarAdmin;
+    }
+    public Jadwal getJadwalById(int id) {
+        Jadwal j = new Jadwal();
+        for (Jadwal jadwal : daftarJadwal) {
+            if (jadwal.getIdJadwal() == id) {
+                return j;
+            }
+        }
+        return j;
     }
 
     public ArrayList<Dosen> loadDosen() /*DONE*/ {
@@ -166,6 +175,34 @@ public class Aplikasi {
         }
         return daftarJadwal;
     }
+    public ArrayList<ArrayList<Jadwal>> loadJadwalAllTingkat() {
+        db.connect();
+        daftarJadwalAllTingkat = new ArrayList<>();
+        daftarJadwalAllTingkat.add(new ArrayList<>());
+        daftarJadwalAllTingkat.add(new ArrayList<>());
+        daftarJadwalAllTingkat.add(new ArrayList<>());
+        daftarJadwalAllTingkat.add(new ArrayList<>());
+        
+        daftarJadwalAllTingkat.set(0, loadJadwalTingkat(1));
+        daftarJadwalAllTingkat.set(1, loadJadwalTingkat(2));
+        daftarJadwalAllTingkat.set(2, loadJadwalTingkat(3));
+        daftarJadwalAllTingkat.set(3, loadJadwalTingkat(4));
+        
+        db.disconnect();
+        return daftarJadwalAllTingkat;
+        
+    }
+    
+    public ArrayList<Jadwal> loadJadwalTingkat(int tingkat) {
+        ArrayList<Jadwal> tmp = new ArrayList<>();
+        for (Jadwal jd : daftarJadwal) {
+            if (jd.getMatkul().getTingkat() == tingkat) {
+                tmp.add(jd);
+            }
+        }
+        return tmp;
+    }
+    
     public Dosen getDosenByKode(int kodeDosen)/*DONE*/ {
         Dosen d = null;
         for (Dosen dosen : daftarDosen) {
@@ -268,6 +305,21 @@ public class Aplikasi {
     public ArrayList<MataKuliah> loadMataKuliah(int tingkat) /*DONE*/ {
         daftarMatkul = new ArrayList<MataKuliah>();
         db.connect();
+
+
+//    public ArrayList<ArrayList<MataKuliah>> loadDaftarMatkulAllTingkattttt() {
+//        daftarMatkulAllTingkat = new ArrayList<>();
+//        daftarMatkulAllTingkat.add(new ArrayList<>());
+//        daftarMatkulAllTingkat.add(new ArrayList<>());
+//        daftarMatkulAllTingkat.add(new ArrayList<>());
+//        daftarMatkulAllTingkat.add(new ArrayList<>());
+//        
+//        daftarMatkulAllTingkat.set(0, loadMatkulTingkat(0));
+//        daftarMatkulAllTingkat.set(1, loadMatkulTingkat(1));
+//        daftarMatkulAllTingkat.set(2, loadMatkulTingkat(2));
+//        daftarMatkulAllTingkat.set(3, loadMatkulTingkat(3));
+//        return daftarMatkulAllTingkat;
+//    }
 
         String query = "select ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS,Tingkat from mata_kuliah where tingkat ='" + tingkat + "';";
         ResultSet rs = db.getData(query);

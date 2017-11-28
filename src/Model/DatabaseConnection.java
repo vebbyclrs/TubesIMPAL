@@ -94,7 +94,7 @@ public class DatabaseConnection {
         boolean berhasil = false;
         try {
             String query = "insert into Mahasiswa ( ID_DOSEN,NAMA,IS_MALE,TANGGAL_LAHIR,"
-                    + "TEMPAT_LAHIR,ALAMAT,NO_HP,ANGKATAN,STATUS_PEMBAYARAN,TOTAL_SKS)"
+                    + "TEMPAT_LAHIR,ALAMAT,NO_HP,ANGKATAN,STATUS_PEMBAYARAN,TOTAL_SKS,EMAIL,PASSWORD)"
                     + "values ("
 //                    + "'"+ m.getNim()+"'"
                     + "'"+ m.getDosenWali().getKode() + "'"
@@ -106,7 +106,9 @@ public class DatabaseConnection {
                     + m.getNoHp()+"','"
                     + m.getAngkatan() +"','"
                     + m.isStatusPembayaran()+"','"
-                    + m.getTotalSKS()+"');";
+                    + m.getTotalSKS()+"','"
+                    + m.getUsername()+"','"
+                    + m.getPassword()+"');";
             System.out.println(query);
 //            manipulate(query);
             sta.execute(query,Statement.RETURN_GENERATED_KEYS);
@@ -155,14 +157,16 @@ public class DatabaseConnection {
 //            java.sql.Date dateDosen2 = (Date)d.getTglLahir(); //Cannot be cast
             System.out.println("dateDosen: "+dateDosen);
 //            System.out.println("dateDosen2: "+dateDosen2);
-            String query = "insert into DOSEN (ID_DOSEN,NAMA,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,ISMALE,NO_HP) values ('"
+            String query = "insert into DOSEN (ID_DOSEN,NAMA,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,ISMALE,NO_HP,EMAIL,PASSWORD) values ('"
                     +d.getKode()+ "','"
                     +d.getNama()+"','"
                     +dateDosen+"','"
                     +d.getTempatLahir()+"','"
                     +d.getAlamat()+"','"
                     +d.getIsMale()+"','"
-                    +d.getNoHp()+"');";
+                    +d.getNoHp()+"','"
+                    +d.getUsername()+"','"
+                    +d.getPassword()+"');";
             berhasil = manipulate(query);
             if (! berhasil) {
                 throw new IllegalArgumentException("Error save Dosen ke DB");
