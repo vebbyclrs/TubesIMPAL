@@ -27,6 +27,22 @@ public class ContrLoginMahasiswa implements ActionListener, KeyListener{
     ContrLoginAdmin loginAdmin;
 
     public ContrLoginMahasiswa() {
+        
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+            {
+                if ("Nimbus".equals(info.getName()))
+                {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        
         model = new Aplikasi();
         view = new VLoginMahasiswa();
         view.setVisible(true);

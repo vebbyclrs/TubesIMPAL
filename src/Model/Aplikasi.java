@@ -19,9 +19,14 @@ public class Aplikasi {
     ArrayList<Dosen> daftarDosen;
     ArrayList<MataKuliah> daftarMatkul;
     ArrayList<Jadwal> daftarJadwal;
+    
     ArrayList<Admin> daftarAdmin;
+    ArrayList<ArrayList<MataKuliah>> daftarMatkulAllTingkat;
     DatabaseConnection db;
     public static long nextNIM;
+
+    public static long nextIDJad;
+    
 
     public Aplikasi() {
         db = new DatabaseConnection();
@@ -29,11 +34,16 @@ public class Aplikasi {
         daftarDosen = loadDosen();
         daftarMahasiswa = loadMahasiswa();
         daftarMatkul = loadMatkul();
-        System.out.println(daftarMahasiswa.get(daftarMahasiswa.size() - 1));
 
+        daftarJadwal = loadJadwal();
+        daftarMatkulAllTingkat = loadDaftarMatkulAllTingkattttt();
+        /**
+         * LOAD DULU SI DAFTARMATKULTINGKAT
+         */
+        //        System.out.println(daftarMahasiswa.get(daftarMahasiswa.size()-1))
+        
         //load semua array
     }
-
     public ArrayList<Mahasiswa> loadMahasiswa() /*DONE*/ {
         daftarMahasiswa = new ArrayList<Mahasiswa>();
         db.connect();
@@ -49,7 +59,13 @@ public class Aplikasi {
                         rs.getString("password"));
                 daftarMahasiswa.add(m);
             }
-            nextNIM = (daftarMahasiswa.get(daftarMahasiswa.size() - 1).getNim()) + 1;
+
+            if (daftarMahasiswa.size()!=0) {
+                nextNIM = (daftarMahasiswa.get(daftarMahasiswa.size()-1).getNim())+1;
+            } else {
+                nextNIM =0;
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
             throw new IllegalArgumentException("terjadi kesalahan saat load mahasiswa");
@@ -119,11 +135,37 @@ public class Aplikasi {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        daftarMatkul = getMatkulFromRS(rs);
+//        daftarMatkul = getMatkulFromRS(rs);
         db.disconnect();
         return daftarMatkul;
     }
 
+    public ArrayList<Jadwal> loadJadwal() {
+        db.connect();
+        daftarJadwal = new ArrayList<>();
+        String query = "Select * from JADWAL;";
+        try {
+            ResultSet rs = db.getData(query);
+            while (rs.next()) {
+                MataKuliah m = getMatkulById(rs.getInt("ID_MATKUL"));
+                Jadwal jd = new Jadwal(
+                        rs.getInt("IDJADWAL"), 
+                        m, 
+                        rs.getTime("PUKUL"), 
+                        rs.getString("HARI"));
+                daftarJadwal.add(jd);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        db.disconnect();
+        if (daftarJadwal.size()!=0) {
+            nextIDJad = (daftarJadwal.get(daftarJadwal.size()-1).getIdJadwal())+1;    
+        } else {
+            nextNIM =0;
+        }
+        return daftarJadwal;
+    }
     public Dosen getDosenByKode(int kodeDosen)/*DONE*/ {
         Dosen d = null;
         for (Dosen dosen : daftarDosen) {
@@ -136,7 +178,16 @@ public class Aplikasi {
 
     }
 
-    public boolean addDosen(Dosen d) /*DONE*/ {
+    public MataKuliah getMatkulById(int kode) {
+        MataKuliah m = null;
+        for (MataKuliah mm : daftarMatkul) {
+            if (mm.getKodeMk() == kode) {
+                m = mm;
+            }
+        }
+        return m;
+    }
+    public boolean addDosen(Dosen d) /*DONE*/{
         //on working-VEB
         db.connect();
         boolean berhasil = db.saveDosen(d);
@@ -160,8 +211,22 @@ public class Aplikasi {
 
     }
 
-    public boolean addMahasiswa(Mahasiswa m)/*DONE*/ {
+    public boolean addJadwal(Jadwal j) {
         boolean berhasil = false;
+        try {
+            db.connect();
+            berhasil = db.saveJadwal(j);
+            System.out.println("addJadwal" + berhasil);
+            daftarJadwal.add(j);
+            db.disconnect();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return berhasil;
+    }
+    public boolean addMahasiswa (Mahasiswa m)/*DONE*/ {
+          boolean berhasil = false;
+
 //          try {
         db.connect();
         berhasil = db.saveMahasiswa(m);
@@ -185,6 +250,21 @@ public class Aplikasi {
 
     }
 
+    
+    public  ArrayList<MataKuliah> loadMatkulTingkat(int tingkat) /*DONE*/ {
+        daftarMatkul = new ArrayList<MataKuliah>();
+        db.connect();
+        try {
+            String query = "select * from mata_kuliah where tingkat ='"+tingkat+"';";
+            ResultSet rs = db.getData(query);
+            daftarMatkul = getMatkulFromRS(rs);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        db.disconnect();
+        return daftarMatkul;
+    }
+  
     public ArrayList<MataKuliah> loadMataKuliah(int tingkat) /*DONE*/ {
         daftarMatkul = new ArrayList<MataKuliah>();
         db.connect();
@@ -192,12 +272,25 @@ public class Aplikasi {
         String query = "select ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS,Tingkat from mata_kuliah where tingkat ='" + tingkat + "';";
         ResultSet rs = db.getData(query);
         daftarMatkul = getMatkulFromRS(rs);
-        db.disconnect();
-        return daftarMatkul;
+      
+
+    public ArrayList<ArrayList<MataKuliah>> loadDaftarMatkulAllTingkattttt() {
+        daftarMatkulAllTingkat = new ArrayList<>();
+        daftarMatkulAllTingkat.add(new ArrayList<>());
+        daftarMatkulAllTingkat.add(new ArrayList<>());
+        daftarMatkulAllTingkat.add(new ArrayList<>());
+        daftarMatkulAllTingkat.add(new ArrayList<>());
+        
+        daftarMatkulAllTingkat.set(0, loadMatkulTingkat(0));
+        daftarMatkulAllTingkat.set(1, loadMatkulTingkat(1));
+        daftarMatkulAllTingkat.set(2, loadMatkulTingkat(2));
+        daftarMatkulAllTingkat.set(3, loadMatkulTingkat(3));
+        return daftarMatkulAllTingkat;
     }
 
-    private ArrayList<MataKuliah> getMatkulFromRS(ResultSet rs) {
-        try {
+
+    private  ArrayList<MataKuliah> getMatkulFromRS(ResultSet rs){
+        try {   
             while (rs.next()) {
                 MataKuliah matkul = new MataKuliah(
                         rs.getInt("ID_MATKUL"),

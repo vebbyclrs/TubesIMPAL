@@ -345,6 +345,8 @@ public class VMahasiswa extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         txtEmail = new javax.swing.JTextField();
         btnEmail = new javax.swing.JButton();
+        btnLogout = new javax.swing.JButton();
+        jLabel15 = new javax.swing.JLabel();
 
         jScrollPane1.setViewportView(jTextPane1);
 
@@ -762,35 +764,47 @@ public class VMahasiswa extends javax.swing.JFrame {
 
         btnEmail.setText("Ganti");
 
+        btnLogout.setText("Logout");
+
+        jLabel15.setForeground(new java.awt.Color(0, 0, 204));
+        jLabel15.setText("Ingin keluar?");
+
         javax.swing.GroupLayout ProfilLayout = new javax.swing.GroupLayout(Profil);
         Profil.setLayout(ProfilLayout);
         ProfilLayout.setHorizontalGroup(
             ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ProfilLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11))
-                .addGap(79, 79, 79)
-                .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtEmail)
-                    .addComponent(txtName)
-                    .addComponent(txtNIM, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
-                    .addComponent(cboxJenisK, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtTptLahir)
-                    .addComponent(txtTglLahir)
-                    .addComponent(txtNoHp))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnTptLahir)
-                    .addComponent(btnTglLahir)
-                    .addComponent(btnNoHp)
-                    .addComponent(btnEmail))
+                    .addGroup(ProfilLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10)
+                            .addComponent(jLabel11))
+                        .addGap(79, 79, 79)
+                        .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtEmail)
+                            .addComponent(txtName)
+                            .addComponent(txtNIM, javax.swing.GroupLayout.DEFAULT_SIZE, 168, Short.MAX_VALUE)
+                            .addComponent(cboxJenisK, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtTptLahir)
+                            .addComponent(txtTglLahir)
+                            .addComponent(txtNoHp))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnTptLahir)
+                            .addComponent(btnTglLahir)
+                            .addComponent(btnNoHp)
+                            .addComponent(btnEmail)))
+                    .addGroup(ProfilLayout.createSequentialGroup()
+                        .addGap(272, 272, 272)
+                        .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(btnLogout))))
                 .addContainerGap(268, Short.MAX_VALUE))
         );
         ProfilLayout.setVerticalGroup(
@@ -828,7 +842,11 @@ public class VMahasiswa extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnEmail))
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addGap(81, 81, 81)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnLogout)
+                .addContainerGap(175, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Profil", Profil);
@@ -896,6 +914,7 @@ public class VMahasiswa extends javax.swing.JFrame {
     private javax.swing.JButton btnAddT4;
     private javax.swing.JButton btnCetakKSM;
     private javax.swing.JButton btnEmail;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnNoHp;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnRequestACC;
@@ -908,6 +927,7 @@ public class VMahasiswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
