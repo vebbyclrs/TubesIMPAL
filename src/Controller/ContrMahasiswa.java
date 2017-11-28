@@ -217,7 +217,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     
  public void showListTingkat() {
        ArrayList<Jadwal> daftarJadwalFull = new ArrayList<>();
-       daftarJadwalFull = model.loadJadwal();
+       daftarJadwalFull = model.loadJadwalObject();
         try {
             
        String[] columnNames = {"Hari",

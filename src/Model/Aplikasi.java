@@ -272,8 +272,8 @@ public class Aplikasi {
         String query = "select ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS,Tingkat from mata_kuliah where tingkat ='" + tingkat + "';";
         ResultSet rs = db.getData(query);
         daftarMatkul = getMatkulFromRS(rs);
-      
-
+      return daftarMatkul;
+    }
     public ArrayList<ArrayList<MataKuliah>> loadDaftarMatkulAllTingkattttt() {
         daftarMatkulAllTingkat = new ArrayList<>();
         daftarMatkulAllTingkat.add(new ArrayList<>());
@@ -344,7 +344,7 @@ public class Aplikasi {
         return sks;
     }
 
-    public ArrayList<Jadwal> loadJadwal() {
+    public ArrayList<Jadwal> loadJadwalObject() {
         daftarMatkul = loadMatkul();
         db.connect();
         daftarJadwal = new ArrayList<Jadwal>();
@@ -359,7 +359,7 @@ public class Aplikasi {
                     int id = rs.getInt("IDJADWAL");
                     int jam = Integer.parseInt(rs.getString("PUKUL").substring(0, 2));
                     int menit = Integer.parseInt(rs.getString("PUKUL").substring(3, 5));
-                    Jadwal jadwal = new Jadwal(id, matakuliah, jam, menit, hari);
+                    Jadwal jadwal = new Jadwal(id, matakuliah,rs.getTime("PUKUL"), hari);
                     daftarJadwal.add(jadwal);
 
                 }
@@ -388,6 +388,9 @@ public class Aplikasi {
         return jdwl;
     }
     public void saveJadwalTaken(ArrayList<Jadwal> jadwal, long nim){
-        System.out.println(2222);
+        boolean berhasil = false;
+        System.out.println(berhasil);
+        berhasil = db.saveJadwalDiambil(jadwal, nim);
+        System.out.println(berhasil);
     }
 }
