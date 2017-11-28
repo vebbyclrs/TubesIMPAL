@@ -6,6 +6,7 @@
 package Controller;
 
 import View.VAdmin;
+import View.VLoginAdmin;
 import Model.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -24,6 +25,7 @@ import javax.swing.table.DefaultTableModel;
 public class ContrAdmin implements ActionListener {
     private VAdmin view;
     private Aplikasi model;
+    private ContrLoginAdmin vlogin;
     private Cek cek = new Cek();
     
     
@@ -266,6 +268,10 @@ public class ContrAdmin implements ActionListener {
                     JOptionPane.showMessageDialog(view, ae.getLocalizedMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
                 }
             }
+        } else if (e.getSource().equals(view.getBtnLogout())) {
+            view.setVisible(false);
+            vlogin = new ContrLoginAdmin();
+            
         }
         
     }

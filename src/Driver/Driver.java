@@ -14,7 +14,7 @@ import Controller.*;
 public class Driver {
     public static void main(String[] args) {
 //       new ContrLoginMahasiswa();
-        new ContrMahasiswa1();
+        new ContrMahasiswa();
 //        new ContrAdmin();
 //        new ContrLoginAdmin();
         

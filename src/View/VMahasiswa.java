@@ -40,12 +40,23 @@ public class VMahasiswa extends javax.swing.JFrame {
         btnRequestACC.addActionListener(e);
         btnTglLahir.addActionListener(e);
         btnTptLahir.addActionListener(e);
+        btnLogout.addActionListener(e);
     }
     
     public JButton getBtnAddT1() {
         return btnAddT1;
     }
 
+    public JButton getBtnLogout() {
+        return btnLogout;
+    }
+
+    public void setBtnLogout(JButton btnLogout) {
+        this.btnLogout = btnLogout;
+    }
+
+    
+    
     public void setBtnAddT1(JButton btnAddT1) {
         this.btnAddT1 = btnAddT1;
     }
@@ -358,11 +369,11 @@ public class VMahasiswa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Shift", "Ruangan", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+                "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -400,11 +411,11 @@ public class VMahasiswa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Shift", "Ruangan", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+                "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -442,11 +453,11 @@ public class VMahasiswa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Shift", "Ruangan", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+                "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -484,11 +495,11 @@ public class VMahasiswa extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Shift", "Ruangan", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
+                "Shift", "Kode Mata Kuliah", "Nama Mata Kuliah", "Kelas"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -765,6 +776,11 @@ public class VMahasiswa extends javax.swing.JFrame {
         btnEmail.setText("Ganti");
 
         btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
 
         jLabel15.setForeground(new java.awt.Color(0, 0, 204));
         jLabel15.setText("Ingin keluar?");
@@ -898,6 +914,10 @@ public class VMahasiswa extends javax.swing.JFrame {
     private void txtCKNamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCKNamaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCKNamaActionPerformed
+
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogoutActionPerformed
 
     /**
      * @param args the command line arguments

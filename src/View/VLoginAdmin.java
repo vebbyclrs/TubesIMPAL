@@ -30,6 +30,7 @@ public class VLoginAdmin extends javax.swing.JFrame {
         btnLoginMhs.addActionListener(ae);
         System.out.println("nambah action listener");
         btnMasuk.addActionListener(ae);
+        
     }
 
     public void setKeyListener(KeyListener kl){

@@ -33,6 +33,15 @@ public class VAdmin extends javax.swing.JFrame {
         btnDsnAdd.addActionListener(e);
         btnMhsAdd.addActionListener(e);
         jadBtnAdd.addActionListener(e);
+        btnLogout.addActionListener(e);
+    }
+
+    public void setBtnLogout(JButton btnLogout) {
+        this.btnLogout = btnLogout;
+    }
+
+    public JButton getBtnLogout() {
+        return btnLogout;
     }
 
     public void setCboxMhsJKIndex(int idx) {
@@ -422,6 +431,8 @@ public class VAdmin extends javax.swing.JFrame {
         jadCbJam = new javax.swing.JComboBox<>();
         jadCbMenit = new javax.swing.JComboBox<>();
         jLabel29 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        btnLogout = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -941,6 +952,32 @@ public class VAdmin extends javax.swing.JFrame {
 
         jTabbedPane2.addTab("Jadwal", jPanel1);
 
+        btnLogout.setText("Logout");
+        btnLogout.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLogoutActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(464, 464, 464)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(536, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(251, Short.MAX_VALUE)
+                .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(246, 246, 246))
+        );
+
+        jTabbedPane2.addTab("Logout", jPanel3);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -966,6 +1003,10 @@ public class VAdmin extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cboxMatkulTingkatActionPerformed
 
+    private void btnLogoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogoutActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLogoutActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -976,6 +1017,7 @@ public class VAdmin extends javax.swing.JFrame {
     private javax.swing.JPanel Mahasiswa;
     private javax.swing.JButton btnAddMatkul;
     private javax.swing.JButton btnDsnAdd;
+    private javax.swing.JButton btnLogout;
     private javax.swing.JButton btnMhsAdd;
     private javax.swing.JComboBox<String> cboxDsnJK;
     private javax.swing.JComboBox<String> cboxMatkulKodeDosen;
@@ -1016,6 +1058,7 @@ public class VAdmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
