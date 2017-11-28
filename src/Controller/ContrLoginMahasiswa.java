@@ -22,7 +22,7 @@ public class ContrLoginMahasiswa implements ActionListener, KeyListener{
 
     private VLoginMahasiswa view;
     private Aplikasi model;
-    private ContrMahasiswa1 selfContr;
+    private ContrMahasiswa selfContr;
     ContrLoginDosen loginDosen;
     ContrLoginAdmin loginAdmin;
 
@@ -77,7 +77,7 @@ public class ContrLoginMahasiswa implements ActionListener, KeyListener{
                     view.showMessage("Password salah");
                 } else {
                     view.setVisible(false);
-                    selfContr = new ContrMahasiswa1(m);
+                    selfContr = new ContrMahasiswa(m);
                 }
             }
         } catch (Exception ae) {
