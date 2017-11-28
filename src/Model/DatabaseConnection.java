@@ -196,13 +196,14 @@ public class DatabaseConnection {
     public boolean saveJadwalDiambil(ArrayList<Jadwal> arrJadwal, long nim){
         boolean berhasil = false;
         try {
+            connect();
             for (Jadwal jadwal : arrJadwal) {
                 String nimm = Long.toString(nim);
                 String takenJadwal = Integer.toString(jadwal.getIdJadwal());
-                String query = "INSERT INTO `taken_schedule`(`NIM`, `IDJADWAL`) "
-                        + "VALUES ("+nimm+","+takenJadwal+");";
+                String query = "INSERT INTO `taken_schedule`(`NIM`, `IDJADWAL`) VALUES ("+nimm+","+takenJadwal+");";
+                System.out.println(query);
+                berhasil = manipulate(query);
             }
-            berhasil = true;
         } catch (Exception e) {
             throw new IllegalArgumentException("Error save jadwal diambil");
 
