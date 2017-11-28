@@ -34,7 +34,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     Aplikasi model;
     VMahasiswa view;
     int JumlahSks = 0;
-    ArrayList<MataKuliah> daftarRegMatkul;
+    ArrayList<Jadwal> daftarJadwal = new ArrayList<Jadwal>();
     DefaultListModel mdl = new DefaultListModel();
 
     public ContrMahasiswa() {
@@ -85,14 +85,18 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     public void actionPerformed(ActionEvent e) {
         Object source = e.getSource();
         if (source.equals(view.getBtnAddT1())) {
-            String temp = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 2).toString();
+            String kodeMK = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 2).toString();
             //System.out.println(view.getTblTingkat2().getValueAt(view.getTblTingkat1().getSelectedRow(), 2));
-            JumlahSks +=getJumlahSKS(temp);
-            String temp2 = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 3).toString();
-            String temp3 = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString();
-            int temp4 = getJumlahSKS(temp);
+            JumlahSks +=getJumlahSKS(kodeMK);
+            String namaMK = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 3).toString();
+            String shift = view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString();
+            
+            int sks = getJumlahSKS(kodeMK);
              //mdl.addElement(view.getTblTingkat1().getValueAt(view.getTblTingkat1().getSelectedRow(), 0).toString());
-             addList(temp2+"("+temp3+")" + " :" +temp4 +" sks " );
+             addList(namaMK+"("+shift+")" + " :" +sks +" sks , kode : "+kodeMK );
+             
+             daftarJadwal.add(model.getJadwal(Integer.parseInt(kodeMK)));
+             System.out.println(daftarJadwal.size());
          //   System.out.println(view.getListTingkat1().getSelectedIndex());
           //  showListRegistrasi(daftarRegMatkul, view.getListRegMatkulPilihan());
         } else if (source.equals(view.getBtnAddT2())) {
