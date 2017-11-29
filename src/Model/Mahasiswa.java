@@ -26,7 +26,7 @@ public class Mahasiswa {
     private long noHp;
     private int angkatan;
     private int statusPembayaran;
-    private Dosen dosenWali;
+    private Dosen dosenWali = new Dosen();
     private ArrayList<Jadwal> jadwal;
     private String username;
     private String password;
@@ -63,7 +63,7 @@ public class Mahasiswa {
         this.noHp = noHp;
         this.angkatan = angkatan;
         this.statusPembayaran = statusPembayaran;
-//        this.dosenWali.setKode(dosenWali);
+        this.dosenWali.setKode(dosenWali);
         this.username = username;
         this.password = password;
     }

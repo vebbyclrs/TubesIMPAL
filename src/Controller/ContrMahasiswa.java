@@ -62,7 +62,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         // view.setTxtCKDoswal(mhs.getDosenWali().getNama());
         //view.setTxtCKStatusReg();
         /*Tab Profil*/
-        showProfileTab(m);
+        showProfileTab(mhs);
 
     }
 
@@ -211,6 +211,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
     }
 
     public void showProfileTab(Mahasiswa mhs) {
+        mhs.setDosenWali(model.getDosenByKode(mhs.getDosenWali().getKode()));
         view.setTxtName(mhs.getNama());
         view.setTxtNIM(Long.toString(mhs.getNim()));
         view.setTxtTptLahir(mhs.getTempatLahir());
@@ -219,6 +220,7 @@ public class ContrMahasiswa implements ActionListener, KeyListener, ListSelectio
         view.setTxtEmail(mhs.getUsername());
         view.setTxtCKNama(mhs.getNama());
         view.setTxtCKNim(Long.toString(mhs.getNim()));
+        view.setTxtCKDoswal(mhs.getDosenWali().getNama());
         view.setTxtCKDoswal(mhs.getDosenWali().getNama());
         if(mhs.isStatusPembayaran()==1){
             view.setTxtCKStatusReg("Sudah ");
