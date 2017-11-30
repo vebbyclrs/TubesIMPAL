@@ -104,8 +104,8 @@ public class Aplikasi {
 
     public ArrayList<Dosen> loadDosen() /*DONE*/ {
         db.connect();
-        daftarDosen = new ArrayList<>();
-        ResultSet rs = db.getData("select ID_DOSEN,NAMA,TANGGAL_LAHIR,TEMPAT_LAHIR,ALAMAT,ISMALE,NO_HP from DOSEN");
+        daftarDosen = new ArrayList<Dosen>();
+        ResultSet rs = db.getData("select * from DOSEN");
         try {
             while (rs.next()) {
 //                java.util.Date date = new java.util.Date();
@@ -115,13 +115,17 @@ public class Aplikasi {
                         rs.getString("TEMPAT_LAHIR"),
                         rs.getString("ALAMAT"),
                         rs.getInt("ISMALE"),
-                        rs.getLong("NO_HP"));
+                        rs.getLong("NO_HP"),
+                        rs.getString("EMAIL"),
+                        rs.getString("PASSWORD"));
                 daftarDosen.add(d);
             }
         } catch (Exception e) {
+            throw new IllegalArgumentException("Error loadDosen()");
         }
         db.disconnect();
         return daftarDosen;
+        
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -371,10 +375,12 @@ public class Aplikasi {
     }
 
     public Dosen getDosenByUsername(String username) {
+        
         Dosen d = null;
         for (Dosen dosen : daftarDosen) {
-            if (dosen.getUsername().equals(username)) {
-                d = dosen;
+            if (dosen.getEmail().equals(username) ) {
+                d=dosen;
+                System.out.println("masukDosenUsername");
             }
         }
         return d;

@@ -51,22 +51,25 @@ public class ContrLoginDosen implements ActionListener,KeyListener  {
     
     public  void btnLoginActionPerformed(ActionEvent ae) /*DONE*/{
         System.out.println("btnLoginPerformed!!!!!");
-        String username = view.getTxtUserName();
+        String email = view.getTxtUserName();
         String pass = view.getTxtPassword();
         
         try {
-            Dosen dsn = apk.getDosenByUsername(username);
-            if (dsn.getUsername().equals(username) ){
+            Dosen dsn = apk.getDosenByUsername(email);
+            System.out.println("password:"+dsn.getAlamat());
+            if (dsn.equals(null)){
                 JOptionPane.showMessageDialog(viAdmin, "Pengguna tidak ditemukan", "Login gagal", JOptionPane.ERROR_MESSAGE);
             } else {
                 if (dsn.getPassword().equals(pass)) {
-                    JOptionPane.showMessageDialog(viAdmin, "Password salah", "Login gagal", JOptionPane.ERROR_MESSAGE);
-                } else {
-                    view.setVisible(false);
+                   view.setVisible(false);
                     new ContrDosen();
+                } else {
+                     JOptionPane.showMessageDialog(viAdmin, "Password salah", "Login gagal", JOptionPane.ERROR_MESSAGE);
+
                 }
             }
         } catch (Exception e) {
+            //throw new IllegalArgumentException("gagal Masuk");
             JOptionPane.showMessageDialog(view, e.getLocalizedMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
