@@ -24,8 +24,9 @@ public class Dosen {
     private long noHp;
     private String username;
     private String password;
+    private String email;
 
-    public Dosen(int kode, String nama, Date tglLahir, String tempatLahir, String alamat, int isMale, long noHp) {
+    public Dosen(int kode, String nama, Date tglLahir, String tempatLahir, String alamat, int isMale, long noHp, String email, String password) {
         this.kode = kode;
         this.nama = nama;
         this.tglLahir = tglLahir;
@@ -33,6 +34,8 @@ public class Dosen {
         this.alamat = alamat;
         this.isMale = isMale;
         this.noHp = noHp;
+        this.email = email;
+        this.password = password;
     }
 
     public Dosen() {
@@ -113,6 +116,14 @@ public class Dosen {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
     
 }

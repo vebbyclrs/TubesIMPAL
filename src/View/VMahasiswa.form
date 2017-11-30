@@ -805,8 +805,6 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="btnTptLahir" min="-2" max="-2" attributes="0"/>
-                                  <Component id="btnTglLahir" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnNoHp" min="-2" max="-2" attributes="0"/>
                                   <Component id="btnEmail" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -845,13 +843,11 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtTptLahir" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnTptLahir" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="txtTglLahir" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnTglLahir" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -869,7 +865,7 @@
                       <Component id="jLabel15" min="-2" pref="14" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="btnLogout" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="175" max="32767" attributes="0"/>
+                      <EmptySpace pref="181" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -928,16 +924,6 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="text" type="java.lang.String" value="Your Birthday"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnTptLahir">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ganti"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="btnTglLahir">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Ganti"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
