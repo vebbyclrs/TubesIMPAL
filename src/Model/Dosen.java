@@ -25,7 +25,7 @@ public class Dosen {
     private String username;
     private String password;
 
-    public Dosen(int kode, String nama, Date tglLahir, String tempatLahir, String alamat, int isMale, long noHp) {
+    public Dosen(int kode, String nama, Date tglLahir, String tempatLahir, String alamat, int isMale, long noHp,String username, String password) {
         this.kode = kode;
         this.nama = nama;
         this.tglLahir = tglLahir;
@@ -33,6 +33,8 @@ public class Dosen {
         this.alamat = alamat;
         this.isMale = isMale;
         this.noHp = noHp;
+        this.username = username;
+        this.password = password;
     }
 
     public Dosen() {

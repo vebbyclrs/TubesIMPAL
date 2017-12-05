@@ -53,17 +53,21 @@ public class ContrLoginDosen implements ActionListener,KeyListener  {
         System.out.println("btnLoginPerformed!!!!!");
         String username = view.getTxtUserName();
         String pass = view.getTxtPassword();
+//        System.out.println( username);
+//        System.out.println( pass);
         
         try {
             Dosen dsn = apk.getDosenByUsername(username);
-            if (dsn.getUsername().equals(username) ){
+//            System.out.println(dsn.getKode());
+//            System.out.println(dsn.getUsername());
+            if (dsn == null ){
                 JOptionPane.showMessageDialog(viAdmin, "Pengguna tidak ditemukan", "Login gagal", JOptionPane.ERROR_MESSAGE);
             } else {
-                if (dsn.getPassword().equals(pass)) {
+                if (!dsn.getPassword().equals(pass)) {
                     JOptionPane.showMessageDialog(viAdmin, "Password salah", "Login gagal", JOptionPane.ERROR_MESSAGE);
                 } else {
                     view.setVisible(false);
-                    new ContrDosen();
+                    ContrDosen in = new ContrDosen();
                 }
             }
         } catch (Exception e) {
@@ -101,7 +105,7 @@ public class ContrLoginDosen implements ActionListener,KeyListener  {
     }
 
     @Override
-    public void keyPressed(KeyEvent e) {
+    public void keyPressed(KeyEvent e) {        
         if (e.getSource().equals(view.getTxtPassword())) {
             if (e.getKeyCode() == KeyEvent.VK_ENTER) {
                 btnLoginActionPerformed(null);
