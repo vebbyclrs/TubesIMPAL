@@ -10,6 +10,7 @@ import Model.Dosen;
 import View.VDosen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 
 /**
  *
@@ -21,10 +22,10 @@ public class ContrDosen implements ActionListener{
     VDosen view;
     
 
-    public ContrDosen() {
+    public ContrDosen(Dosen dosen) {
         view = new VDosen();
         view.setVisible(true);
-        
+        showProfilDosen(dosen);
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
@@ -47,5 +48,17 @@ public class ContrDosen implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+    public void showProfilDosen(Dosen dosen){
+        view.setTfIdDosen(Integer.toString(dosen.getKode()));
+        view.setTfNama(dosen.getNama());
+        view.setTfTanggalLahir(dosen.getTglLahir().toString());
+        if(dosen.getIsMale()==1){
+            view.setTfJenisKelamin("Laki-laki");
+        }else{
+            view.setTfJenisKelamin("Perempuan");
+        }
+        view.setTfAlamat(dosen.getAlamat());
+        view.setTfNoHp(Long.toString(dosen.getNoHp()));
+        view.setTfUsername(dosen.getUsername());
+    }
 }
