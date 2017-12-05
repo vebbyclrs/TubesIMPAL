@@ -333,11 +333,6 @@ public class Aplikasi {
 //    }
 
 
-        String query = "select ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS,Tingkat from mata_kuliah where tingkat ='" + tingkat + "';";
-        ResultSet rs = db.getData(query);
-        daftarMatkul = getMatkulFromRS(rs);
-      return daftarMatkul;
-    }
     /*public ArrayList<ArrayList<MataKuliah>> loadDaftarMatkulAllTingkattttt() {
         daftarMatkulAllTingkat = new ArrayList<>();
         daftarMatkulAllTingkat.add(new ArrayList<>());
