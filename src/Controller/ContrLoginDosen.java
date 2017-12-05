@@ -58,7 +58,7 @@ public class ContrLoginDosen implements ActionListener,KeyListener  {
         
         try {
 
-            Dosen dsn = apk.getDosenByUsername(username);
+            Dosen dsn = apk.getDosenByUsername(email);
 //            System.out.println(dsn.getKode());
 //            System.out.println(dsn.getUsername());
             if (dsn == null ){
@@ -70,7 +70,7 @@ public class ContrLoginDosen implements ActionListener,KeyListener  {
                     new ContrDosen(dsn);
                 } else {
                     view.setVisible(false);
-                    ContrDosen in = new ContrDosen();
+                    ContrDosen in = new ContrDosen(dsn);
 
                 }
             }
