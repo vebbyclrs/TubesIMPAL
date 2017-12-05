@@ -104,7 +104,9 @@ public class Aplikasi {
 
     public ArrayList<Dosen> loadDosen() /*DONE*/ {
         db.connect();
+
         daftarDosen = new ArrayList<Dosen>();
+
         ResultSet rs = db.getData("select * from DOSEN");
         try {
             while (rs.next()) {
@@ -118,6 +120,7 @@ public class Aplikasi {
                         rs.getLong("NO_HP"),
                         rs.getString("EMAIL"),
                         rs.getString("PASSWORD"));
+
                 daftarDosen.add(d);
             }
         } catch (Exception e) {
@@ -309,8 +312,12 @@ public class Aplikasi {
     public ArrayList<MataKuliah> loadMataKuliah(int tingkat) /*DONE*/ {
         daftarMatkul = new ArrayList<MataKuliah>();
         db.connect();
-
-
+        String query = "select ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS,Tingkat from mata_kuliah where tingkat ='" + tingkat + "';";
+        ResultSet rs = db.getData(query);
+        daftarMatkul = getMatkulFromRS(rs);
+      return daftarMatkul;
+    }
+//    
 //    public ArrayList<ArrayList<MataKuliah>> loadDaftarMatkulAllTingkattttt() {
 //        daftarMatkulAllTingkat = new ArrayList<>();
 //        daftarMatkulAllTingkat.add(new ArrayList<>());
@@ -324,6 +331,7 @@ public class Aplikasi {
 //        daftarMatkulAllTingkat.set(3, loadMatkulTingkat(3));
 //        return daftarMatkulAllTingkat;
 //    }
+
 
         String query = "select ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS,Tingkat from mata_kuliah where tingkat ='" + tingkat + "';";
         ResultSet rs = db.getData(query);
@@ -377,12 +385,14 @@ public class Aplikasi {
     public Dosen getDosenByUsername(String username) {
         
         Dosen d = null;
+//        System.out.println(daftarDosen);
         for (Dosen dosen : daftarDosen) {
             if (dosen.getEmail().equals(username) ) {
                 d=dosen;
                 System.out.println("masukDosenUsername");
             }
         }
+//        System.out.println(d.getNama()+d.getUsername());
         return d;
     }
 
@@ -395,7 +405,6 @@ public class Aplikasi {
             while (rs.next()) {
                 sks = rs.getInt("SKS");
             }
-
         } catch (Exception e) {
             throw new IllegalArgumentException("gagal getSKSFromIdMatkul");
         }
@@ -419,7 +428,6 @@ public class Aplikasi {
                     int menit = Integer.parseInt(rs.getString("PUKUL").substring(3, 5));
                     Jadwal jadwal = new Jadwal(id, matakuliah,rs.getTime("PUKUL"), hari);
                     daftarJadwal.add(jadwal);
-
                 }
             }
 
