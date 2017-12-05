@@ -495,10 +495,22 @@ public class Aplikasi {
             db.connect();
             String query = "UPDATE `mahasiswa` SET `TOTAL_SKS`="+SKS+" WHERE `NIM`="+Long.toString(mhs.getNim())+";";
             berhasil = db.manipulate(query);
-            System.out.println(berhasil);
         } catch (Exception e) {
             throw new IllegalArgumentException("gagal Update UpdateMahasiswaNoHP");
         }
+   
         
 }
+    public void updateProfilDosen(Dosen dosen){
+        db.connect();
+        try {
+            String query = "UPDATE `dosen` SET `ALAMAT`='"+dosen.getAlamat()+
+                    "' , `NO_HP`='"+dosen.getNoHp()+
+                    "' , `EMAIL`='"+dosen.getEmail()+
+                    "' WHERE `ID_DOSEN` ="+dosen.getKode()+";";
+            db.manipulate(query);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("gagal updateProfilDosen");
+        }
+    }
 }

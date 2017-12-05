@@ -62,7 +62,7 @@ public class ContrLoginDosen implements ActionListener,KeyListener  {
             } else {
                 if (dsn.getPassword().equals(pass)) {
                    view.setVisible(false);
-                    new ContrDosen();
+                    new ContrDosen(dsn);
                 } else {
                      JOptionPane.showMessageDialog(viAdmin, "Password salah", "Login gagal", JOptionPane.ERROR_MESSAGE);
 
