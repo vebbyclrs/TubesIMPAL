@@ -25,7 +25,8 @@ public class ContrDosen implements ActionListener{
     public ContrDosen(Dosen dosen) {
         view = new VDosen();
         view.setVisible(true);
-        showProfilDosen(dosen);
+        this.dsn = dosen; 
+        showProfilDosen(dsn);
         try
         {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
@@ -46,6 +47,13 @@ public class ContrDosen implements ActionListener{
      
     @Override
     public void actionPerformed(ActionEvent e) {
+        Object source = e.getSource();
+        if (source.equals(view.getBtnUbah())){
+            dsn.setAlamat(view.getTfAlamat());
+            dsn.setNoHp(Long.parseLong(view.getTfNoHp()));
+            dsn.setUsername(view.getTfUsername());
+            model.updateProfilDosen(dsn);
+        }
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     public void showProfilDosen(Dosen dosen){
