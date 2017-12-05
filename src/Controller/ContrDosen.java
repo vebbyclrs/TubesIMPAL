@@ -5,6 +5,9 @@
  */
 package Controller;
 
+import Model.Aplikasi;
+import Model.Dosen;
+import View.VDosen;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,10 +16,14 @@ import java.awt.event.ActionListener;
  * @author VebbyClrs
  */
 public class ContrDosen implements ActionListener{
-
+    Dosen dsn;
+    Aplikasi model;
+    VDosen view;
     
 
     public ContrDosen() {
+        view = new VDosen();
+        view.setVisible(true);
         
         try
         {

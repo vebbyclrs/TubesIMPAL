@@ -104,7 +104,9 @@ public class Aplikasi {
 
     public ArrayList<Dosen> loadDosen() /*DONE*/ {
         db.connect();
-        daftarDosen = new ArrayList<>();
+
+        daftarDosen = new ArrayList<Dosen>();
+
         ResultSet rs = db.getData("select * from DOSEN");
         try {
             while (rs.next()) {
@@ -117,14 +119,16 @@ public class Aplikasi {
                         rs.getInt("ISMALE"),
                         rs.getLong("NO_HP"),
                         rs.getString("EMAIL"),
-                        rs.getString("PASSWORD")
-                );
+                        rs.getString("PASSWORD"));
+
                 daftarDosen.add(d);
             }
         } catch (Exception e) {
+            throw new IllegalArgumentException("Error loadDosen()");
         }
         db.disconnect();
         return daftarDosen;
+        
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -329,6 +333,26 @@ public class Aplikasi {
 //    }
 
 
+        String query = "select ID_MATKUL,ID_DOSEN,NAMA_MATKUL,SKS,Tingkat from mata_kuliah where tingkat ='" + tingkat + "';";
+        ResultSet rs = db.getData(query);
+        daftarMatkul = getMatkulFromRS(rs);
+      return daftarMatkul;
+    }
+    /*public ArrayList<ArrayList<MataKuliah>> loadDaftarMatkulAllTingkattttt() {
+        daftarMatkulAllTingkat = new ArrayList<>();
+        daftarMatkulAllTingkat.add(new ArrayList<>());
+        daftarMatkulAllTingkat.add(new ArrayList<>());
+        daftarMatkulAllTingkat.add(new ArrayList<>());
+        daftarMatkulAllTingkat.add(new ArrayList<>());
+        
+        daftarMatkulAllTingkat.set(0, loadMatkulTingkat(0));
+        daftarMatkulAllTingkat.set(1, loadMatkulTingkat(1));
+        daftarMatkulAllTingkat.set(2, loadMatkulTingkat(2));
+        daftarMatkulAllTingkat.set(3, loadMatkulTingkat(3));
+        return daftarMatkulAllTingkat;
+    }*/
+
+
     private  ArrayList<MataKuliah> getMatkulFromRS(ResultSet rs){
         try {   
             while (rs.next()) {
@@ -359,11 +383,13 @@ public class Aplikasi {
     }
 
     public Dosen getDosenByUsername(String username) {
+        
         Dosen d = null;
 //        System.out.println(daftarDosen);
         for (Dosen dosen : daftarDosen) {
-            if (dosen.getUsername().equals(username)) {
-                d = dosen;
+            if (dosen.getEmail().equals(username) ) {
+                d=dosen;
+                System.out.println("masukDosenUsername");
             }
         }
 //        System.out.println(d.getNama()+d.getUsername());
@@ -427,10 +453,60 @@ public class Aplikasi {
         
         return jdwl;
     }
-    public void saveJadwalTaken(ArrayList<Jadwal> jadwal, long nim){
+    public boolean saveJadwalTaken(ArrayList<Jadwal> jadwal, long nim){
         boolean berhasil = false;
-        System.out.println(berhasil);
         berhasil = db.saveJadwalDiambil(jadwal, nim);
-        System.out.println(berhasil);
+        return berhasil;
     }
+    public boolean updateMahasiswaTempatLahir(Mahasiswa mhs,String tempatLahir){
+        boolean berhasil = false;
+        try {
+            db.connect();
+            String query = "UPDATE `mahasiswa` SET `TEMPAT_LAHIR`="+tempatLahir+" WHERE `NIM`="+Long.toString(mhs.getNim())+";";
+            berhasil = db.manipulate(query);
+            System.out.println(berhasil);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("gagal Update UpdateMahasiswaTempatLahir");
+        }
+        return berhasil;
+        
+    }
+    public boolean updateMahasiswaNoHP(Mahasiswa mhs,String nomor){
+         db.connect();
+            boolean berhasil = false;
+        try {
+            db.connect();
+            String query = "UPDATE `mahasiswa` SET `NO_HP`="+nomor+" WHERE `NIM`="+Long.toString(mhs.getNim())+";";
+            berhasil = db.manipulate(query);
+            System.out.println(berhasil);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("gagal Update UpdateMahasiswaNoHP");
+        }
+        return berhasil;
+}
+    public boolean updateMahasiswaEmail(Mahasiswa mhs,String email){
+        boolean berhasil = false;
+        try {
+            db.connect();
+            String query = "UPDATE `mahasiswa` SET `EMAIL`='"+email+"' WHERE `NIM`="+Long.toString(mhs.getNim())+" ;";
+            berhasil = db.manipulate(query);
+            System.out.println(berhasil);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("gagal Update UpdateMahasiswaEmail");
+        }
+        return berhasil;
+}       
+    public void updateMahasiswaSKS(Mahasiswa mhs,int SKS){
+         db.connect();
+            boolean berhasil = false;
+        try {
+            db.connect();
+            String query = "UPDATE `mahasiswa` SET `TOTAL_SKS`="+SKS+" WHERE `NIM`="+Long.toString(mhs.getNim())+";";
+            berhasil = db.manipulate(query);
+            System.out.println(berhasil);
+        } catch (Exception e) {
+            throw new IllegalArgumentException("gagal Update UpdateMahasiswaNoHP");
+        }
+        
+}
 }

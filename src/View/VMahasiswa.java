@@ -39,8 +39,6 @@ public class VMahasiswa extends javax.swing.JFrame {
         btnEmail.addActionListener(e);
         btnNoHp.addActionListener(e);
         btnRequestACC.addActionListener(e);
-        btnTglLahir.addActionListener(e);
-        btnTptLahir.addActionListener(e);
         btnLogout.addActionListener(e);
     }
     public void showMessage(String message) {
@@ -127,22 +125,7 @@ public class VMahasiswa extends javax.swing.JFrame {
     public void setBtnRequestACC(JButton btnRequestACC) {
         this.btnRequestACC = btnRequestACC;
     }
-
-    public JButton getBtnTglLahir() {
-        return btnTglLahir;
-    }
-
-    public void setBtnTglLahir(JButton btnTglLahir) {
-        this.btnTglLahir = btnTglLahir;
-    }
-
-    public JButton getBtnTptLahir() {
-        return btnTptLahir;
-    }
-
-    public void setBtnTptLahir(JButton btnTptLahir) {
-        this.btnTptLahir = btnTptLahir;
-    }
+ 
 
     public JTextField getTfJK() {
         return tfJK;
@@ -352,8 +335,6 @@ public class VMahasiswa extends javax.swing.JFrame {
         txtNIM = new javax.swing.JTextField();
         txtTptLahir = new javax.swing.JTextField();
         txtTglLahir = new javax.swing.JTextField();
-        btnTptLahir = new javax.swing.JButton();
-        btnTglLahir = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         txtNoHp = new javax.swing.JTextField();
         btnNoHp = new javax.swing.JButton();
@@ -764,10 +745,6 @@ public class VMahasiswa extends javax.swing.JFrame {
         txtTglLahir.setEditable(false);
         txtTglLahir.setText("Your Birthday");
 
-        btnTptLahir.setText("Ganti");
-
-        btnTglLahir.setText("Ganti");
-
         jLabel10.setText("No HP");
 
         txtNoHp.setText("Your Phone Number");
@@ -830,8 +807,6 @@ public class VMahasiswa extends javax.swing.JFrame {
                             .addComponent(tfJK))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnTptLahir)
-                            .addComponent(btnTglLahir)
                             .addComponent(btnNoHp)
                             .addComponent(btnEmail)))
                     .addGroup(ProfilLayout.createSequentialGroup()
@@ -859,13 +834,11 @@ public class VMahasiswa extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTptLahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(btnTptLahir))
+                    .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTglLahir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9)
-                    .addComponent(btnTglLahir))
+                    .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(ProfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -880,7 +853,7 @@ public class VMahasiswa extends javax.swing.JFrame {
                 .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnLogout)
-                .addContainerGap(175, Short.MAX_VALUE))
+                .addContainerGap(181, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Profil", Profil);
@@ -956,8 +929,6 @@ public class VMahasiswa extends javax.swing.JFrame {
     private javax.swing.JButton btnNoHp;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnRequestACC;
-    private javax.swing.JButton btnTglLahir;
-    private javax.swing.JButton btnTptLahir;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

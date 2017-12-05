@@ -51,12 +51,13 @@ public class ContrLoginDosen implements ActionListener,KeyListener  {
     
     public  void btnLoginActionPerformed(ActionEvent ae) /*DONE*/{
         System.out.println("btnLoginPerformed!!!!!");
-        String username = view.getTxtUserName();
+        String email = view.getTxtUserName();
         String pass = view.getTxtPassword();
 //        System.out.println( username);
 //        System.out.println( pass);
         
         try {
+
             Dosen dsn = apk.getDosenByUsername(username);
 //            System.out.println(dsn.getKode());
 //            System.out.println(dsn.getUsername());
@@ -68,9 +69,11 @@ public class ContrLoginDosen implements ActionListener,KeyListener  {
                 } else {
                     view.setVisible(false);
                     ContrDosen in = new ContrDosen();
+
                 }
             }
         } catch (Exception e) {
+            //throw new IllegalArgumentException("gagal Masuk");
             JOptionPane.showMessageDialog(view, e.getLocalizedMessage(), "ERROR", JOptionPane.ERROR_MESSAGE);
             e.printStackTrace();
         }
